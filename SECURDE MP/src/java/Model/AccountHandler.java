@@ -11,4 +11,27 @@ package Model;
  */
 public class AccountHandler {
     
+    public void register(){
+        
+    }
+    
+    public void login(){
+        
+    }
+    
+    public void addToCart(){
+        
+    }
+    
+    public void checkoutCart(){
+        
+    }
+    
+    public void removeFromCart(){
+        
+    }
+    
+    public void clearCart(){
+        
+    }
 }
