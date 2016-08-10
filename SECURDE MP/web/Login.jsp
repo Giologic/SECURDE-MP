@@ -7,7 +7,6 @@
     <link href="styles.css" rel="stylesheet" type="text/css">
   </head><body>
     <div class="cover">
-      
       <div class="cover-image" style="background-image : url('https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d')"></div>
       <div class="container">
         <div class="section">
@@ -21,8 +20,8 @@
               <div class="col-md-6">
                 <form role="form">
                   <div class="form-group">
-                    <label class="control-label" for="exampleInputEmail1" style="color:white">Email address</label>
-                    <input class="form-control" id="exampleInputEmail1" placeholder="Enter email" type="email">
+                    <label class="control-label" for="exampleInputEmail1" style="color:white">Username</label>
+                    <input class="form-control" id="exampleInputEmail1" placeholder="Username" type="email">
                   </div>
                   <div class="form-group">
                     <label class="control-label" for="exampleInputPassword1" style="color:white">Password</label>
