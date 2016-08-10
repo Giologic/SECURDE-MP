@@ -29,7 +29,7 @@ public class RegistrationChecker {
         if("".equals(email) && "".equals(password) && confPass == "" && "".equals(fName) && "".equals(lName) && "".equals(mInitial)){
             return false;
         }
-        if(billingHouse == "" && billingCity == "" && billingPostalCode == "" )
+        if(billingHouse == "" && billingCity == "" && billingPostalCode == ""  )
         
         return true;
     }
