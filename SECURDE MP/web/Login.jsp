@@ -21,11 +21,11 @@
                 <form role="form">
                   <div class="form-group">
                     <label class="control-label" for="exampleInputEmail1" style="color:white">Username</label>
-                    <input class="form-control" id="exampleInputEmail1" placeholder="Username" type="email">
+                    <input class="form-control" id="exampleInputEmail1" placeholder="Username" type="text" name="username">
                   </div>
                   <div class="form-group">
                     <label class="control-label" for="exampleInputPassword1" style="color:white">Password</label>
-                    <input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password">
+                    <input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password" name="password">
                   </div>
                   <button type="submit" class="btn btn-default">Log In</button>
                   <button type="submit" class="btn btn-default">Sign Up</button>
