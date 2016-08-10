@@ -21,7 +21,6 @@
             <li class="active">
               <a href="#">Home</a>
             </li>
-            
             <li>
               <a href="#">Logout</a>
             </li>
@@ -35,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div id="display-specific=item" class="section size-control">
+    <div id="display-specific-item" class="section size-control">
       <div class="container size-control-2">
         <div class="row">
           <div class="col-md-12">
