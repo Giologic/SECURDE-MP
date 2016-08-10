@@ -12,6 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Account;
+import model.Address;
+import model.CustomerAccount;
+import model.ShoppingCart;
 
 /**
  *
@@ -73,7 +77,25 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        // processRequest(request, response);
+       String email = request.getParameter("email");
+       String password = request.getParameter("password");
+       String confPassword = request.getParameter("confPass");
+       String firstName = request.getParameter("fName");
+       String lastName = request.getParameter("lName");
+       String middleInitial = request.getParameter("mInitial");
+       String billingHouse = request.getParameter("bHouse");
+       String billingCity = request.getParameter("bCity");
+       int billingPostalCode = Integer.parseInt(request.getParameter("bPostalCode"));
+       String billingCountry = request.getParameter("bCountry");
+       String shippingHouse = request.getParameter("sHouse");
+       String shippingCity = request.getParameter("sCity");
+       int shippingPostalCode = Integer.parseInt(request.getParameter("sPostalCode"));
+       String shippingCountry = request.getParameter("sCountrry");
        
+       ShoppingCart cart = new ShoppingCart();
+       Address billingAddress = new Address(billingHouse, billingCity, billingPostalCode, billingCountry);
+       Address shippingAddress = new Address(shippingHouse, shippingCity, shippingPostalCode, shippingCountry);
+       Account account = new CustomerAccount(firstName, lastName, middleInitial, "customer","greyhawndz", password, email);
        
     }
 

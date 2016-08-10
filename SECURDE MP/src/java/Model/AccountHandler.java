@@ -16,12 +16,17 @@ import Model.DBConnector;;
  * @author William
  */
 public class AccountHandler {
+    DBConnector connector;
+    
+    
+    public AccountHandler(){
+        connector = DBConnector.getInstance();
+    }
     
     public void register(Account acc, Address billAdd, Address shipAdd){
     	 try{
     		 int custID, billID, shipID;
     		 ResultSet rs;
-    		 DBConnector connector = new DBConnector();
     		 Connection conn = connector.getConnection();
     		 //customer_account
     		 PreparedStatement pstmt = conn.prepareStatement("INSERT INTO customer_account (username, password, first_name, last_name, middle_initial, email) VALUES (?, ?, ?, ?, ?, ?)");
@@ -88,7 +93,6 @@ public class AccountHandler {
     }
     
     public int login(String username, String password){
-    	DBConnector connector = new DBConnector();
     	Connection conn = connector.getConnection();
 		String sql = "SELECT id FROM customer_account WHERE username = ? && password = ?";
 		PreparedStatement pstmt;

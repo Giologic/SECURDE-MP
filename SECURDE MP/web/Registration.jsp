@@ -19,7 +19,7 @@
                     <label for="inputEmail3" class="control-label" style="color:white">Email</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -27,7 +27,7 @@
                     <label for="inputPassword3" class="control-label" style="color:white">Password</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
                   </div>
                 </div>
                 <div class="form-group">
@@ -35,7 +35,7 @@
                     <label for="inputPassword3" class="control-label" style="color:white">Confirm Password</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword3" name="confPass" placeholder="Confirm Password">
                   </div>
                 </div>
               </form>
@@ -45,7 +45,7 @@
                     <label for="inputEmail3" class="control-label" style="color:white">First Name</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail3" name="fName" placeholder="First Name">
                   </div>
                 </div>
                 <div class="form-group">
@@ -53,7 +53,7 @@
                     <label for="inputPassword3" class="control-label" style="color:white">Last Name</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword3" name="lName" placeholder="Last Name">
                   </div>
                 </div>
               </form>
@@ -63,7 +63,7 @@
                     <label for="inputEmail3" class="control-label" style="color:white">Middle Intial</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail3" name="mInitial" placeholder="Middle Initial">
                   </div>
                 </div>
               </form>
@@ -79,7 +79,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">House</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail3" name="bHouse" placeholder="House">
                           </div>
                         </div>
                         <div class="form-group">
@@ -87,7 +87,7 @@
                             <label for="inputPassword3" class="control-label" style="color:white">City</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword3" name="bCity" placeholder="City">
                           </div>
                         </div>
                       </form>
@@ -97,7 +97,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">Postal Code</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code">
                           </div>
                         </div>
                         <div class="form-group">
@@ -105,7 +105,7 @@
                             <label for="inputPassword3" class="control-label" style="color:white">Country</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword3" name="bCountry" placeholder="Country">
                           </div>
                         </div>
                       </form>
@@ -118,7 +118,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">House</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail3" name="sHouse" placeholder="House">
                           </div>
                         </div>
                         <div class="form-group">
@@ -126,7 +126,7 @@
                             <label for="inputPassword3" class="control-label" style="color:white">City</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword3" name="sCity" placeholder="City">
                           </div>
                         </div>
                       </form>
@@ -136,7 +136,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">Postal Code</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail3" name="sPostalCode" placeholder="Postal Code">
                           </div>
                         </div>
                         <div class="form-group">
@@ -144,7 +144,7 @@
                             <label for="inputPassword3" class="control-label" style="color:white">Country</label>
                           </div>
                           <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword3" name="sCountry" placeholder="Country">
                           </div>
                         </div>
                       </form>

@@ -8,11 +8,19 @@ public class Address {
     private String house_no;
     private String street;
     private String subdivision;
+    private String city;
     private int postal_code;
     private String country;
 
-    public Address(int user_id, String house_no, String street, String subdivision, int postal_code, String country) {
+    public Address(int user_id, String house_no, String street, String subdivision,String city, int postal_code, String country) {
         this.user_id = user_id;
+        this.house_no = house_no;
+        this.street = street;
+        this.subdivision = subdivision;
+        this.postal_code = postal_code;
+        this.country = country;
+    }
+    public Address(String house_no, String street, String subdivision, String city, int postal_code, String country){
         this.house_no = house_no;
         this.street = street;
         this.subdivision = subdivision;
