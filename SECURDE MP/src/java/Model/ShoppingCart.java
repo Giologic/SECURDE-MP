@@ -13,6 +13,10 @@ public class ShoppingCart {
         this.user_id = user_id;
         this.products = products;
     }
+    
+    public ShoppingCart(){
+        products = new ArrayList<Product>();
+    }
 
 
     public void addProduct(Product product) {
