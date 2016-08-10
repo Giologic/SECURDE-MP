@@ -9,7 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import Model.DBConnector;;
+import Model.DBConnector;import java.sql.Statement;
+;
 
 /**
  *
@@ -23,13 +24,13 @@ public class AccountHandler {
         connector = DBConnector.getInstance();
     }
     
-    public void register(Account acc, Address billAdd, Address shipAdd){
+    public void register(CustomerAccount acc, Address billAdd, Address shipAdd){
     	 try{
     		 int custID, billID, shipID;
     		 ResultSet rs;
     		 Connection conn = connector.getConnection();
     		 //customer_account
-    		 PreparedStatement pstmt = conn.prepareStatement("INSERT INTO customer_account (username, password, first_name, last_name, middle_initial, email) VALUES (?, ?, ?, ?, ?, ?)");
+    		 PreparedStatement pstmt = conn.prepareStatement("INSERT INTO customer_account (username, password, first_name, last_name, middle_initial, email) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
     		 pstmt.setString(1, acc.getUsername());
     		 pstmt.setString(2, acc.getPassword());
     		 pstmt.setString(3, acc.getFirst_name());

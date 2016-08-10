@@ -10,26 +10,26 @@ package Model;
  * @author William
  */
 public class RegistrationChecker {
-    private String email;
-    private String password;
-    private String confPass;
-    private String fName; 
-    private String lName; 
-    private String mInitial;
-    private String billingHouse;
-    private String billingCity;
-    private int billingPostalCode;
-    private String billingCountry;
-    private String shippingHouse;
-    private String shippingCity;
-    private int shippingPostalCode;
-    private String shippingCountry;
-
-    public boolean isValid(String email, String password, String confPass, String fName, String lName, String mInitial, String billingHouse, String billingCity, String billingPostalCode, String billingCountry, String shippingHouse, String shippingCity, String shippingPostalCode, String shippingCountry) {
-        if("".equals(email) && "".equals(password) && confPass == "" && "".equals(fName) && "".equals(lName) && "".equals(mInitial)){
+    
+    public boolean isValid(String username,String email, String password, String confPass, String fName, String lName, String mInitial, String billingHouse,String billingStreet,String billingSub, String billingCity, String billingPostalCode, String billingCountry, String shippingHouse,String shippingStreet,String shippingSub, String shippingCity, String shippingPostalCode, String shippingCountry) {
+        if("".equals(username) && "".equals(email) && "".equals(password) && confPass == "" && "".equals(fName) && "".equals(lName) && "".equals(mInitial)){
             return false;
         }
-        if(billingHouse == "" && billingCity == "" && billingPostalCode == ""  )
+        if(billingHouse == "" && billingStreet == "" && billingSub == "" && billingCity == "" && billingPostalCode == "" && billingCountry == ""  ){
+            return false;
+        }
+        if(shippingHouse == "" && shippingStreet == "" && shippingSub == "" && shippingCity == "" && shippingPostalCode == "" && shippingCountry == ""){
+            return false;
+        }
+        if(!isInteger(billingPostalCode)){
+            return false;
+        }
+        if(!isInteger(shippingPostalCode)){
+            return false;
+        }
+        if(password != confPass){
+            return false;
+        }
         
         return true;
     }
