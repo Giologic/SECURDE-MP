@@ -37,42 +37,46 @@
         </div>
       </div>
     </div>
-    <div id="display-specific=item" class="section size-control">
-      <div class="container size-control-2">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section sub-size-control">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="images\Blue-Converse-Chuck-Taylor-All-Star-Low-Top-Canvas-Shoes-groundwater_LRG.jpg" class="center-block img-responsive sub-size-control">
-                  </div>
-                  <div class="col-md-6 sub-size-control text-left">
-                    <h1 class="custom-font-color">Converse</h1>
-                    <h3 class="custom-font-color">Red Falcon</h3>
-                    <p class="custom-font-color">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                      ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                      dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                      nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                      Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                      enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-                      felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
-                      elementum semper nisi.</p>
-                    <div class="row">
-                      <div class="col-md-2 text-left">
-                        <a class="btn btn-success">Purchase </a>
-                      </div>
-                      <div class="col-md-3 text-left">
-                        <div class="btn-group">
-                          <a href="#" class="btn btn-default" contenteditable="true">-</a>
-                          <a href="#" class="btn btn-default disabled">1</a>
-                          <a href="#" class="btn btn-default">+</a>
+    <div class="section">
+      <div class="section size-control" id="display-specific=item">
+        <div class="container size-control-2">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section sub-size-control">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <img src="images\Blue-Converse-Chuck-Taylor-All-Star-Low-Top-Canvas-Shoes-groundwater_LRG.jpg" class="center-block img-responsive sub-size-control">
+                    </div>
+                    <form class="form-horizontal" role="form">
+                      <div class="col-md-6 sub-size-control text-left">
+                        <h1 class="custom-font-color">Converse</h1>
+                        <h3 class="custom-font-color">Red Falcon</h3>
+                        <p class="custom-font-color">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                          ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                          dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                          nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                          Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
+                          enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
+                          felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
+                          elementum semper nisi.</p>
+                        <div class="row">
+                          <div class="col-md-2 text-left">
+                            <a class="btn btn-success">Purchase </a>
+                          </div>
+                          <div class="col-md-3 text-left">
+                            <div class="btn-group">
+                              <a href="#" class="btn btn-default" contenteditable="true">-</a>
+                              <a href="#" class="btn btn-default disabled">1</a>
+                              <a href="#" class="btn btn-default">+</a>
+                            </div>
+                          </div>
+                          <div class="col-md-7">
+                            <p style="font-size:36px; color:white;" contenteditable="true">PHP 69.00</p>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-md-7">
-                        <p style="font-size:36px; color:white;" contenteditable="true">PHP 69.00</p>
-                      </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -80,9 +84,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="container">
+      <div class="container" style="margin-top:3em">
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-primary">
@@ -121,21 +123,24 @@
         </div>
       </div>
     </div>
-    <div class="section section-primary inputAreaBack">
-      <div class="container">
-        <div class="form-group">
-          <label for="exampleTextarea">Comments
-            <br>
-          </label>
-          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <a class="btn btn-success">Submit</a>
-          </div>
-        </div>
+    
+      <div class="section section-primary inputAreaBack">
+        <form>
+          <div class="container">
+            <div class="form-group">
+              <label for="exampleTextarea">Comments
+                <br>
+              </label>
+              <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <a class="btn btn-success">Submit</a>
+              </div>
+            </div>
+          </div>   
+        </form>
       </div>
-    </div>
     <footer class="section section-primary footer">
       <div class="container">
         <div class="row">
