@@ -1,4 +1,4 @@
-package modelz;
+package Model;
 
 /**
  * Created by MSI LEOPARD on 7/25/2016.
@@ -9,13 +9,15 @@ public class Product {
     private String description;
     private double price;
     private String category;
+    private String image;
 
-    public Product(int id, String name, String description, double price, String category) {
+    public Product(int id, String name, String description, double price, String category, String image) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
+        this.image = image;
     }
 
     public int getId() {
@@ -56,5 +58,13 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+    
+    public String getImage(){
+    	return image;
+    }
+    
+    public void setImage(String image){
+    	this.image = image;
     }
 }

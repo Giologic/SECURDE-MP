@@ -12,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelz.AccountHandler;
 
 /**
  *
  * @author William
  */
-@WebServlet(name = "AddToCartServlet", urlPatterns = {"/AddToCartServlet"})
-public class AddToCartServlet extends HttpServlet {
+@WebServlet(name = "QuerySpecificProductServlet", urlPatterns = {"/QuerySpecificProductServlet"})
+public class QuerySpecificProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +33,6 @@ public class AddToCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String productName = request.getParameter("productName");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        double price = Integer.parseInt(request.getParameter("price"));
-        AccountHandler handler = new AccountHandler();
-        //handler.addToCart(cart, prod);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
