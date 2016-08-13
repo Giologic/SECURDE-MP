@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="section">
-      <div class="section size-control" id="display-specific=item">
+      <div class="section size-control" id="display-specific-item">
         <div class="container size-control-2">
           <div class="row">
             <div class="col-md-12">

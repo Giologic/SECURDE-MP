@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package modelz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import Model.DBConnector;import java.sql.Statement;
-;
+import modelz.DBConnector;
+import java.sql.Statement;
+
 
 /**
  *
@@ -47,12 +48,12 @@ public class AccountHandler {
     		 custID = rs.getInt("id");
     		 pstmt.close();
     		 //billing_address
-    		 pstmt = conn.prepareStatement("INSERT INTO billing_address (customer_id, house_no, street, subdivision, postal_code, country) VALUES (?, ?, ?, ?, ?, ?)");
+    		 pstmt = conn.prepareStatement("INSERT INTO billing_address (customer_id, house_no, street, subdivision, postal_code, country) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
     		 pstmt.setInt(1, custID);
     		 pstmt.setString(2, billAdd.getHouse_no());
     		 pstmt.setString(3, billAdd.getStreet());
     		 pstmt.setString(4, billAdd.getSubdivision());
-    		 pstmt.setInt(5, billAdd.getPostal_code());
+    		 pstmt.setString(5, billAdd.getPostal_code());
     		 pstmt.setString(6, billAdd.getCountry());
     		 pstmt.executeUpdate();
     		 pstmt.close();
@@ -62,7 +63,7 @@ public class AccountHandler {
     		 pstmt.setString(2, shipAdd.getHouse_no());
     		 pstmt.setString(3, shipAdd.getStreet());
     		 pstmt.setString(4, shipAdd.getSubdivision());
-    		 pstmt.setInt(5, shipAdd.getPostal_code());
+    		 pstmt.setString(5, shipAdd.getPostal_code());
     		 pstmt.setString(6, shipAdd.getCountry());
     		 pstmt.executeUpdate();
     		 pstmt.close();

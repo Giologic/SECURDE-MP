@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package controllerz;
 
-import Model.RegistrationChecker;
+import modelz.RegistrationChecker;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,11 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
-import model.AccountHandler;
-import model.Address;
-import model.CustomerAccount;
-import model.ShoppingCart;
+import modelz.Account;
+import modelz.AccountHandler;
+import modelz.Address;
+import modelz.CustomerAccount;
+import modelz.ShoppingCart;
 
 /**
  *
@@ -58,19 +58,25 @@ public class RegisterServlet extends HttpServlet {
        String shippingPostalCode = request.getParameter("sPostalCode");
        String shippingCountry = request.getParameter("sCountrry");
        
+        
+       
+       
+       
        RegistrationChecker checker = new RegistrationChecker();
        AccountHandler handler = new AccountHandler();
-       if(checker.isValid(username,email, password, confPassword, lastName, lastName, middleInitial, billingHouse, billingStreet, billingCity, billingCity, billingPostalCode, billingCountry, shippingHouse, shippingStreet, shippingCity, shippingCity, shippingPostalCode, shippingCountry)){
-        ShoppingCart cart = new ShoppingCart();
-        Address billingAddress = new Address(billingHouse, billingStreet, billingSubdivision, billingCity, Integer.parseInt(billingPostalCode), billingCountry);
-        Address shippingAddress = new Address(shippingHouse, shippingStreet, shippingSubdivision, shippingCity, Integer.parseInt(shippingPostalCode), shippingCountry);
+      // if(checker.isValid(username,email, password, confPassword, lastName, lastName, middleInitial, billingHouse, billingStreet, billingCity, billingCity, billingPostalCode, billingCountry, shippingHouse, shippingStreet, shippingCity, shippingCity, shippingPostalCode, shippingCountry)){
+        
+        
+    //   }
+       ShoppingCart cart = new ShoppingCart();
+        Address billingAddress = new Address(billingHouse, billingStreet, billingSubdivision, billingCity, billingPostalCode, billingCountry);
+        Address shippingAddress = new Address(shippingHouse, shippingStreet, shippingSubdivision, shippingCity, shippingPostalCode, shippingCountry);
         CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, password, email, billingAddress, shippingAddress, cart);
         handler.register(account, billingAddress , shippingAddress);
-        
-       }
-       else{
+    //   else{
            //error
-       }
+     //      System.out.println("Invalid Inputs");
+     //  }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

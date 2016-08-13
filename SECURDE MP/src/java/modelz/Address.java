@@ -1,4 +1,4 @@
-package model;
+package modelz;
 
 /**
  * Created by MSI LEOPARD on 7/25/2016.
@@ -9,10 +9,10 @@ public class Address {
     private String street;
     private String subdivision;
     private String city;
-    private int postal_code;
+    private String postal_code;
     private String country;
 
-    public Address(int user_id, String house_no, String street, String subdivision,String city, int postal_code, String country) {
+    public Address(int user_id, String house_no, String street, String subdivision,String city, String postal_code, String country) {
         this.user_id = user_id;
         this.house_no = house_no;
         this.street = street;
@@ -20,7 +20,7 @@ public class Address {
         this.postal_code = postal_code;
         this.country = country;
     }
-    public Address(String house_no, String street, String subdivision, String city, int postal_code, String country){
+    public Address(String house_no, String street, String subdivision, String city, String postal_code, String country){
         this.house_no = house_no;
         this.street = street;
         this.subdivision = subdivision;
@@ -60,11 +60,11 @@ public class Address {
         this.subdivision = subdivision;
     }
 
-    public int getPostal_code() {
+    public String getPostal_code() {
         return postal_code;
     }
 
-    public void setPostal_code(int postal_code) {
+    public void setPostal_code(String postal_code) {
         this.postal_code = postal_code;
     }
 

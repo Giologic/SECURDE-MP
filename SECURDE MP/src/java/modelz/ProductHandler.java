@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package modelz;
 
 /**
  *
  * @author William
  */
-public class TransactionHandler {
+public class ProductHandler {
     
     
-    public void validateCredentials(){
+    public void displayProducts(){
         
     }
 }

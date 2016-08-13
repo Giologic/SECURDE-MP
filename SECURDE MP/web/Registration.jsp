@@ -13,7 +13,7 @@
           <div class="col-md-12">
             <div class="jumbotron" style="margin-left: 6em; margin-right: 6em; background-color: transparent !important;">
               <h1 class="text-success">Sign Up</h1>
-              <form class="form-horizontal" role="form">
+              <form class="form-horizontal" action="RegisterServlet" method="POST" role="form">
                 <div class="form-group">
                   <div class="col-sm-2">
                     <label for="inputEmail3" class="control-label" style="color:white">Username</label>
@@ -183,7 +183,7 @@
                       </form>
                     </div>
                   </div>
-                  <a class="btn btn-large btn-lg btn-success">Submit<br></a>
+                  <input type="submit" class="btn btn-large btn-lg btn-success"><br></input>
                 </div>
               </div></form>
               
