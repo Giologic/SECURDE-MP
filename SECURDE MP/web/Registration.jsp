@@ -183,7 +183,7 @@
                       </form>
                     </div>
                   </div>
-                  <a class="btn btn-large btn-lg btn-success">Submit<br></a>
+                  <a class="btn btn-large btn-lg btn-success" type = "submit" href="Main.jsp">Submit<br></a>
                 </div>
               </div></form>
               

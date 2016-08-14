@@ -29,10 +29,10 @@
                   </div>
                   <div class="row">
                     <div class="col-md-2">
-                      <button type="submit" class="btn btn-default">Log In</button>
+                      <button type="submit" class="btn btn-default" href="Main.jsp">Log In</button>
                     </div>
                     <div class="col-md-10">
-                      <a type="submit" class="form-control btn-link" style="color:#5cb85c; font-size:18px">
+                      <a type="submit" class="form-control btn-link" style="color:#5cb85c; font-size:18px" href="Registration.jsp">
                         Create an account
                       </a>
                     </div>

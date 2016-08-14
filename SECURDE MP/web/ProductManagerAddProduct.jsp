@@ -18,17 +18,11 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <a href="#" type="submit">Home</a>
+            <li>
+              <a href="ProductManager.jsp" type="submit">View Products</a>
             </li>
             <li>
-              <a href="#" type="submit">View Products</a>
-            </li>
-            <li>
-              <a href="#" type="submit">Logout</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
+              <a href="Login.jsp" type="submit">Logout</a>
             </li>
           </ul>
         </div>

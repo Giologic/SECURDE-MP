@@ -15,7 +15,7 @@
             <h3 style="color:white">Find your Soulmate</h3>
             <br>
             <br>
-            <a class="btn btn-lg btn-success">Click me</a>
+            <a class="btn btn-lg btn-success" href="Main.jsp">Click me</a>
           </div>
         </div>
       </div>

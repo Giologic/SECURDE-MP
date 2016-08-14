@@ -18,18 +18,13 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <a href="#" type="submit">Home</a>
+            <li>
+              <a href="ProductManager.jsp" type="submit">View Products</a>
             </li>
             <li>
-              <a href="#" type="submit">View Products</a>
+              <a href="Login.jsp" type="submit">Logout</a>
             </li>
-            <li>
-              <a href="#" type="submit">Logout</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
-            </li>
+           
           </ul>
         </div>
       </div>
@@ -99,7 +94,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <a class="btn btn-lg btn-success" type="submit">Edit Product</a>
+              <a class="btn btn-lg btn-success" type="submit" href="ProductManager.jsp">Edit Product</a>
             </div>
           </div>
         </div>

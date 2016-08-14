@@ -19,16 +19,10 @@
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-              <a href="#" type="submit">Home</a>
-            </li>
-            <li>
-              <a type="submit" href="#">Add Products</a>
+              <a type="submit" href="ProductManagerAddProduct.jsp">Add Products</a>
             </li>
             <li>
               <a href="#" type="submit">Logout</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
             </li>
           </ul>
         </div>
@@ -90,7 +84,7 @@
               </form>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4">
             <table class="table">
               <thead>
                 <tr>
@@ -110,6 +104,9 @@
                   <td>Boots</td>
                   <td>5</td>
                   <td>6990.00</td>
+                  <td>
+                    <a href="#"><i class="fa fa-edit fa-fw"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -118,6 +115,9 @@
                   <td>Clothes</td>
                   <td>5</td>
                   <td>6990.00</td>
+                  <td>
+                    <a href="#"><i class="fa fa-edit"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -126,6 +126,9 @@
                   <td>Boots</td>
                   <td>5</td>
                   <td>6990.00</td>
+                  <td>
+                    <a href="#"><i class="fa fa-edit fa-fw"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>4</td>
@@ -134,6 +137,9 @@
                   <td>Boots</td>
                   <td>5</td>
                   <td>6990.00</td>
+                  <td>
+                    <a href="#"><i class="fa fa-edit fa-fw"></i></a>
+                  </td>
                 </tr>
               </tbody>
             </table>
