@@ -19,17 +19,17 @@
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-              <a href="#">Home</a>
+              <a href="Main.jsp">Home</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <a href="Login.jsp">Logout</a>
             </li>
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" href="Administrator.jsp" class="btn btn-default">Submit</button>
           </form>
         </div>
       </div>

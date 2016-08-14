@@ -21,13 +21,13 @@
           <form>
             <ul class="nav navbar-nav navbar-right">
               <li class="active">
-                <a href="#" type="submit">Home</a>
+                <a href="Main.jsp" type="submit">Home</a>
               </li>
               <li>
-                <a href="#" type="submit">Logout</a>
+                <a href="Login.jsp" type="submit">Logout</a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
+                <a href="ShoppingCart.jsp"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
               </li>
             </ul>
           </form>
@@ -35,7 +35,7 @@
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default" >Submit</button>
           </form>
         </div>
       </div>

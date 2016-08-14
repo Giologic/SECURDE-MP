@@ -33,92 +33,38 @@
     </div>
     <div class="section" style="margin-top: 7em;">
       <div class="container">
-        <div class="jumbotron">
-          <h1 class="text-success">Shopping Cart</h1>
-          <a href="#"></a>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Product Name</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Qty</th>
-                <th>Price</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Boots</td>
-                <td>
-                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
-                </td>
-                <td>$6990.00</td>
-                <td>
-                  <i class="fa fa-2x fa-fw fa-trash"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>Clothes</td>
-                <td>
-                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
-                </td>
-                <td>$829.00</td>
-                <td>
-                  <i class="fa fa-2x fa-fw fa-trash"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>Boots</td>
-                <td>
-                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
-                </td>
-                <td>$6990.00</td>
-                <td>
-                  <i class="fa fa-2x fa-fw fa-trash"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>Boots</td>
-                <td>
-                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
-                </td>
-                <td>$6990.00</td>
-                <td>
-                  <i class="fa fa-2x fa-fw fa-trash"></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <hr>
-          <div class="section">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <h3>Total</h3>
-                </div>
-                <div class="col-md-6">
-                  <h3></h3>
-                  <h3 class="text-right">$1000.00</h3>
-                </div>
-              </div>
-            </div>
+        <form>
+          <div class="jumbotron">
+            <h1 class="text-success">Shopping Cart</h1>
+            <a href="#"></a>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Product Name</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>
+                    <input type="text" class="form-control" placeholder="1" style="width:50px">
+                  </td>
+                  <td>6990.00</td>
+                  <td>
+                    <i class="fa fa-2x fa-fw fa-trash"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <hr>
+            <a class="btn btn-large btn-lg btn-success" type="submit">Checkout</a>
           </div>
-          <a class="btn btn-large btn-lg btn-success">Checkout</a>
-        </div>
+        </form>
       </div>
     </div>
   

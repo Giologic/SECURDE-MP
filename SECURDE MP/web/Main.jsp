@@ -22,8 +22,11 @@
               <a href="#" type="submit">Home</a>
             </li>
             <li>
-              <a href="#" type="submit">Logout</a>
+              <a href="Login.jsp" type="submit">Logout</a>
             </li>
+              <li>
+                <a href="ShoppingCart.jsp"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
+              </li>
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
