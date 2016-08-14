@@ -1,3 +1,4 @@
+<%@page import="modelz.ShoppingCart"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +34,7 @@
     </div>
     <div class="section" style="margin-top: 7em;">
       <div class="container">
-        <form>
+        <form action="CheckoutCartServlet" method="POST">
           <div class="jumbotron">
             <h1 class="text-success">Shopping Cart</h1>
             <a href="#"></a>
@@ -49,6 +50,11 @@
               </thead>
               <tbody>
                 <tr>
+                  <%
+                      CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
+                      
+                  
+                  %>
                   <td>1</td>
                   <td>Mark</td>
                   <td>

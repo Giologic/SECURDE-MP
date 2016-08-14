@@ -13,10 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelz.AccountHandler;
 import modelz.CustomerAccount;
 import modelz.Product;
 import modelz.ProductHandler;
+import modelz.ShoppingCart;
 
 /**
  *
@@ -42,11 +44,14 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         CustomerAccount account = handler.login(username, password);
+        HttpSession session = request.getSession();
         if(account != null){
             //create account object here
+            ShoppingCart cart = handler.getShoppingCart(account);
+            account.setShoppingCart(cart);
             ArrayList<Product> products = pHandler.displayProducts();
-            request.setAttribute("Products", products);
-            request.setAttribute("Account", account);
+            session.setAttribute("Products", products);
+            session.setAttribute("Account", account);
             response.sendRedirect("Main.jsp");
         }
         else{

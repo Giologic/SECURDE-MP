@@ -119,6 +119,45 @@ public class AccountHandler {
 		return loggedIn;
         
     }
+        
+        public ShoppingCart getShoppingCart(CustomerAccount acc){
+    	ShoppingCart cart;
+    	ArrayList<Product> prodList = new ArrayList<Product>();
+    	int userID;
+    	DBConnector connector = new DBConnector();
+    	Connection conn = connector.getConnection();
+    	PreparedStatement pstmt;
+        ResultSet rs;
+    	String sql = "SELECT product_id, quantity FROM shopping_cart WHERE user_id = ?";
+    	try{
+    		
+    		
+    		pstmt = conn.prepareStatement(sql);
+    		pstmt.setInt(1, acc.getId());
+    		rs = pstmt.executeQuery();
+    		pstmt.close();
+    		while(rs.next()){
+    				int prodID = rs.getInt("product_id");
+    				int qty = rs.getInt("quantity");
+    				pstmt = conn.prepareStatement("SELECT * FROM product");
+    				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
+			                   					rs.getString("category"), rs.getString("image"));
+    				for(int i = 0; i < qty; i++){
+    					prodList.add(prod);
+    				}
+    				pstmt.close();
+    			}
+    		//pstmt.close();
+    		cart = new ShoppingCart(acc.getId(), prodList);
+    		conn.close();
+    	}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	return new ShoppingCart();
+    	
+    }
     
     public void addToCart(ShoppingCart cart, Product prod){
         cart.addProduct(prod);

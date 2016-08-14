@@ -15,12 +15,21 @@ public class ShoppingCart {
     }
     
     public ShoppingCart(){
-        products = new ArrayList<Product>();
+        
+    }
+    
+    public int getUserID(){
+    	return user_id;
+    }
+    
+    public ArrayList<Product> getProdList(){
+    	return products;
     }
 
 
     public void addProduct(Product product) {
         this.products.add(product);
+        
     }
 
     public void removeProduct(int product_id) {

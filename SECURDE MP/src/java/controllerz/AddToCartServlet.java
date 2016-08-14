@@ -12,7 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelz.AccountHandler;
+import modelz.CustomerAccount;
+import modelz.Product;
+import modelz.ProductHandler;
 
 /**
  *
@@ -37,7 +41,12 @@ public class AddToCartServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         double price = Integer.parseInt(request.getParameter("price"));
         AccountHandler handler = new AccountHandler();
-        //handler.addToCart(cart, prod);
+        ProductHandler pHandler = new ProductHandler();
+        HttpSession session = request.getSession();
+        CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
+        Product prod = pHandler.getSpecificProduct(productName);
+        handler.addToCart(account.getShoppingCart(), prod);
+        response.sendRedirect("ShoppingCart.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
