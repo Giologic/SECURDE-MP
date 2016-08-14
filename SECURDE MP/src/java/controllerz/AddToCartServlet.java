@@ -18,6 +18,7 @@ import modelz.CustomerAccount;
 import modelz.Product;
 import modelz.ProductHandler;
 
+
 /**
  *
  * @author William
@@ -39,7 +40,7 @@ public class AddToCartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String productName = request.getParameter("productName");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        double price = Integer.parseInt(request.getParameter("price"));
+        double price = Double.parseDouble(request.getParameter("price"));
         AccountHandler handler = new AccountHandler();
         ProductHandler pHandler = new ProductHandler();
         HttpSession session = request.getSession();

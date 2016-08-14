@@ -54,14 +54,14 @@
                             String name = product.getName();
                             String desc = product.getDescription();
                             String price = Double.toString(product.getPrice());
-                            String image = "images/" +product.getImage();
+                            String image = "images\\" +product.getImage();
                         %>
                       <img src="<%=image%>" class="center-block img-responsive sub-size-control">
                     </div>
                     <form class="form-horizontal" role="form">
                         
                       <div class="col-md-6 sub-size-control text-left">
-                          <h1 class="custom-font-color"><input type="text" name="name1" value="<%=name%>" readonly></h1>
+                          <h1 class="custom-font-color"><input type="text" name="productName" value="<%=name%>" readonly></h1>
                         <h3 class="custom-font-color"><input type="text" name="name2" value="Red Falcon" readonly></h3>
                         <p class="custom-font-color"><%=desc%></p>
                         <div class="row">

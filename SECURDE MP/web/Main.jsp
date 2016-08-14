@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelz.Product"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,13 +59,22 @@
                       <div class="row">
                         <div class="col-md-3">
                             <form action="ViewSpecificProductServlet" method="GET">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2><input type="text" value="A Title" name="productName" readonly></h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
+                                <%
+                                    
+                                    ArrayList<Product> products = (ArrayList)request.getAttribute("Products");
+                                    for(Product product:products){
+                                        String image = "images\\" + product.getImage();
+                                        String productName = product.getName();
+                                        String description = product.getDescription();
+                                        String price = Double.toString(product.getPrice());
+                                        
+                                %>
+                                <a href="#"><img src="<%=image%>" class="img-responsive"></a>
+                                <h2><input type="text" value="<%=productName%>" name="productName" readonly></h2>
+                          <p><%=description%></p>
+                          <p><%=price%></p>
                           <button type="submit" class="btn btn-success">View</button>
+                          <% }%>
                             </form>
                         </div>
                         
