@@ -21,7 +21,6 @@
             <li class="active">
               <a href="#">Home</a>
             </li>
-            
             <li>
               <a href="#">Logout</a>
             </li>
@@ -56,9 +55,9 @@
                 <td>Otto</td>
                 <td>Boots</td>
                 <td>
-                  <input type="text" class="form-control" placeholder="1" style="width:50px">
+                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
                 </td>
-                <td>6990.00</td>
+                <td>$6990.00</td>
                 <td>
                   <i class="fa fa-2x fa-fw fa-trash"></i>
                 </td>
@@ -69,13 +68,12 @@
                 <td>Thornton</td>
                 <td>Clothes</td>
                 <td>
-                  <input type="text" class="form-control" placeholder="1" style="width:50px">
+                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
                 </td>
-                <td>829.00</td>
-                 <td>
+                <td>$829.00</td>
+                <td>
                   <i class="fa fa-2x fa-fw fa-trash"></i>
                 </td>
-                
               </tr>
               <tr>
                 <td>3</td>
@@ -83,9 +81,9 @@
                 <td>the Bird</td>
                 <td>Boots</td>
                 <td>
-                  <input type="text" class="form-control" placeholder="1" style="width:50px">
+                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
                 </td>
-                <td>6990.00</td>
+                <td>$6990.00</td>
                 <td>
                   <i class="fa fa-2x fa-fw fa-trash"></i>
                 </td>
@@ -96,9 +94,9 @@
                 <td>the Bird</td>
                 <td>Boots</td>
                 <td>
-                  <input type="text" class="form-control" placeholder="1" style="width:50px">
+                  <input type="integer" class="form-control" placeholder="1" style="width:50px">
                 </td>
-                <td>6990.00</td>
+                <td>$6990.00</td>
                 <td>
                   <i class="fa fa-2x fa-fw fa-trash"></i>
                 </td>
@@ -106,6 +104,19 @@
             </tbody>
           </table>
           <hr>
+          <div class="section">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <h3>Total</h3>
+                </div>
+                <div class="col-md-6">
+                  <h3></h3>
+                  <h3 class="text-right">$1000.00</h3>
+                </div>
+              </div>
+            </div>
+          </div>
           <a class="btn btn-large btn-lg btn-success">Checkout</a>
         </div>
       </div>

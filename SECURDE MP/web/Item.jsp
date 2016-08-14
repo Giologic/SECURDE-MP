@@ -17,17 +17,19 @@
           </button>
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Logout</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
-            </li>
-          </ul>
+          <form>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active">
+                <a href="#" type="submit">Home</a>
+              </li>
+              <li>
+                <a href="#" type="submit">Logout</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
+              </li>
+            </ul>
+          </form>
           <form class="navbar-form navbar-left text-center" role="search" style="margin-top:1em">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
@@ -62,17 +64,13 @@
                           elementum semper nisi.</p>
                         <div class="row">
                           <div class="col-md-2 text-left">
-                            <a class="btn btn-success">Purchase </a>
+                            <input class="btn btn-success" type="submit" value="Purchase">
                           </div>
                           <div class="col-md-3 text-left">
-                            <div class="btn-group">
-                              <a href="#" class="btn btn-default" contenteditable="true">-</a>
-                              <a href="#" class="btn btn-default disabled">1</a>
-                              <a href="#" class="btn btn-default">+</a>
-                            </div>
+                            <input type="integer" value="1" width="1em" class="form-control">
                           </div>
                           <div class="col-md-7">
-                            <p style="font-size:36px; color:white;" contenteditable="true">PHP 69.00</p>
+                            <p style="font-size:36px; color:white;" contenteditable="true" class="text-right">PHP 69.00</p>
                           </div>
                         </div>
                       </div>
@@ -123,24 +121,23 @@
         </div>
       </div>
     </div>
-    
-      <div class="section section-primary inputAreaBack">
-        <form>
-          <div class="container">
-            <div class="form-group">
-              <label for="exampleTextarea">Comments
-                <br>
-              </label>
-              <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    <div class="section section-primary inputAreaBack">
+      <form>
+        <div class="container">
+          <div class="form-group">
+            <label for="exampleTextarea">Comments
+              <br>
+            </label>
+            <textarea id="exampleTextarea" rows="3" class="form-control"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <a class="btn btn-success" type="submit">Submit</a>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <a class="btn btn-success">Submit</a>
-              </div>
-            </div>
-          </div>   
-        </form>
-      </div>
+          </div>
+        </div>
+      </form>
+    </div>
     <footer class="section section-primary footer">
       <div class="container">
         <div class="row">

@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-              <a href="#">Home</a>
+              <a href="#" type="submit">Home</a>
             </li>
             <li>
-              <a href="#">Add Products</a>
+              <a type="submit" href="#">Add Products</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <a href="#" type="submit">Logout</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -64,8 +64,6 @@
                     </ul>
                   </div>
                 </div>
-              </form>
-              <form class="form-horizontal" role="form">
                 <div class="form-group">
                   <div class="col-sm-2">
                     <label for="inputEmail3" class="control-label">Price</label>
@@ -78,6 +76,16 @@
                       </li>
                     </ul>
                   </div>
+                </div>
+                <hr style="display: block;
+                height: 1px;
+                border: 0;
+                border-top: 1px solid #ccc;
+                margin: 1em 0;
+                padding: 0; 
+                color:#5acba5">
+                <div class="form-group">
+                  <a class="btn btn-lg btn-success" style="width:100%">Filter</a>
                 </div>
               </form>
             </div>
@@ -92,7 +100,6 @@
                   <th>Category</th>
                   <th>Qty</th>
                   <th>Price</th>
-                  
                 </tr>
               </thead>
               <tbody>
@@ -103,7 +110,6 @@
                   <td>Boots</td>
                   <td>5</td>
                   <td>6990.00</td>
-                  
                 </tr>
                 <tr>
                   <td>2</td>
@@ -112,7 +118,6 @@
                   <td>Clothes</td>
                   <td>5</td>
                   <td>6990.00</td>
-                  
                 </tr>
                 <tr>
                   <td>3</td>
@@ -121,7 +126,6 @@
                   <td>Boots</td>
                   <td>5</td>
                   <td>6990.00</td>
-                  
                 </tr>
                 <tr>
                   <td>4</td>
@@ -130,7 +134,6 @@
                   <td>Boots</td>
                   <td>5</td>
                   <td>6990.00</td>
-                  
                 </tr>
               </tbody>
             </table>
