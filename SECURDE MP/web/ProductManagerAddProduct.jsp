@@ -19,33 +19,32 @@
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-              <a href="#">Home</a>
+              <a href="#" type="submit">Home</a>
             </li>
             <li>
-              <a href="#">View Products</a>
+              <a href="#" type="submit">View Products</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <a href="#" type="submit">Logout</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
             </li>
-            
           </ul>
         </div>
       </div>
     </div>
-    <div class="section" style="margin-top:5em">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="text-success">Add Product</h1>
-            <hr>
+    <form>
+      <div class="section" style="margin-top:5em">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-success">Add Product</h1>
+              <hr>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-left">
-            <form class="form-horizontal" role="form">
+          <div class="row">
+            <div class="col-md-12 text-left">
               <div class="form-group">
                 <div class="col-sm-2">
                   <label for="inputEmail3" class="control-label">Product Name</label>
@@ -91,21 +90,21 @@
                   <input type="email" class="form-control" id="inputEmail3" placeholder="Price">
                 </div>
               </div>
-            </form>
-          </div>
-          <div class="form-group"></div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <a class="btn btn-lg btn-success">Add Product</a>
+            </div>
+            <div class="form-group"></div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <a class="btn btn-lg btn-success" type="submit">Add Product</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   
 
 </body></html>
