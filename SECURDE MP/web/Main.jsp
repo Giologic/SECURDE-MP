@@ -43,159 +43,27 @@
                 <div class="row">
                   <div class="col-md-4">
                     <ul class="list-group" style="margin-top:3em">
-                      <li class="list-group-item" type="submit">Boots</li>
-                      <li class="list-group-item" type="submit">Shoes</li>
-                      <li class="list-group-item" type="submit">Sandals</li>
-                      <li class="list-group-item" type="submit">Slippers</li>
+                        <form><button class="list-group-item" type="submit">Boots</button></form>
+                        <form><button class="list-group-item" type="submit">Shoes</button></form>
+                        <form><button class="list-group-item" type="submit">Sandals</button></form>
+                        <form><button class="list-group-item" type="submit">Slippers</button></form>
                     </ul>
                   </div>
                   <div class="col-md-8">
                     <div class="section">
                       <div class="row">
                         <div class="col-md-3">
+                            <form action="ViewSpecificProductServlet" method="GET">
                           <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
+                          <h2><input type="text" value="A Title" name="productName" readonly></h2>
                           <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
                             <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
                             <br>Ut enim ad minim veniam, quis nostrud</p>
                           <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
+                          <button type="submit" class="btn btn-success">View</button>
+                            </form>
                         </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
-                        <div class="col-md-3">
-                          <a href="#"><img src="images\27 Donne Flag Low hck658 DEK658.jpg" class="img-responsive"></a>
-                          <h2>A title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
-                          <p>$20.00</p>
-                          <a type="submit" class="btn btn-success">View</a>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>

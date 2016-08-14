@@ -18,7 +18,7 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <form role="form">
+                <form role="form" action="LoginServlet" method="POST">
                   <div class="form-group">
                     <label class="control-label" for="exampleInputEmail1" style="color:white">Username</label>
                     <input class="form-control" id="exampleInputEmail1" placeholder="Username" type="text" name="username">
@@ -32,7 +32,7 @@
                       <button type="submit" class="btn btn-default">Log In</button>
                     </div>
                     <div class="col-md-10">
-                      <a type="submit" class="form-control btn-link" style="color:#5cb85c; font-size:18px">
+                      <a type="submit" href="Registration.jsp" class="form-control btn-link" style="color:#5cb85c; font-size:18px">
                         Create an account
                       </a>
                     </div>

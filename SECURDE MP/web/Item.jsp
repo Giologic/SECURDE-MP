@@ -1,3 +1,4 @@
+<%@page import="modelz.Product"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,29 +49,30 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                      <img src="images\Blue-Converse-Chuck-Taylor-All-Star-Low-Top-Canvas-Shoes-groundwater_LRG.jpg" class="center-block img-responsive sub-size-control">
+                        <%
+                            Product product = (Product) request.getAttribute("Product");
+                            String name = product.getName();
+                            String desc = product.getDescription();
+                            String price = Double.toString(product.getPrice());
+                            String image = "images/" +product.getImage();
+                        %>
+                      <img src="<%=image%>" class="center-block img-responsive sub-size-control">
                     </div>
                     <form class="form-horizontal" role="form">
+                        
                       <div class="col-md-6 sub-size-control text-left">
-                        <h1 class="custom-font-color">Converse</h1>
-                        <h3 class="custom-font-color">Red Falcon</h3>
-                        <p class="custom-font-color">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                          ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                          dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                          nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                          Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                          enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-                          felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
-                          elementum semper nisi.</p>
+                          <h1 class="custom-font-color"><input type="text" name="name1" value="<%=name%>" readonly></h1>
+                        <h3 class="custom-font-color"><input type="text" name="name2" value="Red Falcon" readonly></h3>
+                        <p class="custom-font-color"><%=desc%></p>
                         <div class="row">
                           <div class="col-md-2 text-left">
                             <input class="btn btn-success" type="submit" value="Purchase">
                           </div>
                           <div class="col-md-3 text-left">
-                            <input type="integer" value="1" width="1em" class="form-control">
+                            <input type="integer" value="1" name="quantity" width="1em" class="form-control">
                           </div>
                           <div class="col-md-7">
-                            <p style="font-size:36px; color:white;" contenteditable="true" class="text-right">PHP 69.00</p>
+                           <input type="text" name="price" value="<%=price%>" readonly>
                           </div>
                         </div>
                       </div>

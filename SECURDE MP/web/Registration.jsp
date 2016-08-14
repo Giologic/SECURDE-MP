@@ -122,7 +122,7 @@
                             <label for="inputPassword3" class="control-label" style="color:white">Country</label>
                           </div>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country">
+                            <input type="text" class="form-control" id="inputPassword3" name="bCountry" placeholder="Country">
                           </div>
                         </div>
                       
@@ -137,7 +137,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">House No.</label>
                           </div>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No.">
+                            <input type="text" class="form-control" id="inputEmail3" name="sHouse" placeholder="House No.">
                           </div>
                         </div>
                         <div class="form-group">
@@ -145,7 +145,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">Street</label>
                           </div>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street">
+                            <input type="text" class="form-control" id="inputEmail3" name="sStreet" placeholder="Street">
                           </div>
                         </div>
                         <div class="form-group">
@@ -153,7 +153,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">Subdivision</label>
                           </div>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision">
+                            <input type="text" class="form-control" id="inputEmail3" name="sSubdivision" placeholder="Subdivision">
                           </div>
                         </div>
                         <div class="form-group">
@@ -161,7 +161,7 @@
                             <label for="inputPassword3" class="control-label" style="color:white">City</label>
                           </div>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City">
+                            <input type="text" class="form-control" id="inputPassword3" name="sCity" placeholder="City">
                           </div>
                         </div>
                         <div class="form-group">
@@ -169,7 +169,7 @@
                             <label for="inputEmail3" class="control-label" style="color:white">Postal Code</label>
                           </div>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code">
+                            <input type="text" class="form-control" id="inputEmail3" name="sPostalCode" placeholder="Postal Code">
                           </div>
                         </div>
                         <div class="form-group">
@@ -177,7 +177,7 @@
                             <label for="inputPassword3" class="control-label" style="color:white">Country</label>
                           </div>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country">
+                            <input type="text" class="form-control" id="inputPassword3" name="sCountry" placeholder="Country">
                           </div>
                         </div>
                       </form>

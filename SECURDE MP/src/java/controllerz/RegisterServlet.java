@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
        String shippingSubdivision = request.getParameter("sSubdivision");
        String shippingCity = request.getParameter("sCity");
        String shippingPostalCode = request.getParameter("sPostalCode");
-       String shippingCountry = request.getParameter("sCountrry");
+       String shippingCountry = request.getParameter("sCountry");
        
         
        
@@ -64,19 +64,20 @@ public class RegisterServlet extends HttpServlet {
        
        RegistrationChecker checker = new RegistrationChecker();
        AccountHandler handler = new AccountHandler();
-      // if(checker.isValid(username,email, password, confPassword, lastName, lastName, middleInitial, billingHouse, billingStreet, billingCity, billingCity, billingPostalCode, billingCountry, shippingHouse, shippingStreet, shippingCity, shippingCity, shippingPostalCode, shippingCountry)){
-        
-        
-    //   }
-       ShoppingCart cart = new ShoppingCart();
+       if(checker.isValid(username,email, password, confPassword, lastName, lastName, middleInitial, billingHouse, billingStreet, billingCity, billingCity, billingPostalCode, billingCountry, shippingHouse, shippingStreet, shippingCity, shippingCity, shippingPostalCode, shippingCountry)){
+        ShoppingCart cart = new ShoppingCart();
         Address billingAddress = new Address(billingHouse, billingStreet, billingSubdivision, billingCity, billingPostalCode, billingCountry);
         Address shippingAddress = new Address(shippingHouse, shippingStreet, shippingSubdivision, shippingCity, shippingPostalCode, shippingCountry);
         CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, password, email, billingAddress, shippingAddress, cart);
         handler.register(account, billingAddress , shippingAddress);
-    //   else{
+        response.sendRedirect("Login.jsp");
+        
+       }
+       
+       else{
            //error
-     //      System.out.println("Invalid Inputs");
-     //  }
+           System.out.println("Invalid Inputs");
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

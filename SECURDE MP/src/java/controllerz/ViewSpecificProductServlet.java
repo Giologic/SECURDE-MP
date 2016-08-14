@@ -12,13 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelz.Product;
+import modelz.ProductHandler;
 
 /**
  *
  * @author William
  */
 @WebServlet(name = "QuerySpecificProductServlet", urlPatterns = {"/QuerySpecificProductServlet"})
-public class QuerySpecificProductServlet extends HttpServlet {
+public class ViewSpecificProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,6 +35,9 @@ public class QuerySpecificProductServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String productName = request.getParameter("productName");
+        ProductHandler handler = new ProductHandler();
+        Product product = handler.getSpecificProduct(productName);
+        request.setAttribute("Product", product);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

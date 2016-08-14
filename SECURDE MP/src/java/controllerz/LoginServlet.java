@@ -7,12 +7,16 @@ package controllerz;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelz.AccountHandler;
+import modelz.CustomerAccount;
+import modelz.Product;
+import modelz.ProductHandler;
 
 /**
  *
@@ -34,11 +38,15 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         AccountHandler handler = new AccountHandler();
+        ProductHandler pHandler = new ProductHandler();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        int customerId = handler.login(username, password);
-        if(customerId != -1){
+        CustomerAccount account = handler.login(username, password);
+        if(account != null){
             //create account object here
+            ArrayList<Product> products = pHandler.displayProducts();
+            request.setAttribute("Products", products);
+            request.setAttribute("Account", account);
             response.sendRedirect("Main.jsp");
         }
         else{

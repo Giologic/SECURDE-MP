@@ -1,4 +1,4 @@
-package Model;
+package modelz;
 
 /**
  * Created by MSI LEOPARD on 7/25/2016.

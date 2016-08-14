@@ -22,7 +22,7 @@ public class DBConnector {
     private Connection connect;
     
     
-    private DBConnector(){
+    DBConnector(){
         
         this.dbName = "securde2";
         this.url = "jdbc:mysql://localhost:3306/" + dbName;

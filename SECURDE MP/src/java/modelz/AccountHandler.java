@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package modelz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import Model.DBConnector;;
+import modelz.DBConnector;;
 
 /**
  *
@@ -36,12 +36,12 @@ public class AccountHandler {
     		 pstmt.setString(7, billAdd.getHouse_no());
     		 pstmt.setString(8, billAdd.getStreet());
     		 pstmt.setString(9, billAdd.getSubdivision());
-    		 pstmt.setInt(10, billAdd.getPostal_code());
+    		 pstmt.setString(10, billAdd.getPostal_code());
     		 pstmt.setString(11, billAdd.getCountry());
     		 pstmt.setString(12, shipAdd.getHouse_no());
     		 pstmt.setString(13, shipAdd.getStreet());
     		 pstmt.setString(14, shipAdd.getSubdivision());
-    		 pstmt.setInt(15, shipAdd.getPostal_code());
+    		 pstmt.setString(15, shipAdd.getPostal_code());
     		 pstmt.setString(16, shipAdd.getCountry());
     		 
     		 pstmt.executeUpdate();
@@ -56,11 +56,10 @@ public class AccountHandler {
     
     @SuppressWarnings("null")
 	public CustomerAccount login(String username, String password){
-    	CustomerAccount loggedIn = null;
-    	Address billAdd = null, shipAdd = null;
     	DBConnector connector = new DBConnector();
+        CustomerAccount loggedIn = null;
     	Connection conn = connector.getConnection();
-		String sql = "SELECT id FROM customer_account WHERE username = ? AND password = ?";
+		String sql = "SELECT * FROM customer_account WHERE username = ? AND password = ?";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -68,26 +67,46 @@ public class AccountHandler {
 			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
-				loggedIn.setUsername(rs.getString("username"));
-				loggedIn.setPassword(rs.getString("password"));
-				loggedIn.setFirst_name(rs.getString("first_name"));
-				loggedIn.setLast_name(rs.getString("last_name"));
-				loggedIn.setMiddle_initial(rs.getString("middle_initial"));
-				loggedIn.setEmail(rs.getString("email"));
-				billAdd.setHouse_no(rs.getString("billing_house_no"));
-				billAdd.setStreet(rs.getString("billing_street"));
-				billAdd.setSubdivision(rs.getString("billing_subdivision"));
-				billAdd.setPostal_code(rs.getInt("billing_postal_code"));
-				billAdd.setCountry(rs.getString("billing_country"));
-				shipAdd.setHouse_no(rs.getString("shipping_house_no"));
-				shipAdd.setStreet(rs.getString("shipping_street"));
-				shipAdd.setSubdivision(rs.getString("shipping_subdivision"));
-				shipAdd.setPostal_code(rs.getInt("shipping_postal_code"));
-				shipAdd.setCountry(rs.getString("shipping_country"));
+                            Address billing = new Address(rs.getString("billing_house_no"),
+                                    rs.getString("billing_street"),
+                                    rs.getString("billing_subdivision"),
+                                    rs.getString("billing_city"),
+                                    rs.getString("billing_postal_code"),
+                                    rs.getString("billing_country"));
+                            Address shipping = new Address(rs.getString("shipping_house_no"),
+                                    rs.getString("shipping_street"),
+                                    rs.getString("shipping_subdivision"),
+                                    rs.getString("shipping_city"),
+                                    rs.getString("shipping_postal_code"),
+                                    rs.getString("shipping_country"));
+                                    loggedIn = new CustomerAccount(rs.getInt("id"),rs.getString("first_name"), 
+                                    rs.getString("last_name"),
+                                    rs.getString("middle_initial"),"customer",
+                                    rs.getString("username"),
+                                    rs.getString("password"), 
+                                    rs.getString("email"),
+                                    billing,shipping,
+                                    new ShoppingCart());
+//				loggedIn.setUsername(rs.getString("username"));
+//				loggedIn.setPassword(rs.getString("password"));
+//				loggedIn.setFirst_name(rs.getString("first_name"));
+//				loggedIn.setLast_name(rs.getString("last_name"));
+//				loggedIn.setMiddle_initial(rs.getString("middle_initial"));
+//				loggedIn.setEmail(rs.getString("email"));
+//				billAdd.setHouse_no(rs.getString("billing_house_no"));
+//				billAdd.setStreet(rs.getString("billing_street"));
+//				billAdd.setSubdivision(rs.getString("billing_subdivision"));
+//				billAdd.setPostal_code(rs.getString("billing_postal_code"));
+//				billAdd.setCountry(rs.getString("billing_country"));
+//				shipAdd.setHouse_no(rs.getString("shipping_house_no"));
+//				shipAdd.setStreet(rs.getString("shipping_street"));
+//				shipAdd.setSubdivision(rs.getString("shipping_subdivision"));
+//				shipAdd.setPostal_code(rs.getString("shipping_postal_code"));
+//				shipAdd.setCountry(rs.getString("shipping_country"));
 				pstmt.close();
 				conn.close();
-				loggedIn.setBillingAddress(billAdd);
-				loggedIn.setShippingAddress(shipAdd);
+//				loggedIn.setBillingAddress(billAdd);
+//				loggedIn.setShippingAddress(shipAdd);
 				return loggedIn;
 			}
 			else{
