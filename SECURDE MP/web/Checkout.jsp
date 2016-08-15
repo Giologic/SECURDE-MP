@@ -30,7 +30,9 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="Main.jsp">Home</a>
               </li>
               <li>
-                <a href="Login.jsp">Logout</a>
+                  <form action="LogoutServlet" method="POST" >
+                <button href="Login.jsp">Logout</button>
+                  </form>
               </li>
               <li>
                 <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -51,7 +53,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                         <div class="jumbotron">
                           <h1 style="color:184a4a">Checkout</h1>
                           <hr>
-                          <form class="form-horizontal" role="form">
+                          <form class="form-horizontal" role="form" action="CheckoutCartServlet" method="POST">
                             <hr>
                             <div class="section">
                               <div class="container">
@@ -65,7 +67,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         </label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="Name on Card">
+                                        <input type="text" class="form-control" id="inputEmail3" name="ownerName" placeholder="Name on Card">
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -217,7 +219,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                   </div>
                                 </div>
                                 <hr>
-                                <a style="background-color:399494; border-color:transparent" type="submit" class="btn btn-large btn-lg btn-success" href="ShoppingCart.jsp">Purchase</a>
+                                <button style="background-color:399494; border-color:transparent" type="submit" class="btn btn-large btn-lg btn-success">Purchase</button>
                               </div>
                             </div>
                           </form>
@@ -240,13 +242,11 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                       ArrayList<Product> cart = account.getShoppingCart().getProdList();
                       DecimalFormat df = new DecimalFormat();
                       df.setMaximumFractionDigits(2);
-                      System.out.println("cart size:" +cart.size());
                       double total = 0;
                       if(cart.size() > 0){
                       for(int i = 0; i < cart.size();i++){
                           Product product = cart.get(i);
                           int quantity = cart.get(i).getQuantity();
-                          System.out.println("Quantity: "+quantity);
                           double price = product.getPrice();
                           total+=(price * quantity);
                           
@@ -279,7 +279,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                 </div>
                                 <div class="col-md-6">
                                   <h3></h3>
-                                  <h3 class="text-right" style="color:184a4a">$1000.00</h3>
+                                  <h3 class="text-right" style="color:184a4a">$<%=session.getAttribute("total")%></h3>
                                 </div>
                               </div>
                             </div>

@@ -280,7 +280,7 @@ public class AccountHandler {
       DBConnector connector = new DBConnector();
   	  Connection conn = connector.getConnection();
   	  try {
-		PreparedStatement pstmt = conn.prepareStatement("DELETE * FROM shopping_cart WHERE user_id = ?");
+		PreparedStatement pstmt = conn.prepareStatement("DELETE FROM shopping_cart WHERE user_id = ?");
 		pstmt.setInt(1, userID);
 		pstmt.executeUpdate();
 		pstmt.close();
@@ -291,59 +291,5 @@ public class AccountHandler {
   	  }
     }
     
-    public boolean checkCreditCard(String cardNum, String secCode, CustomerAccount account){
-    	boolean status = false;
-    	DBConnector connector = new DBConnector();
-    	Connection conn = connector.getConnection();
-    	PreparedStatement pstmt;
-    	ResultSet rs;
-    	try{
-    		pstmt = conn.prepareStatement("SELECT id FROM credit_card WHERE credit_num = ? AND security_code = ? AND first_name = ? AND last_name = ?");
-    		pstmt.setString(1, cardNum);
-    		pstmt.setString(2, secCode);
-                pstmt.setString(3, account.getFirst_name());
-                pstmt.setString(4, account.getLast_name());
-    		rs = pstmt.executeQuery();
-    		if(rs.next() == false){
-    			status = false;
-    		}
-    		else status = true;
-    		
-    	}catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return status;
-    }
-    
-    public boolean checkBalance(double total, CustomerAccount account, String creditNum, String securityCode){
-        boolean status = false;
-        DBConnector connector = new DBConnector();
-        Connection conn = connector.getConnection();
-        PreparedStatement pstmt;
-        ResultSet rs;
-        String sql = "SELECT balance FROM credit_card WHERE credit_num = ? AND security_code = ? AND first_name = ? AND last_name = ?";
-        try{
-            pstmt= conn.prepareStatement(sql);
-            pstmt.setString(1, creditNum);
-            pstmt.setString(2, securityCode);
-            pstmt.setString(3, account.getFirst_name());
-            pstmt.setString(4, account.getLast_name());
-            rs = pstmt.executeQuery();
-            if(rs.next()){
-                double balance = rs.getDouble("balance");
-                if(balance >= total){
-                    status = true;
-                    return status;
-                }
-                else{
-                    status = false;
-                    return status;
-                }
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return status;
-    }
+   
 }

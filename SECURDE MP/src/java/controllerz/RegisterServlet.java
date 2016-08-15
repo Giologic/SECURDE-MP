@@ -94,6 +94,7 @@ public class RegisterServlet extends HttpServlet {
        else{
            //error
            System.out.println("Invalid Inputs");
+           response.sendRedirect("Registration.jsp");
        }
     }
 

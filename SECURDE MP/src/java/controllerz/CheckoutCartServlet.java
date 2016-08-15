@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelz.AccountHandler;
 import modelz.CustomerAccount;
+import modelz.TransactionHandler;
 
 /**
  *
@@ -35,12 +36,34 @@ public class CheckoutCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        System.out.println("In CheckoutServlet");
         HttpSession session = request.getSession();
-       // String creditCardNumber = request.getParameter("creditCardNumber");
+        String creditCardNumber = request.getParameter("cardNum");
+        String ownerName = request.getParameter("ownerName");
         CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
-        //String pin = request.getParameter("pin");
+        String securityCode = request.getParameter("securityCode");
+        double total = (double) session.getAttribute("total");
         AccountHandler handler = new AccountHandler();
-        handler.checkoutCart(account, account.getShoppingCart());
+        TransactionHandler tHandler = new TransactionHandler();
+        if(tHandler.checkCreditCard(creditCardNumber, securityCode, ownerName) && tHandler.checkBalance(total, ownerName, creditCardNumber, securityCode)){
+            double balance = tHandler.getBalance(creditCardNumber, securityCode, ownerName);
+            if(balance != -1){
+                double newBalance = balance - total;
+            
+                System.out.println("New Balance: " +newBalance);
+                tHandler.setNewBalance(newBalance, creditCardNumber, securityCode, ownerName);
+                handler.clearCart(account);
+                account.getShoppingCart().clearCart();
+                session.setAttribute("Account", account);
+                response.sendRedirect("ShoppingCart.jsp");
+            }else{
+                System.out.println("Error acquiring balance");
+                response.sendRedirect("Checkout.jsp");
+            }
+        }
+        else{
+            response.sendRedirect("Checkout.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

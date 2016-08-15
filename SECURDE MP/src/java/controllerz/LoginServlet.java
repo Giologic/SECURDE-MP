@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
         else{
             String errorMessage = "Invalid Username/Password";
             request.setAttribute("loginError", errorMessage);
-            
+            response.sendRedirect("Login.jsp");
         }
     }
 

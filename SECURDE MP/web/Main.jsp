@@ -69,7 +69,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                     String image = "images\\" + products.get(i).getImage();
 
                                     String productName = products.get(i).getName();
-                                    System.out.println("Product Name: " +productName);
+                                    
                                     String description = products.get(i).getDescription();
                                     String price = Double.toString(products.get(i).getPrice());
 

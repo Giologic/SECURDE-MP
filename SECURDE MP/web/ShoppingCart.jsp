@@ -61,13 +61,11 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                       ArrayList<Product> cart = account.getShoppingCart().getProdList();
                       DecimalFormat df = new DecimalFormat();
                       df.setMaximumFractionDigits(2);
-                      System.out.println("cart size:" +cart.size());
                       double total = 0;
                       if(cart.size() > 0){
                       for(int i = 0; i < cart.size();i++){
                           Product product = cart.get(i);
-                          int quantity = cart.get(i).getQuantity();
-                          System.out.println("Quantity: "+quantity);
+                          int quantity = cart.get(i).getQuantity(); 
                           double price = product.getPrice();
                           total+=(price * quantity);
                           
@@ -105,7 +103,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                   </div>
                 </div>
               </div>
-              <a class="btn btn-large btn-lg btn-success" style="background-color:399494; border-color:transparent" type="submit">Checkout</a>
+              <button class="btn btn-large btn-lg btn-success" style="background-color:399494; border-color:transparent" type="submit">Checkout</button>
             </div>
           </div>
         </div>
