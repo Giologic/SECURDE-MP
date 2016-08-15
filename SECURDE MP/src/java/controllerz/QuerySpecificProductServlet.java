@@ -7,7 +7,6 @@ package controllerz;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +20,8 @@ import modelz.ProductHandler;
  *
  * @author William
  */
-@WebServlet(name = "SearchProductServlet", urlPatterns = {"/SearchProductServlet"})
-public class SearchProductServlet extends HttpServlet {
+@WebServlet(name = "QuerySpecificProductServlet", urlPatterns = {"/QuerySpecificProductServlet"})
+public class QuerySpecificProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,12 +35,14 @@ public class SearchProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String search = request.getParameter("search");
+        String productName = request.getParameter("productName");
+        ProductHandler handler = new ProductHandler();
+        Product product = handler.getSpecificProduct(productName);
         HttpSession session = request.getSession();
-        ProductHandler pHandler = new ProductHandler();
-        ArrayList<Product> products = pHandler.searchProducts(search);
-        session.setAttribute("Products", products);
-        response.sendRedirect("Main.jsp");
+        System.out.println(product.getName());
+        session.setAttribute("Product", product);
+        response.sendRedirect("Item.jsp");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

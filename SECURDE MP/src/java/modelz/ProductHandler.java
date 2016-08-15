@@ -151,6 +151,29 @@ public class ProductHandler {
 		return null;
 	}
         
+        public ArrayList<Product> searchProducts(String search){
+    	ArrayList<Product> allProducts = new ArrayList<Product>();
+    	DBConnector connector = new DBConnector();
+		Connection conn = connector.getConnection();
+		PreparedStatement pstmt;
+		ResultSet rs;
+		try{
+			pstmt = conn.prepareStatement("SELECT * FROM product WHERE name LIKE ?");
+                        pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
+						                   rs.getString("category"), rs.getString("image"));
+				allProducts.add(prod);
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return allProducts ;
+        
+    }
+        
         public ArrayList<Product> filterBoots(){
 		ArrayList<Product> filteredBoots = new ArrayList<Product>();
 		DBConnector connector = new DBConnector();

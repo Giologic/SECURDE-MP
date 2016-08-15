@@ -139,7 +139,9 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
               <a href="Main.jsp" type="submit">Home</a>
             </li>
             <li>
-              <a href="Login.jsp" type="submit">Logout</a>
+              <form action="LogoutServlet" method="POST" >
+                <input type="submit" value="Logout">
+                  </form>
             </li>
             <li>
               <a href="ShoppingCart.jsp"><i class="fa fa-2x fa-fw fa-drupal"></i></a>

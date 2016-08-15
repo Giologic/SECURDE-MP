@@ -31,7 +31,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
               </li>
               <li>
                   <form action="LogoutServlet" method="POST" >
-                <button href="Login.jsp">Logout</button>
+                <input type="submit" value="Logout">
                   </form>
               </li>
               <li>

@@ -27,15 +27,17 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="#" type="submit">Home</a>
               </li>
               <li>
-                <a href="Login.jsp" type="submit">Logout</a>
+                <form action="LogoutServlet" method="POST" >
+                <input type="submit" value="Logout">
+                  </form>
               </li>
               <li>
                 <a href="ShoppingCart.jsp"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
               </li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" action="SearchProductServlet" method="GET">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" name="search" placeholder="Search">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -65,13 +67,14 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                           <%
 
                                 ArrayList<Product> products = (ArrayList)session.getAttribute("Products");
-                                for(int i = 0; i < products.size(); i++){
-                                    String image = "images\\" + products.get(i).getImage();
+                                if(products.size() > 0){
+                                    for(int i = 0; i < products.size(); i++){
+                                        String image = "images\\" + products.get(i).getImage();
 
-                                    String productName = products.get(i).getName();
-                                    
-                                    String description = products.get(i).getDescription();
-                                    String price = Double.toString(products.get(i).getPrice());
+                                        String productName = products.get(i).getName();
+
+                                        String description = products.get(i).getDescription();
+                                        String price = Double.toString(products.get(i).getPrice());
 
                             %>
                             <form action="QuerySpecificProductServlet" method="GET">
@@ -84,7 +87,8 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                             <button type="submit" class="btn btn-success" style="background-color:317373;  color:white;  border-color:transparent;">View</button>
                           </div>
                           </form>
-                          <% }%>
+                          <% }
+                            }%>
                         </div>
                       </div>
                     </div>
