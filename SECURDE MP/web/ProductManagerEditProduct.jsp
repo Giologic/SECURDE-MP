@@ -6,100 +6,94 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
   </head><body>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div style="background: #399494; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #83eec5 , #399494); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
+      <div class="navbar navbar-default navbar-static-top" style="opacity:0.95">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="ProductManager.jsp">View Products</a>
+              </li>
+              <li>
+                <a href="Login.jsp">Logout</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="ProductManager.jsp" type="submit">View Products</a>
-            </li>
-            <li>
-              <a href="Login.jsp" type="submit">Logout</a>
-            </li>
-           
-          </ul>
+      </div>
+      <div>
+        <div class="section">
+          <div class="container" style="margin-top:3em">
+            <div class="jumbotron" style="opacity:0.9; border-radius:0.8">
+              <h1 style="color:184a4a">Edit Product</h1>
+              <hr>
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label for="inputEmail3" class="control-label">Product Name</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" name="product_name" placeholder="Product Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label for="inputEmail3" class="control-label">Description</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="inputEmail3" name="description" placeholder="Description"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label for="inputEmail3" class="control-label">Category</label>
+                  </div>
+                  <div class="btn-group btn-group-lg" style="margin-left:1em;">
+                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" background-color:399494 !important"> Dropdown <span class="fa fa-caret-down"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li>
+                        <a href="#">Action</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label for="inputPassword3" class="control-label">Quantity</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPassword3" name="quantity" placeholder="Quantity">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label for="inputEmail3" class="control-label">Price</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" name="price" placeholder="Price">
+                  </div>
+                </div>
+                <hr>
+                <a style="background-color:399494; border-color:transparent" type="submit" class="btn btn-large btn-lg btn-success" href="ProductManager.jsp">Save</a>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <form>
-      <div class="section" style="margin-top:5em">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h1 class="text-success">Edit Product</h1>
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 text-left">
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputEmail3" class="control-label">Product Name</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Product Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputPassword3" class="control-label">Description</label>
-                </div>
-                <div class="col-sm-10">
-                  <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputEmail3" class="control-label">Category</label>
-                </div>
-                <div class="col-sm-10">
-                  <a class="btn btn-success dropdown-toggle" data-toggle="dropdown"> Dropdown <span class="fa fa-caret-down"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li>
-                      <a href="#">Action</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputEmail3" class="control-label">Quantity</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Quantity">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputEmail3" class="control-label">Price</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Price">
-                </div>
-              </div>
-            </div>
-            <div class="form-group"></div>
-          </div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <a class="btn btn-lg btn-success" type="submit" href="ProductManager.jsp">Edit Product</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
   
 
 </body></html>

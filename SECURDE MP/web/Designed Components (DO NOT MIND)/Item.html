@@ -17,33 +17,29 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                        <%
-                            
-                            Product product = (Product) session.getAttribute("Product");
-                            
-                            String name = product.getName();
-                            String desc = product.getDescription();
-                            String price = Double.toString(product.getPrice());
-                            String image = "images\\" +product.getImage();
-                        %>
-                      <img src="<%=image%>" class="center-block img-responsive sub-size-control">
+                      <img src="images\Blue-Converse-Chuck-Taylor-All-Star-Low-Top-Canvas-Shoes-groundwater_LRG.jpg" class="center-block img-responsive sub-size-control">
                     </div>
-                    <form class="form-horizontal" role="form" action="AddToCartServlet" method="POST">
-                        
-                        
-                        
+                    <form class="form-horizontal" role="form">
                       <div class="col-md-6 sub-size-control text-left">
-                          <h1 class="custom-font-color"><input type="text" name="productName" value="<%=name%>" readonly></h1>
-                        <p class="custom-font-color"><%=desc%></p>
+                        <h1 class="custom-font-color">Converse</h1>
+                        <h3 class="custom-font-color">Red Falcon</h3>
+                        <p class="custom-font-color">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                          ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                          dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                          nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                          Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
+                          enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
+                          felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
+                          elementum semper nisi.</p>
                         <div class="row">
                           <div class="col-md-2 text-left">
                             <input class="btn btn-success" type="submit" value="Purchase" style="background-color:317373;  color:white;  border-color:transparent;">
                           </div>
                           <div class="col-md-3 text-left">
-                            <input type="integer" value="1" width="1em" class="form-control" name="quantity">
+                            <input type="integer" value="1" width="1em" class="form-control">
                           </div>
                           <div class="col-md-7">
-                            <p style="font-size:36px; color:white;" contenteditable="true" class="text-right" name="price" value="<%=price%>"></p>
+                            <p style="font-size:36px; color:white;" contenteditable="true" class="text-right">PHP 69.00</p>
                           </div>
                         </div>
                       </div>

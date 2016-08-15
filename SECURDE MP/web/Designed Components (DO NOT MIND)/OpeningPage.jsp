@@ -11,11 +11,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h1 class="text-success" style="color:83eec5 !important">Talaria</h1>
-            <h2 style="color:white">Find your Soulmate</h2>
+            <h1 class="text-success">Talaria</h1>
+            <h3 style="color:white">Find your Soulmate</h3>
             <br>
             <br>
-            <a style="background-color:399494; border-color:transparent" type="submit" class="btn btn-large btn-lg btn-success" href="Main.jsp">Click Me</a>
+            <a class="btn btn-lg btn-success" href="Main.jsp">Click me</a>
           </div>
         </div>
       </div>

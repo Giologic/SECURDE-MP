@@ -6776,28 +6776,3 @@ body {
   background-attachment: fixed;
 }
 /* PINGENDO COMMENT DO NOT REMOVE */
-.size-control {
-  height: 30em;
-  background-color: #434A54;
-}
-.sub-size-control {
-  height: 20em;
-}
-.custom-font-color {
-  color: white;
-}
-.border {
-  /*
-  border-style: solid;
-  border-width: 1px;
-*/
-}
-.inputAreaBack {
-  background-color: #434A54 !important;
-}
-.footer {
-  background-color: !important;
-}
-.navbar-brand {
-  align-self: center;
-}

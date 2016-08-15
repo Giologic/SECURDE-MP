@@ -4,42 +4,41 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="registrationstyles.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
   </head><body>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Logout</a>
-            </li>
-          </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+    <div style="background: #399494; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #83eec5 , #399494); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
+      <div class="navbar navbar-default navbar-static-top" style="opacity:0.95">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active">
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Logout</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="jumbotron" style="margin-left: 6em; margin-right: 6em; margin-top: 6em;">
-              <h1 class="text-success">View Account</h1>
+      <div>
+        <div class="section">
+          <div class="container" style="margin-top:7em">
+            <div class="jumbotron" style="opacity:0.9; border-radius:0.8">
+              <h1 style="color:184a4a">View Account</h1>
               <hr>
               <form class="form-horizontal" role="form">
                 <div class="form-group">
@@ -191,7 +190,11 @@
                         </div>
                       </div>
                     </div>
-                    <a class="btn btn-large btn-lg btn-success">Edit Details<br></a>
+                    <div class="row">
+                       <a style="background-color:399494; border-color:transparent" type="submit" class="btn btn-large btn-lg btn-success" href="EditAccount.jsp">Edit Details</a>
+                    
+                    </div>
+                   
                   </div>
                 </div>
               </form>
@@ -200,6 +203,7 @@
         </div>
       </div>
     </div>
+    
   
 
 </body></html>

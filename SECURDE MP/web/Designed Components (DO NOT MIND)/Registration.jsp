@@ -12,8 +12,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="jumbotron" style="margin-left: 6em; margin-right: 6em; background-color: transparent !important;">
-              <h1 style="color:83eec5">Sign Up</h1>
-              <hr>
+              <h1 class="text-success">Sign Up</h1>
               <form class="form-horizontal" role="form">
                 <div class="form-group">
                   <div class="col-sm-2">
@@ -71,12 +70,13 @@
                     <input type="text" class="form-control" id="inputEmail3" name="mInitial" placeholder="Middle Initial">
                   </div>
                 </div>
-                <hr>
+              	<hr>
                 <div class="section">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <h3 style="color:83eec5">Billing Address</h3>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h3 style="color:white">Billing Address</h3>
+                      
                         <div class="form-group">
                           <div class="col-sm-3">
                             <label for="inputEmail3" class="control-label" style="color:white">House No.</label>
@@ -125,65 +125,68 @@
                             <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country">
                           </div>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="col-md-12">
-                          <h3 style="color:83eec5">Shipping Address</h3>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">House No.</label>
-                          </div>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No.">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Street</label>
-                          </div>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Subdivision</label>
-                          </div>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="inputPassword3" class="control-label" style="color:white">City</label>
-                          </div>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Postal Code</label>
-                          </div>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="inputPassword3" class="control-label" style="color:white">Country</label>
-                          </div>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country">
-                          </div>
-                        </div>
-                      </div>
+                      
                     </div>
-                    <a class="btn btn-large btn-lg btn-success" type="submit" href="Main.jsp" style="background-color:399494; color:white; border-color:transparent" href="Main.jsp">Submit<br></a>
+                    <div class="col-md-6">
+                      <div class="col-md-12">
+                        <h3 style="color:white">Shipping Address</h3>
+                      </div>
+                      <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="inputEmail3" class="control-label" style="color:white">House No.</label>
+                          </div>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No.">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="inputEmail3" class="control-label" style="color:white">Street</label>
+                          </div>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="inputEmail3" class="control-label" style="color:white">Subdivision</label>
+                          </div>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="inputPassword3" class="control-label" style="color:white">City</label>
+                          </div>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="inputEmail3" class="control-label" style="color:white">Postal Code</label>
+                          </div>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="inputPassword3" class="control-label" style="color:white">Country</label>
+                          </div>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
+                  <a class="btn btn-large btn-lg btn-success" type = "submit" href="Main.jsp">Submit<br></a>
                 </div>
-              </form>
+              </div></form>
+              
             </div>
           </div>
         </div>

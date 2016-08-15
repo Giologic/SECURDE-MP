@@ -6,18 +6,47 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="registrationstyles.css" rel="stylesheet" type="text/css">
   </head><body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="Main.jsp">Home</a>
+            </li>
+            <li>
+              <a href="Login.jsp">Logout</a>
+            </li>
+          </ul>
+<!--
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+-->
+        </div>
+      </div>
+    </div>
     <div class="section">
-      <div class="background-image" style="background-image : url('https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d')"></div>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="jumbotron" style="margin-left: 6em; margin-right: 6em; background-color: transparent !important;">
-              <h1 style="color:83eec5">Sign Up</h1>
+            <div class="jumbotron" style="margin-left: 6em; margin-right: 6em; margin-top: 6em;">
+              <h1 class="text-success">Edit Account</h1>
               <hr>
               <form class="form-horizontal" role="form">
                 <div class="form-group">
                   <div class="col-sm-2">
-                    <label for="inputEmail3" class="control-label" style="color:white">Username</label>
+                    <label for="inputEmail3" class="control-label">Username</label>
                   </div>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail3" name="username" placeholder="Username">
@@ -25,7 +54,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-2">
-                    <label for="inputEmail3" class="control-label" style="color:white">Email</label>
+                    <label for="inputEmail3" class="control-label">Email</label>
                   </div>
                   <div class="col-sm-10">
                     <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email">
@@ -33,23 +62,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-2">
-                    <label for="inputPassword3" class="control-label" style="color:white">Password</label>
-                  </div>
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-2">
-                    <label for="inputPassword3" class="control-label" style="color:white">Confirm Password</label>
-                  </div>
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" name="confPass" placeholder="Confirm Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-2">
-                    <label for="inputEmail3" class="control-label" style="color:white">First Name</label>
+                    <label for="inputEmail3" class="control-label">First Name</label>
                   </div>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail3" name="fName" placeholder="First Name">
@@ -57,7 +70,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-2">
-                    <label for="inputPassword3" class="control-label" style="color:white">Last Name</label>
+                    <label for="inputPassword3" class="control-label">Last Name</label>
                   </div>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputPassword3" name="lName" placeholder="Last Name">
@@ -65,10 +78,28 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-2">
-                    <label for="inputEmail3" class="control-label" style="color:white">Middle Intial</label>
+                    <label for="inputEmail3" class="control-label">Middle Intial</label>
                   </div>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail3" name="mInitial" placeholder="Middle Initial">
+                  </div>
+                </div>
+                <hr>
+                <h3>Edit Password</h3>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label for="inputPassword3" class="control-label">Password</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" name="newPassword" placeholder="New Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label for="inputPassword3" class="control-label">Confirm Password</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" name="confPass" placeholder="Confirm New Password">
                   </div>
                 </div>
                 <hr>
@@ -76,10 +107,10 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-md-6">
-                        <h3 style="color:83eec5">Billing Address</h3>
+                        <h3>Billing Address</h3>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">House No.</label>
+                            <label for="inputEmail3" class="control-label">House No.</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No.">
@@ -87,7 +118,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Street</label>
+                            <label for="inputEmail3" class="control-label">Street</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street">
@@ -95,7 +126,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Subdivision</label>
+                            <label for="inputEmail3" class="control-label">Subdivision</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision">
@@ -103,7 +134,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputPassword3" class="control-label" style="color:white">City</label>
+                            <label for="inputPassword3" class="control-label">City</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City">
@@ -111,7 +142,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Postal Code</label>
+                            <label for="inputEmail3" class="control-label">Postal Code</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code">
@@ -119,7 +150,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputPassword3" class="control-label" style="color:white">Country</label>
+                            <label for="inputPassword3" class="control-label">Country</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country">
@@ -128,11 +159,11 @@
                       </div>
                       <div class="col-md-6">
                         <div class="col-md-12">
-                          <h3 style="color:83eec5">Shipping Address</h3>
+                          <h3>Shipping Address</h3>
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">House No.</label>
+                            <label for="inputEmail3" class="control-label">House No.</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No.">
@@ -140,7 +171,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Street</label>
+                            <label for="inputEmail3" class="control-label">Street</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street">
@@ -148,7 +179,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Subdivision</label>
+                            <label for="inputEmail3" class="control-label">Subdivision</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision">
@@ -156,7 +187,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputPassword3" class="control-label" style="color:white">City</label>
+                            <label for="inputPassword3" class="control-label">City</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City">
@@ -164,7 +195,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputEmail3" class="control-label" style="color:white">Postal Code</label>
+                            <label for="inputEmail3" class="control-label">Postal Code</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code">
@@ -172,7 +203,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="inputPassword3" class="control-label" style="color:white">Country</label>
+                            <label for="inputPassword3" class="control-label">Country</label>
                           </div>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country">
@@ -180,7 +211,7 @@
                         </div>
                       </div>
                     </div>
-                    <a class="btn btn-large btn-lg btn-success" type="submit" href="Main.jsp" style="background-color:399494; color:white; border-color:transparent" href="Main.jsp">Submit<br></a>
+                    <a class="btn btn-large btn-lg btn-success">Save<br></a>
                   </div>
                 </div>
               </form>
