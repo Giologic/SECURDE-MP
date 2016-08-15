@@ -121,17 +121,16 @@ public class AccountHandler {
     }
         
         public ShoppingCart getShoppingCart(CustomerAccount acc){
-    	ShoppingCart cart;
     	ArrayList<Product> prodList = new ArrayList<Product>();
+        ShoppingCart cart = new ShoppingCart(acc.getId(), prodList);
     	int userID;
     	DBConnector connector = new DBConnector();
     	Connection conn = connector.getConnection();
     	PreparedStatement pstmt;
         ResultSet rs;
+        ResultSet productRs;
     	String sql = "SELECT product_id, quantity FROM shopping_cart WHERE user_id = ?";
     	try{
-    		
-    		
     		pstmt = conn.prepareStatement(sql);
     		pstmt.setInt(1, acc.getId());
     		rs = pstmt.executeQuery();
@@ -139,17 +138,23 @@ public class AccountHandler {
     		while(rs.next()){
     				int prodID = rs.getInt("product_id");
     				int qty = rs.getInt("quantity");
-    				pstmt = conn.prepareStatement("SELECT * FROM product");
-    				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
-			                   					rs.getString("category"), rs.getString("image"));
-    				for(int i = 0; i < qty; i++){
-    					prodList.add(prod);
-    				}
-    				pstmt.close();
+    				pstmt = conn.prepareStatement("SELECT * FROM product where id = ?");
+                                pstmt.setInt(1, prodID);
+                                productRs = pstmt.executeQuery();
+                                if(productRs.next()){
+                                    Product prod = new Product(productRs.getInt("id"), 
+                                            productRs.getString("name"), 
+                                            productRs.getString("description"), 
+                                            productRs.getDouble("price"), 
+                                            productRs.getString("category"), 
+                                            productRs.getString("image"));
+                                    prod.setQuantity(qty);
+                                    cart.addProduct(prod);
+                                }
     			}
     		//pstmt.close();
-    		cart = new ShoppingCart(acc.getId(), prodList);
-    		conn.close();
+                conn.close();
+    		return cart;	
     	}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -160,7 +165,8 @@ public class AccountHandler {
     }
     
     public void addToCart(ShoppingCart cart, Product prod, int quantity){
-        cart.addProduct(prod, quantity);
+        prod.setQuantity(quantity);
+        cart.addProduct(prod);
         int userID = cart.getUserID();
         int prodID = prod.getId();
         int tempCount, prodCount;
@@ -168,39 +174,41 @@ public class AccountHandler {
         DBConnector connector = new DBConnector();
     	Connection conn = connector.getConnection();
     	PreparedStatement pstmt;
-    	sql = "SELECT COUNT(*) AS count FROM shopping_cart WHERE customer_id = ? AND product_id = ?";
+    	sql = "SELECT COUNT(*) AS count FROM shopping_cart WHERE user_id = ? AND product_id = ?";
     	try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, userID);
-			pstmt.setInt(2, prodID);
-			ResultSet rs = pstmt.executeQuery();
-			tempCount = rs.getInt("count");
-			pstmt.close();
-			if(tempCount == 0){
-				sql = "INSERT INTO shopping_cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, userID);
-				pstmt.setInt(2, prodID);
-				pstmt.setInt(3, quantity);
-				pstmt.executeUpdate();
-				pstmt.close();
-			}
-			else{
-				sql = "SELECT quantity FROM shopping_cart WHERE user_id = ? AND product_id = ?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, userID);
-				pstmt.setInt(2, prodID);
-				rs = pstmt.executeQuery();
-				prodCount = rs.getInt("quantity");
-				pstmt.close();
-				sql = "UPDATE shopping_cart SET quantity = ? WHERE user_id = ? AND product_id = ?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, prodCount++);
-				pstmt.setInt(2, userID);
-				pstmt.setInt(3, prodID);
-				pstmt.executeUpdate();
-				pstmt.close();
-			}
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, userID);
+//			pstmt.setInt(2, prodID);
+//			ResultSet rs = pstmt.executeQuery();
+                        
+                        
+                                    sql = "INSERT INTO shopping_cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
+                                    pstmt = conn.prepareStatement(sql);
+                                    pstmt.setInt(1, userID);
+                                    pstmt.setInt(2, prodID);
+                                    pstmt.setInt(3, quantity);
+                                    pstmt.executeUpdate();
+                                    pstmt.close();
+                            
+//                            else{
+//                                    sql = "SELECT quantity FROM shopping_cart WHERE user_id = ? AND product_id = ?";
+//                                    pstmt = conn.prepareStatement(sql);
+//                                    pstmt.setInt(1, userID);
+//                                    pstmt.setInt(2, prodID);
+//                                    rs = pstmt.executeQuery();
+//                                    if(rs.next()){
+//                                        prodCount = rs.getInt("quantity");
+//                                        pstmt.close();
+//                                        sql = "UPDATE shopping_cart SET quantity = ? WHERE user_id = ? AND product_id = ?";
+//                                        pstmt = conn.prepareStatement(sql);
+//                                        pstmt.setInt(1, prodCount++);
+//                                        pstmt.setInt(2, userID);
+//                                        pstmt.setInt(3, prodID);
+//                                        pstmt.executeUpdate();
+//                                        pstmt.close();
+//                                    }
+//                            }
+                        //}
 			conn.close();
 			
 		} catch (SQLException e) {

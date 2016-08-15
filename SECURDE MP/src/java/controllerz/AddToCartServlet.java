@@ -17,6 +17,7 @@ import modelz.AccountHandler;
 import modelz.CustomerAccount;
 import modelz.Product;
 import modelz.ProductHandler;
+import modelz.ShoppingCart;
 
 
 /**
@@ -46,8 +47,11 @@ public class AddToCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         CustomerAccount account = (CustomerAccount) session.getAttribute("Account");  
         Product prod = pHandler.getSpecificProduct(productName);
-        account.getShoppingCart().addProduct(prod, quantity);
+        System.out.println("shopping count: " +account.getShoppingCart().getProdList().size());
         handler.addToCart(account.getShoppingCart(), prod, quantity);
+        ShoppingCart cart = handler.getShoppingCart(account);
+        account.setShoppingCart(cart);
+        session.setAttribute("Account", account);
         response.sendRedirect("ShoppingCart.jsp");
     }
 

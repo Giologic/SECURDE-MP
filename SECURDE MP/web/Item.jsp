@@ -60,7 +60,7 @@
                         %>
                       <img src="<%=image%>" class="center-block img-responsive sub-size-control">
                     </div>
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" action="AddToCartServlet" method="POST">
                         
                       <div class="col-md-6 sub-size-control text-left">
                           <h1 class="custom-font-color"><input type="text" name="productName" value="<%=name%>" readonly></h1>

@@ -52,31 +52,35 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <%
+                   <%
                       CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
                       ArrayList<Product> cart = account.getShoppingCart().getProdList();
+                      System.out.println("cart size:" +cart.size());
                       if(cart.size() > 0){
                       for(int i = 0; i < cart.size();i++){
                           Product product = cart.get(i);
-                          int quantity;
+                          int quantity = cart.get(i).getQuantity();
+                          System.out.println("Quantity: "+quantity);
                           double price = product.getPrice();
                           
                       
                   
                   %>
+                <tr>
+                 
                   <td><%=i+1%></td>
                   <td><%=product.getName()%></td>
                   <td>
-                    <input type="text" class="form-control" value="" style="width:50px" readonly>
+                      <input type="text" class="form-control" value="<%=quantity%>" style="width:50px" readonly>
                   </td>
                   <td><%=price%></td>
                   <td>
                     <i class="fa fa-2x fa-fw fa-trash"></i>
                   </td>
-                  <%    }
-                    } %>
+                  
                 </tr>
+                <%    }
+                    } %>
               </tbody>
             </table>
             <hr>
