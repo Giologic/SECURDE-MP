@@ -13,15 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelz.AccountHandler;
-import modelz.CustomerAccount;
 
 /**
  *
  * @author William
  */
-@WebServlet(name = "CheckoutCartServlet", urlPatterns = {"/CheckoutCartServlet"})
-public class CheckoutCartServlet extends HttpServlet {
+@WebServlet(name = "PreCheckoutServlet", urlPatterns = {"/PreCheckoutServlet"})
+public class PreCheckoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,11 +34,9 @@ public class CheckoutCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-       // String creditCardNumber = request.getParameter("creditCardNumber");
-        CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
-        //String pin = request.getParameter("pin");
-        AccountHandler handler = new AccountHandler();
-        handler.checkoutCart(account, account.getShoppingCart());
+        double total = Double.parseDouble(request.getParameter("total"));
+        session.setAttribute("total", total);
+        response.sendRedirect("Checkout.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

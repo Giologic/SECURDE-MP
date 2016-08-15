@@ -44,7 +44,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                             <input type="integer" value="1" width="1em" class="form-control" name="quantity">
                           </div>
                           <div class="col-md-7">
-                            <p style="font-size:36px; color:white;" contenteditable="true" class="text-right" name="price" value="<%=price%>"></p>
+                            <input type="text" style="font-size:36px; color:white;" contenteditable="true" class="text-right" name="price" value="<%=price%>"></p>
                           </div>
                         </div>
                       </div>

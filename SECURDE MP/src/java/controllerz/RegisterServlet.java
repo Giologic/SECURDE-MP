@@ -57,7 +57,24 @@ public class RegisterServlet extends HttpServlet {
        String shippingCity = request.getParameter("sCity");
        String shippingPostalCode = request.getParameter("sPostalCode");
        String shippingCountry = request.getParameter("sCountry");
-       
+        System.out.println(email);
+        System.out.println(username);
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(middleInitial);
+        System.out.println(password);
+        System.out.println(confPassword);
+        System.out.println(billingHouse);
+        System.out.println(billingStreet);
+        System.out.println(billingSubdivision);
+        System.out.println(billingCity);
+        System.out.println(billingCountry);
+        System.out.println(shippingHouse);
+        System.out.println(shippingStreet);
+        System.out.println(shippingSubdivision);
+        System.out.println(shippingCity);
+        System.out.println(shippingPostalCode);
+        System.out.println(shippingCountry);
         
        
        
@@ -69,7 +86,7 @@ public class RegisterServlet extends HttpServlet {
         Address billingAddress = new Address(billingHouse, billingStreet, billingSubdivision, billingCity, billingPostalCode, billingCountry);
         Address shippingAddress = new Address(shippingHouse, shippingStreet, shippingSubdivision, shippingCity, shippingPostalCode, shippingCountry);
         CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, password, email, billingAddress, shippingAddress, cart);
-        handler.register(account, billingAddress , shippingAddress);
+        handler.register(account, account.getBillingAddress() , account.getShippingAddress());
         response.sendRedirect("Login.jsp");
         
        }

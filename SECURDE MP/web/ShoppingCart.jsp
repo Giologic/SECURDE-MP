@@ -38,11 +38,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     </div>
     <div class="section" style="margin-top: 7em;">
       <div class="container">
-        <form action="CheckoutCartServlet" method="POST">
+        <form action="PreCheckoutServlet" method="POST">
           <div class="jumbotron">
             <h1 class="text-success">Shopping Cart</h1>
             <a href="#"></a>
@@ -101,7 +100,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                     </div>
                     <div class="col-md-6">
                       <h3></h3>
-                      <h3 class="text-right" style="color:184a4a"><input type="text" value="$<%=total%>" readonly></h3>
+                      <h3 class="text-right" style="color:184a4a"><input type="text" name="total" value="$<%=total%>" readonly></h3>
                     </div>
                   </div>
                 </div>

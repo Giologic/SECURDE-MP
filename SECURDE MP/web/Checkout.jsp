@@ -1,3 +1,8 @@
+<%@page import="modelz.Address"%>
+<%@page import="modelz.CustomerAccount"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="modelz.Product"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,32 +75,39 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         </label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="Credit Card Number">
+                                        <input type="text" class="form-control" id="inputEmail3" name="cardNum" placeholder="Credit Card Number">
                                       </div>
                                     </div>
-                                    <div class="form-group">
+                                 <!--   <div class="form-group">
                                       <div class="col-sm-3">
                                         <label for="inputEmail3" class="control-label">Expiry Date</label>
                                       </div>
                                       <div class="col-sm-9">
                                         <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="MM/YY">
                                       </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                       <div class="col-sm-3">
                                         <label for="inputPassword3" class="control-label">Security Code</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Security Code">
+                                        <input type="text" class="form-control" id="inputPassword3" name="securityCode" placeholder="Security Code">
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </form>
-                          <form class="form-horizontal" role="form">
+                      <!--    </form> 
+                          <form class="form-horizontal" role="form"> -->
                             <hr>
+                            <%
+                            
+                                CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
+                                Address billing = account.getBillingAddress();
+                                Address shipping = account.getShippingAddress();
+                            
+                            %>
                             <div class="section">
                               <div class="container">
                                 <div class="row">
@@ -106,7 +118,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">House No.</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No." readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bHouse" value="<%=billing.getHouse_no()%>" placeholder="House No." readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -114,7 +126,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">Street</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street" readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street" value="<%=billing.getStreet()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -122,7 +134,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">Subdivision</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision" readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision" value="<%=billing.getSubdivision()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -130,7 +142,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputPassword3" class="control-label">City</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City" readonly="">
+                                        <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City" value="<%=billing.getCity()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -138,7 +150,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">Postal Code</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code" readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code" value="<%=billing.getPostal_code()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -146,7 +158,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputPassword3" class="control-label">Country</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country" readonly="">
+                                        <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country" value="<%=billing.getCountry()%>" readonly>
                                       </div>
                                     </div>
                                   </div>
@@ -159,7 +171,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">House No.</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No." readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bHouse" placeholder="House No." value="<%=shipping.getHouse_no()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -167,7 +179,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">Street</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street" readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bStreet" placeholder="Street" value="<%=shipping.getStreet()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -175,7 +187,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">Subdivision</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision" readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bSubdivision" placeholder="Subdivision" value="<%=shipping.getSubdivision()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -183,7 +195,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputPassword3" class="control-label">City</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City" readonly="">
+                                        <input type="text" class="form-control" id="inputPassword3" name="bCity" placeholder="City" value="<%=shipping.getCity()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -191,7 +203,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputEmail3" class="control-label">Postal Code</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code" readonly="">
+                                        <input type="text" class="form-control" id="inputEmail3" name="bPostalCode" placeholder="Postal Code" value="<%=shipping.getPostal_code()%>" readonly>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -199,7 +211,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         <label for="inputPassword3" class="control-label">Country</label>
                                       </div>
                                       <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country" readonly="">
+                                        <input type="text" class="form-control" id="inputPassword3" name="Country" placeholder="Country" value="<%=shipping.getCountry()%>" readonly>
                                       </div>
                                     </div>
                                   </div>
@@ -223,14 +235,39 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>
-                                  <input type="text" class="form-control" placeholder="1" style="width:50px" readonly="">
-                                </td>
-                                <td>6990.00</td>
-                              </tr>
+                              <%
+                     
+                      ArrayList<Product> cart = account.getShoppingCart().getProdList();
+                      DecimalFormat df = new DecimalFormat();
+                      df.setMaximumFractionDigits(2);
+                      System.out.println("cart size:" +cart.size());
+                      double total = 0;
+                      if(cart.size() > 0){
+                      for(int i = 0; i < cart.size();i++){
+                          Product product = cart.get(i);
+                          int quantity = cart.get(i).getQuantity();
+                          System.out.println("Quantity: "+quantity);
+                          double price = product.getPrice();
+                          total+=(price * quantity);
+                          
+                      
+                  
+                  %>
+                <tr>
+                 
+                  <td><%=i+1%></td>
+                  <td><%=product.getName()%></td>
+                  <td>
+                    <input type="text" class="form-control" value="<%=quantity%>" style="width:50px" readonly>
+                  </td>
+                  <td><%=price%></td>
+                  <td>
+                    <i class="fa fa-2x fa-fw fa-trash"></i>
+                  </td>        
+                </tr>
+                <%    }
+                        df.format(total);
+                    } %>  
                             </tbody>
                           </table>
                           <hr>

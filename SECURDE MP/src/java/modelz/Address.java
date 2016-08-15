@@ -26,6 +26,15 @@ public class Address {
         this.subdivision = subdivision;
         this.postal_code = postal_code;
         this.country = country;
+        this.city = city;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     Address() {

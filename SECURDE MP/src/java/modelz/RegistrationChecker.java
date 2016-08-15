@@ -32,7 +32,7 @@ public class RegistrationChecker {
             System.out.println("shipping postal not int");
             return false;
         }
-        if(password != confPass){
+        if(!password.equals(confPass)){
             System.out.println("password mismatch");
             return false;
         }

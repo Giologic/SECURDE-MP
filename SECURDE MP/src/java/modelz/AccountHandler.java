@@ -18,7 +18,9 @@ import modelz.DBConnector;;
 public class AccountHandler {
     
     public void register(Account acc, Address billAdd, Address shipAdd){
-    	 try{
+    	 try{   
+                 System.out.println(billAdd.getCity());
+                 System.out.println(shipAdd.getCity());
     		 DBConnector connector = new DBConnector();
     		 Connection conn = connector.getConnection();
     		 //customer_account
@@ -26,7 +28,7 @@ public class AccountHandler {
     		 		+ "(username, password, first_name, last_name, middle_initial, email,"
     		 		+ " billing_house_no, billing_street, billing_subdivision, billing_postal_code,"
     		 		+ " billing_country, shipping_house_no, shipping_street, shipping_subdivision,"
-    		 		+ " shipping_postal_code, shipping_country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    		 		+ " shipping_postal_code, shipping_country, billing_city, shipping_city) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)");
     		 pstmt.setString(1, acc.getUsername());
     		 pstmt.setString(2, acc.getPassword());
     		 pstmt.setString(3, acc.getFirst_name());
@@ -43,6 +45,8 @@ public class AccountHandler {
     		 pstmt.setString(14, shipAdd.getSubdivision());
     		 pstmt.setString(15, shipAdd.getPostal_code());
     		 pstmt.setString(16, shipAdd.getCountry());
+                 pstmt.setString(17, billAdd.getCity());
+                 pstmt.setString(18, shipAdd.getCity());
     		 
     		 pstmt.executeUpdate();
     		 pstmt.close();
@@ -268,11 +272,11 @@ public class AccountHandler {
         
     }
     
-    public void clearCart(ShoppingCart cart){
+    public void clearCart(CustomerAccount account){
     //change. Instead of DELETE (since bad practice) add a column flag for shopping cart isDeleted
     //isDeleted = 1 (delete), isDeleted = 0 (still there)
-      cart.clearCart();
-      int userID = cart.getUserID();
+      account.getShoppingCart().clearCart();
+      int userID = account.getId();
       DBConnector connector = new DBConnector();
   	  Connection conn = connector.getConnection();
   	  try {
@@ -285,5 +289,61 @@ public class AccountHandler {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
   	  }
+    }
+    
+    public boolean checkCreditCard(String cardNum, String secCode, CustomerAccount account){
+    	boolean status = false;
+    	DBConnector connector = new DBConnector();
+    	Connection conn = connector.getConnection();
+    	PreparedStatement pstmt;
+    	ResultSet rs;
+    	try{
+    		pstmt = conn.prepareStatement("SELECT id FROM credit_card WHERE credit_num = ? AND security_code = ? AND first_name = ? AND last_name = ?");
+    		pstmt.setString(1, cardNum);
+    		pstmt.setString(2, secCode);
+                pstmt.setString(3, account.getFirst_name());
+                pstmt.setString(4, account.getLast_name());
+    		rs = pstmt.executeQuery();
+    		if(rs.next() == false){
+    			status = false;
+    		}
+    		else status = true;
+    		
+    	}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return status;
+    }
+    
+    public boolean checkBalance(double total, CustomerAccount account, String creditNum, String securityCode){
+        boolean status = false;
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement pstmt;
+        ResultSet rs;
+        String sql = "SELECT balance FROM credit_card WHERE credit_num = ? AND security_code = ? AND first_name = ? AND last_name = ?";
+        try{
+            pstmt= conn.prepareStatement(sql);
+            pstmt.setString(1, creditNum);
+            pstmt.setString(2, securityCode);
+            pstmt.setString(3, account.getFirst_name());
+            pstmt.setString(4, account.getLast_name());
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                double balance = rs.getDouble("balance");
+                if(balance >= total){
+                    status = true;
+                    return status;
+                }
+                else{
+                    status = false;
+                    return status;
+                }
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return status;
     }
 }
