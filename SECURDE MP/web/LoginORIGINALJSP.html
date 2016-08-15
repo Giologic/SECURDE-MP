@@ -18,7 +18,7 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <form role="form">
+                <form role="form" action="LoginServlet" method="POST">
                   <div class="form-group">
                     <label class="control-label" for="exampleInputEmail1" style="color:white">Username</label>
                     <input class="form-control" id="exampleInputEmail1" placeholder="Username" type="text" name="username">
@@ -29,10 +29,10 @@
                   </div>
                   <div class="row">
                     <div class="col-md-2">
-                      <button type="submit" class="btn btn-link" href="Main.jsp" style="background-color:317373;color:white; border-radius:5px !important">Log In</button>
+                      <button type="submit" class="btn btn-default">Log In</button>
                     </div>
                     <div class="col-md-10">
-                      <a class="form-control btn-link" type="submit" style="color:#83eec5; font-size:18px" href="Registration.jsp">
+                      <a type="submit" href="Registration.jsp" class="form-control btn-link" style="color:#5cb85c; font-size:18px">
                         Create an account
                       </a>
                     </div>
@@ -40,10 +40,10 @@
                 </form>
               </div>
               <div class="col-md-6">
-                <h2 style="color:83eec5">Find your solemate</h2>
+                <h1 style="color: white;" class="text-success">Find your solemate</h1>
                 <blockquote style="color:white">
                   <p>I found mine here</p>
-                  <footer style="color: 83eec5">Kaye Solemon</footer>
+                  <footer style="color: white">Kaye Solemon</footer>
                 </blockquote>
               </div>
             </div>
