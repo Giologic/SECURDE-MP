@@ -123,7 +123,7 @@ public class ProductHandler {
     }
 	
 	public Product getSpecificProduct(String productName){
-		Product prod = null;
+		Product prod;
 		DBConnector connector = new DBConnector();
 		Connection conn = connector.getConnection();
 		PreparedStatement pstmt;
@@ -132,22 +132,122 @@ public class ProductHandler {
 			pstmt = conn.prepareStatement("SELECT * FROM product WHERE name = ?");
 			pstmt.setString(1, productName);
 			rs = pstmt.executeQuery();
-			pstmt.close();
-			if(rs.next() == false){
-				return prod = null;
+			//pstmt.close();
+			if(rs.next()){
+                            
+				prod = new Product(rs.getInt("id"),
+                                        rs.getString("name"),
+                                        rs.getString("description"),
+                                        rs.getDouble("price"),
+                                        rs.getString("category"),
+                                        rs.getString("image"));
+                                        return prod;
 			}
-			else{
-				prod.setId(rs.getInt("id"));
-				prod.setName(rs.getString("name"));
-				prod.setPrice(rs.getDouble("price"));
-				prod.setDescription(rs.getString("description"));
-				prod.setCategory(rs.getString("category"));
-				prod.setImage(rs.getString("image"));
-			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return prod;
+		return null;
+	}
+        
+        public ArrayList<Product> filterBoots(){
+		ArrayList<Product> filteredBoots = new ArrayList<Product>();
+		DBConnector connector = new DBConnector();
+		Connection conn = connector.getConnection();
+		PreparedStatement pstmt;
+		ResultSet rs;
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
+			pstmt.setString(1, "Boots");
+			rs = pstmt.executeQuery();
+			pstmt.close();
+			while(rs.next()){
+				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
+		                   rs.getString("category"), rs.getString("image"));
+				filteredBoots.add(prod);		
+			}
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return filteredBoots;
+		
+	}
+	
+	public ArrayList<Product> filterShoes(){
+		ArrayList<Product> filteredShoes = new ArrayList<Product>();
+		DBConnector connector = new DBConnector();
+		Connection conn = connector.getConnection();
+		PreparedStatement pstmt;
+		ResultSet rs;
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
+			pstmt.setString(1, "Shoes");
+			rs = pstmt.executeQuery();
+			pstmt.close();
+			while(rs.next()){
+				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
+		                   rs.getString("category"), rs.getString("image"));
+				filteredShoes.add(prod);		
+			}
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return filteredShoes;
+		
+	}
+	
+	public ArrayList<Product> filterSlippers(){
+		ArrayList<Product> filteredSlippers = new ArrayList<Product>();
+		DBConnector connector = new DBConnector();
+		Connection conn = connector.getConnection();
+		PreparedStatement pstmt;
+		ResultSet rs;
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
+			pstmt.setString(1, "Slippers");
+			rs = pstmt.executeQuery();
+			pstmt.close();
+			while(rs.next()){
+				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
+		                   rs.getString("category"), rs.getString("image"));
+				filteredSlippers.add(prod);		
+			}
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return filteredSlippers;
+		
+	}
+	
+	public ArrayList<Product> filterSandals(){
+		ArrayList<Product> filteredSandals = new ArrayList<Product>();
+		DBConnector connector = new DBConnector();
+		Connection conn = connector.getConnection();
+		PreparedStatement pstmt;
+		ResultSet rs;
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
+			pstmt.setString(1, "Sandals");
+			rs = pstmt.executeQuery();
+			pstmt.close();
+			while(rs.next()){
+				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
+		                   rs.getString("category"), rs.getString("image"));
+				filteredSandals.add(prod);		
+			}
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return filteredSandals;
+		
 	}
 }

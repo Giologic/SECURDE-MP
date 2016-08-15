@@ -58,24 +58,28 @@
                     <div class="section">
                       <div class="row">
                         <div class="col-md-3">
-                            <form action="ViewSpecificProductServlet" method="GET">
-                                <%
+                            <%
                                     
-                                    ArrayList<Product> products = (ArrayList)request.getAttribute("Products");
-                                    for(Product product:products){
-                                        String image = "images\\" + product.getImage();
-                                        String productName = product.getName();
-                                        String description = product.getDescription();
-                                        String price = Double.toString(product.getPrice());
+                                    ArrayList<Product> products = (ArrayList)session.getAttribute("Products");
+                                    for(int i = 0; i < products.size(); i++){
+                                        String image = "images\\" + products.get(i).getImage();
+                                       
+                                        String productName = products.get(i).getName();
+                                        System.out.println("Product Name: " +productName);
+                                        String description = products.get(i).getDescription();
+                                        String price = Double.toString(products.get(i).getPrice());
                                         
                                 %>
+                            <form action="QuerySpecificProductServlet" method="GET">
+                                
                                 <a href="#"><img src="<%=image%>" class="img-responsive"></a>
                                 <h2><input type="text" value="<%=productName%>" name="productName" readonly></h2>
                           <p><%=description%></p>
                           <p><%=price%></p>
                           <button type="submit" class="btn btn-success">View</button>
-                          <% }%>
+                          
                             </form>
+                          <% }%>
                         </div>
                         
                       </div>

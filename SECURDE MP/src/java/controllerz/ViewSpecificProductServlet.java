@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelz.Product;
 import modelz.ProductHandler;
 
@@ -37,7 +38,10 @@ public class ViewSpecificProductServlet extends HttpServlet {
         String productName = request.getParameter("productName");
         ProductHandler handler = new ProductHandler();
         Product product = handler.getSpecificProduct(productName);
-        request.setAttribute("Product", product);
+        HttpSession session = request.getSession();
+        System.out.println(product.getName());
+        session.setAttribute("Product", product);
+        response.sendRedirect("Item.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

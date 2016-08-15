@@ -50,7 +50,9 @@
                   <div class="row">
                     <div class="col-md-6">
                         <%
-                            Product product = (Product) request.getAttribute("Product");
+                            
+                            Product product = (Product) session.getAttribute("Product");
+                            
                             String name = product.getName();
                             String desc = product.getDescription();
                             String price = Double.toString(product.getPrice());

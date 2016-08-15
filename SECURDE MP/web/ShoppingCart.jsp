@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelz.Product"%>
+<%@page import="modelz.CustomerAccount"%>
 <%@page import="modelz.ShoppingCart"%>
 <html><head>
     <meta charset="utf-8">
@@ -52,18 +55,27 @@
                 <tr>
                   <%
                       CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
+                      ArrayList<Product> cart = account.getShoppingCart().getProdList();
+                      if(cart.size() > 0){
+                      for(int i = 0; i < cart.size();i++){
+                          Product product = cart.get(i);
+                          int quantity;
+                          double price = product.getPrice();
+                          
                       
                   
                   %>
-                  <td>1</td>
-                  <td>Mark</td>
+                  <td><%=i+1%></td>
+                  <td><%=product.getName()%></td>
                   <td>
-                    <input type="text" class="form-control" placeholder="1" style="width:50px">
+                    <input type="text" class="form-control" value="" style="width:50px" readonly>
                   </td>
-                  <td>6990.00</td>
+                  <td><%=price%></td>
                   <td>
                     <i class="fa fa-2x fa-fw fa-trash"></i>
                   </td>
+                  <%    }
+                    } %>
                 </tr>
               </tbody>
             </table>

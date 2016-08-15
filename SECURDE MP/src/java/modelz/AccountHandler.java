@@ -135,7 +135,7 @@ public class AccountHandler {
     		pstmt = conn.prepareStatement(sql);
     		pstmt.setInt(1, acc.getId());
     		rs = pstmt.executeQuery();
-    		pstmt.close();
+    		//pstmt.close();
     		while(rs.next()){
     				int prodID = rs.getInt("product_id");
     				int qty = rs.getInt("quantity");
@@ -159,8 +159,8 @@ public class AccountHandler {
     	
     }
     
-    public void addToCart(ShoppingCart cart, Product prod){
-        cart.addProduct(prod);
+    public void addToCart(ShoppingCart cart, Product prod, int quantity){
+        cart.addProduct(prod, quantity);
         int userID = cart.getUserID();
         int prodID = prod.getId();
         int tempCount, prodCount;
@@ -181,7 +181,7 @@ public class AccountHandler {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, userID);
 				pstmt.setInt(2, prodID);
-				pstmt.setInt(3, 1);
+				pstmt.setInt(3, quantity);
 				pstmt.executeUpdate();
 				pstmt.close();
 			}
@@ -218,7 +218,7 @@ public class AccountHandler {
     public void removeFromCart(ShoppingCart cart, Product prod){
     	int prodID = prod.getId();
     	int userID = cart.getUserID();
-    	cart.removeProduct(prodID);
+    	cart.removeProduct(prod);
         int tempCount, prodCount;
         String sql;
         DBConnector connector = new DBConnector();

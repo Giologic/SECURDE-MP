@@ -44,9 +44,10 @@ public class AddToCartServlet extends HttpServlet {
         AccountHandler handler = new AccountHandler();
         ProductHandler pHandler = new ProductHandler();
         HttpSession session = request.getSession();
-        CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
+        CustomerAccount account = (CustomerAccount) session.getAttribute("Account");  
         Product prod = pHandler.getSpecificProduct(productName);
-        handler.addToCart(account.getShoppingCart(), prod);
+        account.getShoppingCart().addProduct(prod, quantity);
+        handler.addToCart(account.getShoppingCart(), prod, quantity);
         response.sendRedirect("ShoppingCart.jsp");
     }
 
