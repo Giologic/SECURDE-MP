@@ -1,3 +1,4 @@
+<%@page import="modelz.Product"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +10,7 @@
 background: -webkit-linear-gradient(to left, #83eec5 , #399494); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">&gt;
     <div class="section">
-      <div class="section size-control" id="display-specific=item" style="background-color:white opacity:0.8">
+      <div class="section size-control" id="display-specific-item" style="background-color:white; opacity:0.8">
         <div class="container size-control-2">
           <div class="row">
             <div class="col-md-12">
@@ -70,7 +71,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
         </div>
       </div>
     </div>
-    <div class="section section-primary inputAreaBack" style=" !important; opacity:0.85">
+    <div class="section section-primary inputAreaBack" style="opacity:0.85">
       <form>
         <div class="container">
           <div class="form-group">

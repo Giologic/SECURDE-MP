@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="modelz.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelz.CustomerAccount"%>
@@ -59,13 +60,17 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                    <%
                       CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
                       ArrayList<Product> cart = account.getShoppingCart().getProdList();
+                      DecimalFormat df = new DecimalFormat();
+                      df.setMaximumFractionDigits(2);
                       System.out.println("cart size:" +cart.size());
+                      double total = 0;
                       if(cart.size() > 0){
                       for(int i = 0; i < cart.size();i++){
                           Product product = cart.get(i);
                           int quantity = cart.get(i).getQuantity();
                           System.out.println("Quantity: "+quantity);
                           double price = product.getPrice();
+                          total+=(price * quantity);
                           
                       
                   
@@ -83,6 +88,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                   </td>        
                 </tr>
                 <%    }
+                        df.format(total);
                     } %>            
                 </tbody>
               </table>
@@ -95,7 +101,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                     </div>
                     <div class="col-md-6">
                       <h3></h3>
-                      <h3 class="text-right" style="color:184a4a">$1000.00</h3>
+                      <h3 class="text-right" style="color:184a4a"><input type="text" value="$<%=total%>" readonly></h3>
                     </div>
                   </div>
                 </div>
