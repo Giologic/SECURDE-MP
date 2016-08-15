@@ -184,7 +184,7 @@ public class ProductHandler {
 			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
 			pstmt.setString(1, "Boots");
 			rs = pstmt.executeQuery();
-			pstmt.close();
+			
 			while(rs.next()){
 				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
 		                   rs.getString("category"), rs.getString("image"));
@@ -209,7 +209,7 @@ public class ProductHandler {
 			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
 			pstmt.setString(1, "Shoes");
 			rs = pstmt.executeQuery();
-			pstmt.close();
+			
 			while(rs.next()){
 				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
 		                   rs.getString("category"), rs.getString("image"));
@@ -234,7 +234,7 @@ public class ProductHandler {
 			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
 			pstmt.setString(1, "Slippers");
 			rs = pstmt.executeQuery();
-			pstmt.close();
+			
 			while(rs.next()){
 				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
 		                   rs.getString("category"), rs.getString("image"));
@@ -259,7 +259,7 @@ public class ProductHandler {
 			pstmt = conn.prepareStatement("SELECT * FROM product WHERE category = ?");
 			pstmt.setString(1, "Sandals");
 			rs = pstmt.executeQuery();
-			pstmt.close();
+			
 			while(rs.next()){
 				Product prod = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getDouble("price"),
 		                   rs.getString("category"), rs.getString("image"));

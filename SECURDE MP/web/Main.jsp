@@ -53,10 +53,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                   <div class="row">
                     <div class="col-md-2">
                       <ul class="list-group" style="margin-top:3.5em">
-                        <form><button class="list-group-item filter_result" type="submit" style="width:100%">Boots</button></form>
-                        <form><button class="list-group-item filter_result" type="submit" style="width:100%">Shoes</button></form>
-                        <form><button class="list-group-item filter_result" type="submit" style="width:100%">Sandals</button></form>
-                        <form><button class="list-group-item filter_result" type="submit" style="width:100%">Slippers</button></form>
+                        <form action="FilterBootsServlet" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Boots</button></form>
+                        <form action="FilterShoesServlet" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Shoes</button></form>
+                        <form action="FilterSandalsServlet" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Sandals</button></form>
+                        <form action="FilterSlippersServlet" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Slippers</button></form>
                       </ul>
                     </div>
                     <div class="col-md-10">
