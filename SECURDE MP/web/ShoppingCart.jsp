@@ -73,7 +73,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                   </td>
                   <td><%=price%></td>
                   <td>
-                    <i class="fa fa-2x fa-fw fa-trash"></i>
+                    <button class="fa fa-2x fa-fw fa-trash"></button>
                   </td>
                   <%    }
                     } %>
