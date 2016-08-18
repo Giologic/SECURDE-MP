@@ -68,6 +68,8 @@ public class LoginServlet extends HttpServlet {
                 ProductManagerAccount productMan = handler.productManagerLogin(username, password);
                 if(productMan != null){
                     session.setAttribute("productManager", productMan);
+                    ArrayList<Product> products = pHandler.displayProducts();
+                    session.setAttribute("Products", products);
                     response.sendRedirect("ProductManager.jsp");
                 }
             }

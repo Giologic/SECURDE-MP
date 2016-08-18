@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelz.Product"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,28 +109,38 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                               <tr>
                                 <th>#</th>
                                 <th>Product Name</th>
-                                <th>Description</th>
                                 <th>Category</th>
-                                <th>Qty</th>
                                 <th>Price</th>
                                 <th>
-                                  <a style="background-color:399494; border-color:transparent;" type="submit" class="btn btn-large btn-lg btn-success" href="ProductManagerAddProduct.html"><i class="fa fa-fw fa-plus-circle"></i></a>
+                                  <a style="background-color:399494; border-color:transparent;" type="submit" class="btn btn-large btn-lg btn-success" href="ProductManagerAddProduct.jsp"><i class="fa fa-fw fa-plus-circle"></i></a>
                                 </th>
                               </tr>
                             </thead>
                             <tbody>
+                                <%
+
+                                ArrayList<Product> products = (ArrayList)session.getAttribute("Products");
+                                if(products.size() > 0){
+                                    for(int i = 0; i < products.size(); i++){
+                                        String image = "images\\" + products.get(i).getImage();
+
+                                        String productName = products.get(i).getName();
+                                        String category = products.get(i).getCategory();
+                                        String description = products.get(i).getDescription();
+                                        String price = Double.toString(products.get(i).getPrice());
+
+                            %>
                               <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td class="">Otto</td>
-                                <td>Boots</td>
-                                <td>5</td>
-                                <td>6990.00</td>
+                                <td><%=i+1%></td>
+                                <td><%=productName%></td>
+                                <td><%=category%></td>
+                                <td><%=price%></td>
                                 <td>
                                   <a href="#"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
                                 </td>
                               </tr>
-                              
+                               <% }
+                            }%>
                             </tbody>
                           </table>
                         </div>
