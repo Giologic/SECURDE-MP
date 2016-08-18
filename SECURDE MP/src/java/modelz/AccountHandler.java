@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelz.DBConnector;;
 
 /**
@@ -56,6 +58,136 @@ public class AccountHandler {
     		// TODO Auto-generated catch block
     		e.printStackTrace();
     	} 
+    }
+    
+    public void assignPrivilege(String privilege, String username){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement pstmt;
+        String sql = "INSERT INTO privilege (username, account_privilege) VALUES (?,?)";
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, username);
+            pstmt.setString(2, privilege);
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public String getPrivilege(String username){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        String privilege = "";
+        String sql = "SELECT account_privilege FROM privilege WHERE username = ?";
+        PreparedStatement pstmt;
+        try { 
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                privilege = rs.getString("account_privilege");
+                return privilege;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return privilege;
+    }
+    public AdministratorAccount adminLogin(String username, String password){
+    	DBConnector connector = new DBConnector();
+        AdministratorAccount loggedIn = null;
+    	Connection conn = connector.getConnection();
+		String sql = "SELECT * FROM administrator_account WHERE username = ? AND password = ?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()){
+                                    loggedIn = new AdministratorAccount(rs.getString("username"), rs.getString("password")
+                                    ,rs.getString("email"), "admin");
+				pstmt.close();
+				conn.close();
+				return loggedIn;
+			}
+			else{
+				return null;
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return loggedIn;
+        
+    }
+    
+    public String getproductManagerLoginStatus(String username){
+        String status = "";
+        
+        return status;
+    }
+    
+    public ProductManagerAccount productManagerLogin(String username, String password){
+    	DBConnector connector = new DBConnector();
+        ProductManagerAccount loggedIn = null;
+    	Connection conn = connector.getConnection();
+		String sql = "SELECT * FROM productmanager_account WHERE username = ? AND password = ?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()){
+                                    loggedIn = new ProductManagerAccount(rs.getString("username"), rs.getString("password")
+                                    ,rs.getString("email"), "product manager");
+				pstmt.close();
+				conn.close();
+				return loggedIn;
+			}
+			else{
+				return null;
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return loggedIn;
+        
+    }
+    
+    public AccountingManagerAccount accountingManagerLogin(String username, String password){
+    	DBConnector connector = new DBConnector();
+        AccountingManagerAccount loggedIn = null;
+    	Connection conn = connector.getConnection();
+		String sql = "SELECT * FROM accountingmanager_account WHERE username = ? AND password = ?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()){
+                                    loggedIn = new AccountingManagerAccount(rs.getString("username"), rs.getString("password")
+                                    ,rs.getString("email"), "product manager");
+				pstmt.close();
+				conn.close();
+				return loggedIn;
+			}
+			else{
+				return null;
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return loggedIn;
+        
     }
     
     @SuppressWarnings("null")

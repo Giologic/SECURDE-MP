@@ -87,6 +87,7 @@ public class RegisterServlet extends HttpServlet {
         Address shippingAddress = new Address(shippingHouse, shippingStreet, shippingSubdivision, shippingCity, shippingPostalCode, shippingCountry);
         CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, password, email, billingAddress, shippingAddress, cart);
         handler.register(account, account.getBillingAddress() , account.getShippingAddress());
+        handler.assignPrivilege(account.getPrivilege(), account.getUsername());
         response.sendRedirect("Login.jsp");
         
        }

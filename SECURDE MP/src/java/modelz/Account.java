@@ -22,6 +22,13 @@ public abstract class Account {
         this.password = password;
         this.email = email;
     }
+    
+    public Account(String username, String password, String email, String privilege){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.privilege = privilege;
+    }
 
     public String getFirst_name() {
         return first_name;

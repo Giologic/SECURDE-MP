@@ -12,6 +12,10 @@ public class ProductManagerAccount extends ExpirableAccount {
         super(first_name, last_name, middle_initial, privilege, username, password, email, isExpired, timestamp);
     }
 
+    ProductManagerAccount(String username, String password, String email, String privilege) {
+        super(username, password, email, privilege);
+    }
+
     public void editProduct(int id){
         // TODO: 7/25/2016 Link to Product
     }

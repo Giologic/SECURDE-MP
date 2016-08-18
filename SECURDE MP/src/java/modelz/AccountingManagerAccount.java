@@ -9,6 +9,10 @@ public class AccountingManagerAccount extends ExpirableAccount{
     public AccountingManagerAccount(String first_name, String last_name, String middle_initial, String privilege, String username, String password, String email, boolean isExpired, Date timestamp) {
         super(first_name, last_name, middle_initial, privilege, username, password, email, isExpired, timestamp);
     }
+    
+    AccountingManagerAccount(String username, String password, String email, String privilege) {
+        super(username, password, email, privilege);
+    }
 
     public void viewFinancialRecords() {
         //// TODO: 7/25/2016 Link to Financial Records

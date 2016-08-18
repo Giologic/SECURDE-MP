@@ -15,9 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelz.AccountHandler;
+import modelz.AccountingManagerAccount;
+import modelz.AdministratorAccount;
 import modelz.CustomerAccount;
 import modelz.Product;
 import modelz.ProductHandler;
+import modelz.ProductManagerAccount;
 import modelz.ShoppingCart;
 
 /**
@@ -43,16 +46,57 @@ public class LoginServlet extends HttpServlet {
         ProductHandler pHandler = new ProductHandler();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        CustomerAccount account = handler.login(username, password);
+        String privilege = handler.getPrivilege(username);
         HttpSession session = request.getSession();
-        if(account != null){
-            //create account object here
-            ShoppingCart cart = handler.getShoppingCart(account);
-            account.setShoppingCart(cart);
-            ArrayList<Product> products = pHandler.displayProducts();
-            session.setAttribute("Products", products);
-            session.setAttribute("Account", account);
-            response.sendRedirect("Main.jsp");
+        if(!"".equals(privilege)){
+            if("admin".equals(privilege)){
+                System.out.println("Admin Login");
+                AdministratorAccount admin = handler.adminLogin(username, password);
+                if(admin != null){
+                    session.setAttribute("admin", admin);
+                    response.sendRedirect("");
+                }
+                else{
+                    String errorMessage = "Invalid Username/Password";
+                    request.setAttribute("loginError", errorMessage);
+                    response.sendRedirect("Login.jsp");
+                }
+                
+            }
+            else if("product manager".equals(privilege)){
+                System.out.println("Product Manager Login");
+                ProductManagerAccount productMan = handler.productManagerLogin(username, password);
+                if(productMan != null){
+                    session.setAttribute("productManager", productMan);
+                    response.sendRedirect("ProductManager.jsp");
+                }
+            }
+            else if("accounting manager".equals(privilege)){
+                System.out.println("Accounting Manager Login");
+                AccountingManagerAccount accountingMan = handler.accountingManagerLogin(username, password);
+                if(accountingMan != null){
+                    session.setAttribute("accountingManager", accountingMan);
+                    response.sendRedirect("");
+                }
+            }
+            else if("customer".equals(privilege)){
+                System.out.println("Customer Login");
+                CustomerAccount account = handler.login(username, password);
+                if(account != null){
+                    //create account object here
+                    ShoppingCart cart = handler.getShoppingCart(account);
+                    account.setShoppingCart(cart);
+                    ArrayList<Product> products = pHandler.displayProducts();
+                    session.setAttribute("Products", products);
+                    session.setAttribute("Account", account);
+                    response.sendRedirect("Main.jsp");
+                }
+                else{
+                    String errorMessage = "Invalid Username/Password";
+                    request.setAttribute("loginError", errorMessage);
+                    response.sendRedirect("Login.jsp");
+                }
+            }
         }
         else{
             String errorMessage = "Invalid Username/Password";
