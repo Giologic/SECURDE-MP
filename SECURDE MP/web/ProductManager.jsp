@@ -136,7 +136,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                 <td><%=category%></td>
                                 <td><%=price%></td>
                                 <td>
-                                  <a href="#"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
+                                  <a href="<%=request.getContextPath()%>/PreEditProductServlet?editProduct=<%=productName%>"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
                                 </td>
                               </tr>
                                <% }
