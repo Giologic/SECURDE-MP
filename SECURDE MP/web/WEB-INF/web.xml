@@ -15,13 +15,24 @@
     </welcome-file-list>
     
     <servlet>
-<description>PreEditProductServlet</description>
-<display-name>PreEditProductServlet</display-name>
-<servlet-name>PreEditProductServlet</servlet-name> <servlet-class>controllerz.PreEditProductServlet</servlet-class>
-</servlet>
+    <description>PreEditProductServlet</description>
+    <display-name>PreEditProductServlet</display-name>
+    <servlet-name>PreEditProductServlet</servlet-name> <servlet-class>controllerz.PreEditProductServlet</servlet-class>
+    </servlet>
 
-<servlet-mapping>
-<servlet-name>PreEditProductServlet</servlet-name>
-<url-pattern>/PreEditProductServlet</url-pattern>
-</servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>PreEditProductServlet</servlet-name>
+    <url-pattern>/PreEditProductServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>DeleteProductServlet</description>
+    <display-name>DeleteProductServlet</display-name>
+    <servlet-name>DeleteProductServlet</servlet-name> <servlet-class>controllerz.DeleteProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <url-pattern>/DeleteProductServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
