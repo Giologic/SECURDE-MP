@@ -1,17 +1,23 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="modelz.Product"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
   </head><body style="background: #399494; /* fallback for old browsers */
+
 background: -webkit-linear-gradient(to left, #83eec5 , #399494); /* Chrome 10-25, Safari 5.1-6 */
+
 background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
     <div style="background: #399494; /* fallback for old browsers */
+
 background: -webkit-linear-gradient(to left, #83eec5 , #399494); /* Chrome 10-25, Safari 5.1-6 */
+
 background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
       <div class="navbar navbar-default navbar-static-top" style="opacity:0.95">
         <div class="container">
@@ -62,7 +68,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                             </div>
                             <div class="form-group">
                               <div class="col-sm-4">
-                                <label for="inputPassword3" class="control-label">Category</label>
+                                <label for="inputPassword3" class="control-label">Month</label>
                               </div>
                               <div class="col-sm-8 text-left">
                                 <div class="btn-group btn-group-lg" style="margin-left:1em;">
@@ -77,7 +83,22 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                             </div>
                             <div class="form-group">
                               <div class="col-sm-4">
-                                <label for="inputEmail3" class="control-label">Price</label>
+                                <label for="inputPassword3" class="control-label">Day</label>
+                              </div>
+                              <div class="col-sm-8 text-left">
+                                <div class="btn-group btn-group-lg" style="margin-left:1em;">
+                                  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" background-color:399494 !important"> Dropdown <span class="fa fa-caret-down"></span></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                      <a href="#">Action</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-4">
+                                <label for="inputEmail3" class="control-label">Year</label>
                               </div>
                               <div class="col-sm-8">
                                 <div class="btn-group btn-group-lg" style="margin-left:1em;">
@@ -91,14 +112,20 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                               </div>
                             </div>
                             <hr style="display: block;
+
                 height: 1px;
+
                 border: 0;
+
                 border-top: 1px solid #ccc;
+
                 margin: 1em 0;
+
                 padding: 0; 
+
                 color:#5acba5">
                             <div class="form-group"></div>
-                            <a style="background-color:399494; border-color:transparent; width:100%" type="submit" class="btn btn-large btn-lg btn-success">Filter Products</a>
+                            <a style="background-color:399494; border-color:transparent; width:100%" type="submit" class="btn btn-large btn-lg btn-success">Filter Transactions</a>
                           </form>
                         </div>
                       </div>
@@ -108,40 +135,19 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                             <thead>
                               <tr>
                                 <th>#</th>
-                                <th>Product Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>
-                                  <a style="background-color:399494; border-color:transparent;" type="submit" class="btn btn-large btn-lg btn-success" href="ProductManagerAddProduct.jsp">Add Product</a>
-                                </th>
+                                <th>Date of Transaction</th>
+                                <th>Total Amount</th>
                               </tr>
                             </thead>
                             <tbody>
-                                <%
-
-                                ArrayList<Product> products = (ArrayList)session.getAttribute("Products");
-                                if(products.size() > 0){
-                                    for(int i = 0; i < products.size(); i++){
-                                        String image = "images\\" + products.get(i).getImage();
-
-                                        String productName = products.get(i).getName();
-                                        String category = products.get(i).getCategory();
-                                        String description = products.get(i).getDescription();
-                                        String price = Double.toString(products.get(i).getPrice());
-
-                            %>
                               <tr>
-                                <td><%=i+1%></td>
-                                <td><%=productName%></td>
-                                <td><%=category%></td>
-                                <td><%=price%></td>
+                                <td>1</td>
+                                <td>June 24, 1996</td>
+                                <td class="">$1900</td>
                                 <td>
-                                  <a href="<%=request.getContextPath()%>/PreEditProductServlet?editProduct=<%=productName%>"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
-                                  <a href="#"><i class="fa fa-2x fa-fw text-muted fa-trash"></a>
+                                  <a href="ViewTransaction.jpg"><i class="fa fa-2x fa-fw text-muted fa-search-plus"></i></a>
                                 </td>
                               </tr>
-                               <% }
-                            }%>
                             </tbody>
                           </table>
                         </div>

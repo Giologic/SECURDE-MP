@@ -63,8 +63,8 @@ public class ProductHandler {
 			e1.printStackTrace();
 		}
 	}
-	public void editProduct(Product prod){
-		int prodID = prod.getId();
+	public void editProduct(Product prod, int id){
+		int prodID = id;
 		String prodName = prod.getName();
 		String prodDesc = prod.getDescription();
 		double prodPrice = prod.getPrice();
@@ -79,7 +79,7 @@ public class ProductHandler {
 			pstmt = conn.prepareStatement("SELECT * FROM product WHERE id = ?");
 			pstmt.setInt(1, prodID);
 			rs = pstmt.executeQuery();
-			pstmt.close();
+			//pstmt.close();
 			if(rs.next() == false){
 				System.out.println("Cannot edit");
 			}
@@ -90,6 +90,7 @@ public class ProductHandler {
 				pstmt.setString(3, prodDesc);
 				pstmt.setString(4, prodCat);
 				pstmt.setString(5, prodImg);
+                                pstmt.setInt(6, id);
 				pstmt.executeUpdate();
 				pstmt.close();
 				conn.close();

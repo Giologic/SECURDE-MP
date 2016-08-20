@@ -7,7 +7,6 @@ package controllerz;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +20,8 @@ import modelz.ProductHandler;
  *
  * @author William
  */
-@WebServlet(name = "AddProductServlet", urlPatterns = {"/AddProductServlet"})
-public class AddProductServlet extends HttpServlet {
+@WebServlet(name = "PreEditProductServlet", urlPatterns = {"/PreEditProductServlet"})
+public class PreEditProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +35,12 @@ public class AddProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String productName = request.getParameter("editProduct");
         HttpSession session = request.getSession();
-        String name = request.getParameter("product_name");
-        String description = request.getParameter("description");
-        String category = request.getParameter("category");
-        ArrayList<Product> products = new ArrayList();
-        double price = Double.parseDouble(request.getParameter("price"));
-        Product prod = new Product(name,description,price,category,"converse2.jpg");
         ProductHandler pHandler = new ProductHandler();
-        pHandler.addProduct(prod);
-        products = pHandler.displayProducts();
-        session.setAttribute("Products", products);
-        response.sendRedirect("ProductManager.jsp");
+        Product product = pHandler.getSpecificProduct(productName);
+        session.setAttribute("editProduct", product);
+        response.sendRedirect("ProductManagerEditProduct.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

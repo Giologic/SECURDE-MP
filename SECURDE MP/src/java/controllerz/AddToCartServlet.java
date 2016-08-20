@@ -39,12 +39,13 @@ public class AddToCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String productName = request.getParameter("productName");
+        HttpSession session = request.getSession();
+        Product product = (Product) session.getAttribute("Product");
+        String productName = product.getName();
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        double price = Double.parseDouble(request.getParameter("price"));
+        double price = product.getPrice();
         AccountHandler handler = new AccountHandler();
         ProductHandler pHandler = new ProductHandler();
-        HttpSession session = request.getSession();
         CustomerAccount account = (CustomerAccount) session.getAttribute("Account");  
         Product prod = pHandler.getSpecificProduct(productName);
         System.out.println("shopping count: " +account.getShoppingCart().getProdList().size());

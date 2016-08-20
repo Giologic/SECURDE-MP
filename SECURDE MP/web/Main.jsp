@@ -62,9 +62,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                     <div class="col-md-10">
                       <div class="section">
                         <div class="row">
-                          <div class="col-md-3" style="height:355px; width:250px;background-color:white; opacity:0.9; padding:2em;margin:1em; border-radius:5px;">
-
-                          <%
+                            <%
 
                                 ArrayList<Product> products = (ArrayList)session.getAttribute("Products");
                                 if(products.size() > 0){
@@ -77,6 +75,9 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                         String price = Double.toString(products.get(i).getPrice());
 
                             %>
+                          <div class="col-md-3" style="height:355px; width:250px;background-color:white; opacity:0.9; padding:2em;margin:1em; border-radius:5px;">
+
+                          
                             <form action="QuerySpecificProductServlet" method="GET">
                             <div id="card" style="height:145px; width:195px;">
                               <img src="<%=image%>" class="img-responsive img-rounded" style="width:inherit; height:inherit">
@@ -87,9 +88,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                             <button type="submit" class="btn btn-success" style="background-color:317373;  color:white;  border-color:transparent;">View</button>
                           </div>
                           </form>
-                          <% }
-                            }%>
+                         
                         </div>
+                             <% }
+                            }%>
                       </div>
                     </div>
                   </div>
