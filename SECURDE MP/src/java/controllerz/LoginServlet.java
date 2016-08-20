@@ -54,7 +54,11 @@ public class LoginServlet extends HttpServlet {
                 AdministratorAccount admin = handler.adminLogin(username, password);
                 if(admin != null){
                     session.setAttribute("admin", admin);
-                    response.sendRedirect("");
+                    ArrayList<ProductManagerAccount> productManagers = handler.getAllProductManagerAccounts();
+                    ArrayList<AccountingManagerAccount> accountingManagers = handler.getAllAccountingManagerAccounts();
+                    session.setAttribute("productManagers", productManagers);
+                    session.setAttribute("accountingManagers", accountingManagers);
+                    response.sendRedirect("Administrator.jsp");
                 }
                 else{
                     String errorMessage = "Invalid Username/Password";
@@ -78,7 +82,7 @@ public class LoginServlet extends HttpServlet {
                 AccountingManagerAccount accountingMan = handler.accountingManagerLogin(username, password);
                 if(accountingMan != null){
                     session.setAttribute("accountingManager", accountingMan);
-                    response.sendRedirect("");
+                    response.sendRedirect("Transaction.jsp");
                 }
             }
             else if("customer".equals(privilege)){
