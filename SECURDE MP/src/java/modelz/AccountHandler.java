@@ -164,6 +164,55 @@ public class AccountHandler {
         }
     }
     
+    public ProductManagerAccount getProductManagerAccount(String username){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement pstmt;
+        String sql = "SELECT * FROM productmanager_account WHERE username = ?";
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                System.out.println("hi po");
+                ProductManagerAccount account = new ProductManagerAccount(rs.getString("username"),rs.getString("password"), rs.getString("email"), "product manager");
+                return account;
+            }
+            else{
+                return null;
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
+    
+    public AccountingManagerAccount getAccountingManagerAccount(String username){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement pstmt;
+        String sql = "SELECT * FROM accountingmanager_account WHERE username = ?";
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                AccountingManagerAccount account = new AccountingManagerAccount(rs.getString("username"),rs.getString("password"), rs.getString("email"), "accounting manager");
+                return account;
+            }
+            else{
+                return null;
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public String getPrivilege(String username){
         DBConnector connector = new DBConnector();
         Connection conn = connector.getConnection();

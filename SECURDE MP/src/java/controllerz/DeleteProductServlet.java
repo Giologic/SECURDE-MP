@@ -14,19 +14,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelz.AccountHandler;
-import modelz.CustomerAccount;
 import modelz.Product;
-import modelz.ProductSales;
-import modelz.ShoppingCart;
-import modelz.TransactionHandler;
+import modelz.ProductHandler;
 
 /**
  *
  * @author William
  */
-@WebServlet(name = "CheckoutCartServlet", urlPatterns = {"/CheckoutCartServlet"})
-public class CheckoutCartServlet extends HttpServlet {
+@WebServlet(name = "DeleteProductServlet", urlPatterns = {"/DeleteProductServlet"})
+public class DeleteProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,46 +36,14 @@ public class CheckoutCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("In CheckoutServlet");
         HttpSession session = request.getSession();
-        String creditCardNumber = request.getParameter("cardNum");
-        String ownerName = request.getParameter("ownerName");
-        CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
-        String securityCode = request.getParameter("securityCode");
-        double total = (double) session.getAttribute("total");
-        ProductSales salesProduct;
-        AccountHandler handler = new AccountHandler();
-        TransactionHandler tHandler = new TransactionHandler();
-        if(tHandler.checkCreditCard(creditCardNumber, securityCode, ownerName) && tHandler.checkBalance(total, ownerName, creditCardNumber, securityCode)){
-            double balance = tHandler.getBalance(creditCardNumber, securityCode, ownerName);
-            if(balance != -1){
-                double newBalance = balance - total;
-            
-                System.out.println("New Balance: " +newBalance);
-                tHandler.setNewBalance(newBalance, creditCardNumber, securityCode, ownerName);
-                ArrayList<Product> prodList = account.getShoppingCart().getProdList();
-                for(int i = 0; i < prodList.size(); i++){
-                    int quantity = prodList.get(i).getQuantity();
-                    double price = prodList.get(i).getPrice();
-                    double cartTotal = quantity * price;
-                    salesProduct = tHandler.getProductSale(prodList.get(i).getName());
-                    double salesTotal = salesProduct.getTotal();
-                    double newTotal = cartTotal + salesTotal;
-                    tHandler.setNewTotal(newTotal, prodList.get(i).getName());
-                    
-                }
-                handler.clearCart(account);
-                account.getShoppingCart().clearCart();
-                session.setAttribute("Account", account);
-                response.sendRedirect("ShoppingCart.jsp");
-            }else{
-                System.out.println("Error acquiring balance");
-                response.sendRedirect("Checkout.jsp");
-            }
-        }
-        else{
-            response.sendRedirect("Checkout.jsp");
-        }
+        String productName = request.getParameter("deleteProduct");
+        ProductHandler pHandler = new ProductHandler();
+        Product product = pHandler.getSpecificProduct(productName);
+        pHandler.deleteProduct(product.getId());
+        ArrayList<Product> products = pHandler.displayProducts();
+        session.setAttribute("Products", products);
+        response.sendRedirect("ProductManager.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

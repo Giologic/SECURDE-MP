@@ -29,7 +29,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="#">Home</a>
               </li>
               <li>
-                <a href="Login.jsp">Logout</a>
+                <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -99,6 +99,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 color:#5acba5">
                             <div class="form-group"></div>
                             <a style="background-color:399494; border-color:transparent; width:100%" type="submit" class="btn btn-large btn-lg btn-success">Filter Products</a>
+                            <a style="background-color:399494; border-color:transparent; margin-top:1em; width:100%;" type="submit" class="btn btn-large btn-lg btn-success" href="ProductManagerAddProduct.jsp">Add Product</a>
                           </form>
                         </div>
                       </div>
@@ -112,7 +113,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>
-                                  <a style="background-color:399494; border-color:transparent;" type="submit" class="btn btn-large btn-lg btn-success" href="ProductManagerAddProduct.jsp">Add Product</a>
+                                  
+                                </th>
+                                <th>
+                                    
                                 </th>
                               </tr>
                             </thead>
@@ -137,7 +141,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                 <td><%=price%></td>
                                 <td>
                                   <a href="<%=request.getContextPath()%>/PreEditProductServlet?editProduct=<%=productName%>"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
-                                  <a href="#"><i class="fa fa-2x fa-fw text-muted fa-trash"></a>
+                          
+                                </td>
+                                <td>
+                                    <a class="fa fa-2x fa-fw text-muted fa-trash" href="<%=request.getContextPath()%>/DeleteProductServlet?deleteProduct=<%=productName%>"></a>  
                                 </td>
                               </tr>
                                <% }

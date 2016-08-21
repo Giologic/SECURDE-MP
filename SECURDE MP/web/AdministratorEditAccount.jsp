@@ -1,3 +1,5 @@
+<%@page import="modelz.AccountingManagerAccount"%>
+<%@page import="modelz.ProductManagerAccount"%>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +41,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="ProductManager.jsp">View Products</a>
               </li>
               <li>
-                <a href="Login.jsp">Logout</a>
+                <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -49,6 +51,23 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
         </div>
       </div>
       <div>
+          <%
+              String privilege = (String) session.getAttribute("editPrivilege");
+              String username = "";
+              String email = "";
+              if("product manager".equals(privilege)){
+                  ProductManagerAccount account = (ProductManagerAccount) session.getAttribute("editAccount");
+                  username = account.getUsername();
+                  email = account.getEmail();
+              }
+              else if("accounting manager".equals(privilege)){
+                  AccountingManagerAccount account = (AccountingManagerAccount) session.getAttribute("editAccount");
+                  username = account.getUsername();
+                  email = account.getEmail();
+              }
+          
+          
+          %>
         <div class="section">
           <div class="container" style="margin-top:3em">
             <div class="jumbotron" style="opacity:0.9; border-radius:0.8">
@@ -60,7 +79,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                     <label for="inputEmail3" class="control-label">Username</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" name="username" placeholder="Username">
+                    <input type="text" class="form-control" id="inputEmail3" name="username" placeholder="Username" value="<%=username%>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -68,10 +87,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                     <label for="inputEmail3" class="control-label">Email</label>
                   </div>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" name="username" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail3" name="email" value="<%=email%>" placeholder="Email">
                   </div>
                 </div>
-                <div class="form-group">
+               <!-- <div class="form-group">
                   <div class="col-sm-2">
                     <label for="inputEmail3" class="control-label">First Name</label>
                   </div>
@@ -94,24 +113,32 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                   <div class="col-sm-10">
                     <textarea type="text" class="form-control" id="inputEmail3" name="middle_initial" placeholder="Middle Initial"></textarea>
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                   <div class="col-sm-2">
                     <label for="inputEmail3" class="control-label">Role</label>
                   </div>
                   <div class="btn-group btn-group-lg" style="margin-left:1em;">
-                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" background-color:399494 !important"> Dropdown <span class="fa fa-caret-down"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li>
-                        <a href="#">Accounting Manager</a>
-                      </li>
-                      <li>
-                        <a href="#">Product Manager</a>
-                      </li>
-                    </ul>
+                    <select class="selectpicker" name="privilege">
+                        <%
+                            if("product manager".equals(privilege)){
+                        %>
+                          <option value="product manager" selected="selected">Product Manager</option>
+                          <option value="accounting manager">Accounting Manager</option>
+                          <%
+                              }
+                              else{
+                              
+                          %>
+                          <option value="product manager">Product Manager</option>
+                          <option value="accounting manager" selected="selected">Accounting Manager</option>
+                          <%
+                          }
+                          %>
+                      </select>
                   </div>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                   <div class="col-sm-2">
                     <label for="inputEmail3" class="control-label">Expiry Date</label>
                   </div>
@@ -127,7 +154,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <hr>
                 <a style="background-color:399494; border-color:transparent" type="submit" class="btn btn-large btn-lg btn-success" href="ProductManager.jsp">Save</a>
               </form>

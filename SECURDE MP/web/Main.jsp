@@ -24,12 +24,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
           <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li class="active">
-                <a href="#" type="submit">Home</a>
+                <a href="Main.jsp" type="submit">Home</a>
               </li>
               <li>
-                <form action="LogoutServlet" method="POST" >
-                <input type="submit" value="Logout">
-                  </form>
+                <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
               </li>
               <li>
                 <a href="ShoppingCart.jsp"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -78,20 +76,21 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                           <div class="col-md-3" style="height:355px; width:250px;background-color:white; opacity:0.9; padding:2em;margin:1em; border-radius:5px;">
 
                           
-                            <form action="QuerySpecificProductServlet" method="GET">
+                              <form>
                             <div id="card" style="height:145px; width:195px;">
                               <img src="<%=image%>" class="img-responsive img-rounded" style="width:inherit; height:inherit">
                             </div>
-                            <h2><input type="text" value="<%=productName%>" name="productName" readonly></h2>
+                            <h2><%=productName%></h2>
                             <p><%=description%></p>
                             <p><%=price%></p>
-                            <button type="submit" class="btn btn-success" style="background-color:317373;  color:white;  border-color:transparent;">View</button>
+                            <a href="<%=request.getContextPath()%>/QuerySpecificProductServlet?productName=<%=productName%>" class="btn btn-success" style="background-color:317373;  color:white;  border-color:transparent;">View</a>    
+                            </form>     
+
                           </div>
-                          </form>
-                         
-                        </div>
-                             <% }
+                            <% }
                             }%>
+                        </div>
+                             
                       </div>
                     </div>
                   </div>

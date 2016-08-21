@@ -15,13 +15,68 @@
     </welcome-file-list>
     
     <servlet>
-<description>PreEditProductServlet</description>
-<display-name>PreEditProductServlet</display-name>
-<servlet-name>PreEditProductServlet</servlet-name> <servlet-class>controllerz.PreEditProductServlet</servlet-class>
-</servlet>
+    <description>PreEditProductServlet</description>
+    <display-name>PreEditProductServlet</display-name>
+    <servlet-name>PreEditProductServlet</servlet-name> <servlet-class>controllerz.PreEditProductServlet</servlet-class>
+    </servlet>
 
-<servlet-mapping>
-<servlet-name>PreEditProductServlet</servlet-name>
-<url-pattern>/PreEditProductServlet</url-pattern>
-</servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>PreEditProductServlet</servlet-name>
+    <url-pattern>/PreEditProductServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>DeleteProductServlet</description>
+    <display-name>DeleteProductServlet</display-name>
+    <servlet-name>DeleteProductServlet</servlet-name> <servlet-class>controllerz.DeleteProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <url-pattern>/DeleteProductServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>PreEditAccountServlet</description>
+    <display-name>PredEditAccountServlet</display-name>
+    <servlet-name>PreEditAccountServlet</servlet-name> <servlet-class>controllerz.PreEditAccountServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>PreEditAccountServlet</servlet-name>
+    <url-pattern>/PreEditAccountServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>FilterSalesServlet</description>
+    <display-name>FilterSalesServlet</display-name>
+    <servlet-name>FilterSalesServlet</servlet-name> <servlet-class>controllerz.FilterSalesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>FilterSalesServlet</servlet-name>
+    <url-pattern>/FilterSalesServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>LogoutServlet</description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name> <servlet-class>controllerz.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>QuerySpecificProductServlet</description>
+    <display-name>QuerySpecificProductServlet</display-name>
+    <servlet-name>QuerySpecificProductServlet</servlet-name> <servlet-class>controllerz.QuerySpecificProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>QuerySpecificProductServlet</servlet-name>
+    <url-pattern>/QuerySpecificProductServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

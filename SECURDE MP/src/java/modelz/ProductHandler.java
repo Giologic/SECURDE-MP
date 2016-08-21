@@ -48,15 +48,15 @@ public class ProductHandler {
 			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM product WHERE id = ?");
 			pstmt.setInt(1, prodID);
 			ResultSet rs = pstmt.executeQuery();
-			pstmt.close();
+			//pstmt.close();
 			if(rs.next() == false){
 				System.out.println("Cannot print");
 			}
 			else{
-				pstmt = conn.prepareStatement("DELETE * FROM product WHERE id = ?");
+				pstmt = conn.prepareStatement("DELETE FROM product WHERE id = ?");
 				pstmt.setInt(1, prodID);
 				pstmt.executeUpdate();
-				pstmt.close();
+				//pstmt.close();
 				conn.close();
 			}
 		} catch (SQLException e1){
