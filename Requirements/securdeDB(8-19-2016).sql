@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: localhost    Database: securde
+-- Host: localhost    Database: securde2
 -- ------------------------------------------------------
--- Server version	5.6.26-log
+-- Server version	5.7.13-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,9 +29,10 @@ CREATE TABLE `accountingmanager_account` (
   `email` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `password_changed` varchar(45) NOT NULL,
+  `date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,7 @@ CREATE TABLE `accountingmanager_account` (
 
 LOCK TABLES `accountingmanager_account` WRITE;
 /*!40000 ALTER TABLE `accountingmanager_account` DISABLE KEYS */;
-INSERT INTO `accountingmanager_account` VALUES (1,'articuno','mystic','articuno@mystic.com','active','yes');
+INSERT INTO `accountingmanager_account` VALUES (1,'articuno','mystic','articuno@mystic.com','active','yes','2016-08-18 17:00:00.000000'),(2,'mew','123456','mew@gmail.com','active','no','2016-08-20 08:00:28.687000');
 /*!40000 ALTER TABLE `accountingmanager_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +127,7 @@ CREATE TABLE `credit_card` (
 
 LOCK TABLES `credit_card` WRITE;
 /*!40000 ALTER TABLE `credit_card` DISABLE KEYS */;
-INSERT INTO `credit_card` VALUES (1,'1234567890123456','111','Nica','de Jesus',959243,'Nica de Jesus');
+INSERT INTO `credit_card` VALUES (1,'1234567890123456','111','Nica','de Jesus',901427,'Nica de Jesus');
 /*!40000 ALTER TABLE `credit_card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +187,7 @@ CREATE TABLE `privilege` (
   `username` varchar(45) NOT NULL,
   `account_privilege` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +196,7 @@ CREATE TABLE `privilege` (
 
 LOCK TABLES `privilege` WRITE;
 /*!40000 ALTER TABLE `privilege` DISABLE KEYS */;
-INSERT INTO `privilege` VALUES (1,'Nica','customer'),(2,'avzxsfeh','customer'),(3,'KayeSolomon','customer'),(4,'glenn','customer'),(5,'sho','customer'),(6,'zapdos','admin'),(7,'moltres','product manager'),(8,'articuno','accounting manager');
+INSERT INTO `privilege` VALUES (1,'Nica','customer'),(2,'avzxsfeh','customer'),(3,'KayeSolomon','customer'),(4,'glenn','customer'),(5,'sho','customer'),(6,'zapdos','admin'),(7,'moltres','product manager'),(8,'articuno','accounting manager'),(9,'mewtwo','product manager'),(10,'mew','accounting manager'),(11,'Gengar','product manager');
 /*!40000 ALTER TABLE `privilege` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +216,7 @@ CREATE TABLE `product` (
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +225,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Chuck Taylor',2596,'Black','Shoes','converse2.jpg'),(2,'Brown Claw',934,'I’m BIG, brown bearish and playful. Need a bear hug for your feet? I’m your man!','Slippers','converse2.jpg'),(3,'Steve Madden Donddi Flat Sandals',3333,'Who is Steve Madden Donddi?','Sandals','converse2.jpg'),(4,'Leopard Print Boots',623,'Just notice that “less is more” flash of fur on the tops of our scrummy boots. And when your knees are cold or you’re just not wanting to get noticed, turn the cuffs up then in the blink of an eye … hey presto … a totally different, unrecognisable and “go with anything” pair of boots.','Boots','converse2.jpg'),(13,'Magic Stick',999,'I got the magic stick\r\nI know if I can hit once, I can hit twice\r\nI hit the baddest chicks\r\nShorty don\'t believe me, then come with me tonight\r\nAnd I\'ll show you magic\r\n(What? What?) Magic (uh huh uh huh)\r\nI got the magic stick','Shoes','converse2.jpg'),(14,'In Da Club',5000,'Go, go, go, go go, go, go, shawty\r\nIt\'s your birthday\r\nWe gon\' party like it\'s yo birthday\r\nWe gon\' sip Bacardi like it\'s your birthday','Sandals','converse2.jpg'),(15,'It Girl',4500,'You the it girl, hey hey, my inspiration\r\nMy compass spinnin\', baby, it\'s the right destination\r\nCome on, come on, tell me what I came for\r\nI got treasure to hide, so let\'s keep it from the strangers','Boots','converse2.jpg');
+INSERT INTO `product` VALUES (1,'Chuck Taylor',2596,'Black','Shoes','converse2.jpg'),(2,'Brown Claw',934,'I’m BIG, brown bearish and playful. Need a bear hug for your feet? I’m your man!','Slippers','converse2.jpg'),(3,'Steve Madden Donddi Flat Sandals',3333,'Who is Steve Madden Donddi?','Sandals','converse2.jpg'),(4,'Leopard Print Boots',623,'Just notice that “less is more” flash of fur on the tops of our scrummy boots. And when your knees are cold or you’re just not wanting to get noticed, turn the cuffs up then in the blink of an eye … hey presto … a totally different, unrecognisable and “go with anything” pair of boots.','Boots','converse2.jpg'),(13,'Magic Stick',999,'I got the magic stick\r\nI know if I can hit once, I can hit twice\r\nI hit the baddest chicks\r\nShorty don\'t believe me, then come with me tonight\r\nAnd I\'ll show you magic\r\n(What? What?) Magic (uh huh uh huh)\r\nI got the magic stick','Shoes','converse2.jpg'),(14,'In Da Club',5000,'Go, go, go, go go, go, go, shawty\r\nIt\'s your birthday\r\nWe gon\' party like it\'s yo birthday\r\nWe gon\' sip Bacardi like it\'s your birthday','Sandals','converse2.jpg');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,9 +295,10 @@ CREATE TABLE `productmanager_account` (
   `email` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `password_changed` varchar(45) NOT NULL,
+  `date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,8 +307,34 @@ CREATE TABLE `productmanager_account` (
 
 LOCK TABLES `productmanager_account` WRITE;
 /*!40000 ALTER TABLE `productmanager_account` DISABLE KEYS */;
-INSERT INTO `productmanager_account` VALUES (1,'moltres','valor','moltres@valor.com','active','yes');
+INSERT INTO `productmanager_account` VALUES (1,'moltres','valor','moltres@valor.com','active','yes','2016-08-18 17:00:00.000000'),(2,'mewtwo','psychic','mewtwo@gmail.com','active','no','2016-08-20 07:53:21.419000'),(3,'Gengar','123456','gengar@gmail.com','active','no','2016-08-20 08:07:00.937000');
 /*!40000 ALTER TABLE `productmanager_account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sales`
+--
+
+DROP TABLE IF EXISTS `sales`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(255) NOT NULL,
+  `category` varchar(45) NOT NULL,
+  `total` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sales`
+--
+
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+INSERT INTO `sales` VALUES (1,'Chuck Taylor','Shoes',407788),(2,'Brown Claw','Slippers',230000),(3,'Steve Madden Donddi Flat Sandals','Sandals',36666),(4,'Leopard Print Boots','Boots',380000),(5,'Magic Stick','Shoes',700000),(6,'In Da Club','Sandals',1000000);
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -352,7 +380,7 @@ CREATE TABLE `shopping_cart` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,33 +389,8 @@ CREATE TABLE `shopping_cart` (
 
 LOCK TABLES `shopping_cart` WRITE;
 /*!40000 ALTER TABLE `shopping_cart` DISABLE KEYS */;
-INSERT INTO `shopping_cart` VALUES (7,2,2,1),(12,1,3,2);
+INSERT INTO `shopping_cart` VALUES (7,2,2,1);
 /*!40000 ALTER TABLE `shopping_cart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `transaction`
---
-
-DROP TABLE IF EXISTS `transaction`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `transaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `shopping_cart_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `transaction`
---
-
-LOCK TABLES `transaction` WRITE;
-/*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-/*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -399,4 +402,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-19 21:10:02
+-- Dump completed on 2016-08-21 22:02:48
