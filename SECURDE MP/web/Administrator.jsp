@@ -38,7 +38,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="#">Home</a>
               </li>
               <li>
-                <a href="Login.jsp">Logout</a>
+                <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -92,7 +92,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                 <td><%=pManager.getPrivilege()%></td>
                                 <td><%=pManager.getTimestamp()%></td>
                                 <td>
-                                  <a href="#"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
+                                  <a href="<%=request.getContextPath()%>/PreEditAccountServlet?editUsername=<%=pManager.getUsername()%>&editPrivilege=<%=pManager.getPrivilege()%>"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
                                 </td>
                                 <td>
                                   <a href="#"><i class="fa fa-2x fa-fw text-muted fa-trash"></i></a>
@@ -112,7 +112,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                 <td><%=aManager.getPrivilege()%></td>
                                 <td><%=aManager.getTimestamp()%></td>
                                 <td>
-                                  <a href="#"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
+                                  <a href="<%=request.getContextPath()%>/PreEditAccountServlet?editUsername=<%=aManager.getUsername()%>&editPrivilege=<%=aManager.getPrivilege()%>"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
                                 </td>
                                 <td>
                                   <a href="#"><i class="fa fa-2x fa-fw text-muted fa-trash"></i></a>

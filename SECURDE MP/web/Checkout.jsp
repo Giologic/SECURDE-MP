@@ -30,9 +30,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="Main.jsp">Home</a>
               </li>
               <li>
-                  <form action="LogoutServlet" method="POST" >
-                <input type="submit" value="Logout">
-                  </form>
+                  <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>

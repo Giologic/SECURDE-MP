@@ -14,19 +14,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelz.AccountHandler;
-import modelz.CustomerAccount;
-import modelz.Product;
 import modelz.ProductSales;
-import modelz.ShoppingCart;
 import modelz.TransactionHandler;
 
 /**
  *
  * @author William
  */
-@WebServlet(name = "CheckoutCartServlet", urlPatterns = {"/CheckoutCartServlet"})
-public class CheckoutCartServlet extends HttpServlet {
+@WebServlet(name = "FilterSalesServlet", urlPatterns = {"/FilterSalesServlet"})
+public class FilterSalesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,45 +36,40 @@ public class CheckoutCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("In CheckoutServlet");
         HttpSession session = request.getSession();
-        String creditCardNumber = request.getParameter("cardNum");
-        String ownerName = request.getParameter("ownerName");
-        CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
-        String securityCode = request.getParameter("securityCode");
-        double total = (double) session.getAttribute("total");
-        ProductSales salesProduct;
-        AccountHandler handler = new AccountHandler();
+        String filter = request.getParameter("salesFilter");
         TransactionHandler tHandler = new TransactionHandler();
-        if(tHandler.checkCreditCard(creditCardNumber, securityCode, ownerName) && tHandler.checkBalance(total, ownerName, creditCardNumber, securityCode)){
-            double balance = tHandler.getBalance(creditCardNumber, securityCode, ownerName);
-            if(balance != -1){
-                double newBalance = balance - total;
-            
-                System.out.println("New Balance: " +newBalance);
-                tHandler.setNewBalance(newBalance, creditCardNumber, securityCode, ownerName);
-                ArrayList<Product> prodList = account.getShoppingCart().getProdList();
-                for(int i = 0; i < prodList.size(); i++){
-                    int quantity = prodList.get(i).getQuantity();
-                    double price = prodList.get(i).getPrice();
-                    double cartTotal = quantity * price;
-                    salesProduct = tHandler.getProductSale(prodList.get(i).getName());
-                    double salesTotal = salesProduct.getTotal();
-                    double newTotal = cartTotal + salesTotal;
-                    tHandler.setNewTotal(newTotal, prodList.get(i).getName());
-                    
-                }
-                handler.clearCart(account);
-                account.getShoppingCart().clearCart();
-                session.setAttribute("Account", account);
-                response.sendRedirect("ShoppingCart.jsp");
-            }else{
-                System.out.println("Error acquiring balance");
-                response.sendRedirect("Checkout.jsp");
-            }
-        }
-        else{
-            response.sendRedirect("Checkout.jsp");
+        if("filterTotal".equals(filter)){
+            double total = tHandler.filterAllSales();
+            request.setAttribute("filter action", filter);
+            request.setAttribute("Total Sales", total);
+            request.getRequestDispatcher("Transactions.jsp").forward(request, response);
+        }else if("filterBoots".equals(filter)){
+             ArrayList<ProductSales> sales = tHandler.filterCategorySales("Boots");
+            request.setAttribute("filter action", filter);
+            request.setAttribute("Total Sales Products", sales);
+            request.getRequestDispatcher("Transactions.jsp").forward(request, response);
+        }else if("filterShoes".equals(filter)){
+             ArrayList<ProductSales> sales = tHandler.filterCategorySales("Shoes");
+            request.setAttribute("filter action", filter);
+            request.setAttribute("Total Sales Products", sales);
+            request.getRequestDispatcher("Transactions.jsp").forward(request, response);
+         
+        }else if("filterSandals".equals(filter)){
+            ArrayList<ProductSales> sales = tHandler.filterCategorySales("Sandals");
+            request.setAttribute("filter action", filter);
+            request.setAttribute("Total Sales Products", sales);
+            request.getRequestDispatcher("Transactions.jsp").forward(request, response);
+        }else if("filterSlippers".equals(filter)){
+             ArrayList<ProductSales> sales = tHandler.filterCategorySales("Slippers");
+            request.setAttribute("filter action", filter);
+            request.setAttribute("Total Sales Products", sales);
+            request.getRequestDispatcher("Transactions.jsp").forward(request, response);
+        }else if("filterProduct".equals(filter)){
+            ArrayList<ProductSales> sales = tHandler.filterProductSales();
+            request.setAttribute("filter action", filter);
+            request.setAttribute("Total Sales Products", sales);
+            request.getRequestDispatcher("Transactions.jsp").forward(request, response);
         }
     }
 

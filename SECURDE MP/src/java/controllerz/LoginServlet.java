@@ -21,7 +21,9 @@ import modelz.CustomerAccount;
 import modelz.Product;
 import modelz.ProductHandler;
 import modelz.ProductManagerAccount;
+import modelz.ProductSales;
 import modelz.ShoppingCart;
+import modelz.TransactionHandler;
 
 /**
  *
@@ -80,9 +82,13 @@ public class LoginServlet extends HttpServlet {
             else if("accounting manager".equals(privilege)){
                 System.out.println("Accounting Manager Login");
                 AccountingManagerAccount accountingMan = handler.accountingManagerLogin(username, password);
+                TransactionHandler tHandler = new TransactionHandler();
+                ArrayList<ProductSales> sales = tHandler.filterProductSales();
+                request.setAttribute("filter action", "filterProduct");
+                request.setAttribute("Total Sales Products", sales);
                 if(accountingMan != null){
                     session.setAttribute("accountingManager", accountingMan);
-                    response.sendRedirect("Transaction.jsp");
+                    request.getRequestDispatcher("Transactions.jsp").forward(request, response);
                 }
             }
             else if("customer".equals(privilege)){

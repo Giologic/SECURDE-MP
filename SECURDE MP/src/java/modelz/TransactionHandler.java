@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -125,6 +126,154 @@ public class TransactionHandler {
             pstmt.setString(4, ownerName);
             pstmt.executeUpdate();
         }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public double getTotal(String category){
+        DBConnector connect = new DBConnector();
+        Connection conn = connect.getConnection();
+        PreparedStatement pstmt;
+        String sql = "SELECT total FROM sales WHERE category = ?";
+        double total;
+        ResultSet rs;
+        try{
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, category);
+           rs = pstmt.executeQuery();
+           if(rs.next()){
+               total = rs.getDouble("total");
+           }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+        
+    }
+    
+    public double filterAllSales(){
+        DBConnector connection = new DBConnector();
+        Connection conn = connection.getConnection();
+        PreparedStatement pstmt;
+        String sql = "SELECT SUM(total) AS \"total sales\" FROM sales";
+        double totalSales;
+        try{
+            pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                totalSales = rs.getDouble("total sales");
+                return totalSales;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public ArrayList<ProductSales> filterCategorySales(String category){
+        DBConnector connection = new DBConnector();
+        Connection conn = connection.getConnection();
+        PreparedStatement pstmt;
+        String sql = "SELECT * FROM sales WHERE category = ?";
+        ArrayList<ProductSales> products = new ArrayList();
+        double totalSales;
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, category);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                totalSales = rs.getDouble("total");
+                String prodName = rs.getString("product_name");
+                ProductSales product = new ProductSales(prodName, totalSales);
+                products.add(product);
+            }
+            return products;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ArrayList<ProductSales> filterProductSales(){
+        DBConnector connection = new DBConnector();
+        Connection conn = connection.getConnection();
+        PreparedStatement pstmt;
+        ArrayList<ProductSales> products = new ArrayList();
+        String sql = "SELECT * FROM sales";
+        double totalSales;
+        try{
+            pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                totalSales = rs.getDouble("total");
+                String prodName = rs.getString("product_name");
+                ProductSales product = new ProductSales(prodName, totalSales);
+                products.add(product);
+            }
+            return products;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public void addNewSale(Product prod){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement pstmt;
+        String sql = "SELECT * FROM sales WHERE product_name = ?";
+        //String sql = "INSERT INTO sales (product_name,category,total) VALUES (?,?,?)";
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, prod.getName());
+            ResultSet rs = pstmt.executeQuery();
+            if(!rs.next()){
+                sql = "INSERT INTO sales (product_name,category,total) VALUES (?,?,?)";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, prod.getName());
+                pstmt.setString(2, prod.getCategory());
+                pstmt.setDouble(3, 0);
+                pstmt.executeUpdate();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public ProductSales getProductSale(String prodName){
+        System.out.println("Product Name: " +prodName);
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement pstmt;
+        String sql = "SELECT * FROM sales WHERE product_name = ?";
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, prodName);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                ProductSales salesProduct = new ProductSales(rs.getString("product_name"), rs.getDouble("total"));
+                return salesProduct;
+            }else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+    
+    public void setNewTotal(double total, String prodName){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement pstmt;
+        String sql = "UPDATE sales SET total = ? WHERE product_name = ?";
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setDouble(1, total);
+            pstmt.setString(2, prodName);
+            pstmt.executeUpdate();
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
