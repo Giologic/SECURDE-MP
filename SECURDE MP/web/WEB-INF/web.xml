@@ -198,4 +198,15 @@
     <servlet-name>PreCheckoutServlet</servlet-name>
     <url-pattern>/PreCheckout</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+    <description>RegisterServlet</description>
+    <display-name>RegisterServlet</display-name>
+    <servlet-name>RegisterServlet</servlet-name> <servlet-class>controllerz.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
 </web-app>

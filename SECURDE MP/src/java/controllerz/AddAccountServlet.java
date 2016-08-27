@@ -49,14 +49,16 @@ public class AddAccountServlet extends HttpServlet {
         //BCrypt.checkpw(inputPassword,hashedPassword); -> Checks if passwords match
         String generatedPassword = RandomPasswordGenerator.getRandomPassword();
         String hashedPassword = BCrypt.hashpw(generatedPassword, BCrypt.gensalt(12));
-        
+        System.out.println("gen pass: " +generatedPassword);
         String email = request.getParameter("email");
         String privilege = request.getParameter("privilege");
         AccountHandler handler = new AccountHandler();
         HttpSession session = request.getSession();
         if("product manager".equals(privilege)){
             //Creates CSV File for Account
+            
             CSVFileGenerator.writeCsvFile("PM_" + username + "_accountinfo.csv", username, generatedPassword);
+            System.out.println("In product manager");
             ProductManagerAccount pAccount = new ProductManagerAccount(username, hashedPassword, email, "product manager");
             handler.addProductManagerAccount(pAccount);
             handler.assignPrivilege(privilege, username);

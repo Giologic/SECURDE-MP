@@ -11,11 +11,12 @@ package security;
  */
 public class SampleDriver {
     public static void main(String[] args){
-        String username = "WilliamDionio";
-        String newPw = RandomPasswordGenerator.getRandomPassword();
+        String username = "zapdos";
+        String newPw = "instinct";
         System.out.println(newPw);
-        CSVFileGenerator.writeCsvFile(username + "_accountinfo.csv", username, newPw);
         String hashPW = BCrypt.hashpw(newPw, BCrypt.gensalt(12));
+        CSVFileGenerator.writeCsvFile(username + "_accountinfo.csv", username, hashPW);
+        
         System.out.println(hashPW);
         
         System.out.println(BCrypt.checkpw(newPw, hashPW));

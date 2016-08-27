@@ -14,7 +14,7 @@
             <div class="jumbotron" style="margin-left: 6em; margin-right: 6em; background-color: transparent !important;">
               <h1 style="color:83eec5">Sign Up</h1>
               <hr>
-              <form class="form-horizontal" role="form" action="RegisterServlet" method="POST">
+              <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/Register" method="POST">
                 <div class="form-group">
                   <div class="col-sm-2">
                     <label for="inputEmail3" class="control-label" style="color:white">Username</label>
