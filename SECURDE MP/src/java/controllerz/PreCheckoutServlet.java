@@ -36,7 +36,7 @@ public class PreCheckoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
         double total = Double.parseDouble(request.getParameter("total").substring(1));
         session.setAttribute("total", total);
-        response.sendRedirect("Checkout.jsp");
+        request.getRequestDispatcher("Checkout.jsp").forward(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

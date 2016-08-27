@@ -18,6 +18,7 @@ import modelz.AccountHandler;
 import modelz.Address;
 import modelz.CustomerAccount;
 import modelz.ShoppingCart;
+import security.BCrypt;
 
 /**
  *
@@ -82,20 +83,21 @@ public class RegisterServlet extends HttpServlet {
        RegistrationChecker checker = new RegistrationChecker();
        AccountHandler handler = new AccountHandler();
        if(checker.isValid(username,email, password, confPassword, lastName, lastName, middleInitial, billingHouse, billingStreet, billingCity, billingCity, billingPostalCode, billingCountry, shippingHouse, shippingStreet, shippingCity, shippingCity, shippingPostalCode, shippingCountry)){
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(12));
         ShoppingCart cart = new ShoppingCart();
         Address billingAddress = new Address(billingHouse, billingStreet, billingSubdivision, billingCity, billingPostalCode, billingCountry);
         Address shippingAddress = new Address(shippingHouse, shippingStreet, shippingSubdivision, shippingCity, shippingPostalCode, shippingCountry);
-        CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, password, email, billingAddress, shippingAddress, cart);
+        CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, hashedPassword, email, billingAddress, shippingAddress, cart);
         handler.register(account, account.getBillingAddress() , account.getShippingAddress());
         handler.assignPrivilege(account.getPrivilege(), account.getUsername());
-        response.sendRedirect("Login.jsp");
+        request.getRequestDispatcher("Login.jsp").forward(request,response);
         
        }
        
        else{
            //error
            System.out.println("Invalid Inputs");
-           response.sendRedirect("Registration.jsp");
+           request.getRequestDispatcher("Registration.jsp").forward(request,response);
        }
     }
 

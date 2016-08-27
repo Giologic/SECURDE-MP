@@ -69,6 +69,7 @@ public class AccountHandler {
         Connection conn = connector.getConnection();
         String sql = "SELECT * FROM productmanager_account";
         PreparedStatement pstmt;
+        
         try{
             pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();

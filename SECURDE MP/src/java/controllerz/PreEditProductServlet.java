@@ -40,7 +40,7 @@ public class PreEditProductServlet extends HttpServlet {
         ProductHandler pHandler = new ProductHandler();
         Product product = pHandler.getSpecificProduct(productName);
         session.setAttribute("editProduct", product);
-        response.sendRedirect("ProductManagerEditProduct.jsp");
+        request.getRequestDispatcher("ProductManagerEditProduct.jsp").forward(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

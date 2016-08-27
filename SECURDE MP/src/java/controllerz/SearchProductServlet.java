@@ -41,7 +41,7 @@ public class SearchProductServlet extends HttpServlet {
         ProductHandler pHandler = new ProductHandler();
         ArrayList<Product> products = pHandler.searchProducts(search);
         session.setAttribute("Products", products);
-        response.sendRedirect("Main.jsp");
+        request.getRequestDispatcher("Main.jsp").forward(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

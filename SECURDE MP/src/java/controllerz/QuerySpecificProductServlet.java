@@ -41,7 +41,7 @@ public class QuerySpecificProductServlet extends HttpServlet {
         HttpSession session = request.getSession();
         System.out.println(product.getName());
         session.setAttribute("Product", product);
-        response.sendRedirect("Item.jsp");
+        request.getRequestDispatcher("Item.jsp").forward(request,response);
         
     }
 
