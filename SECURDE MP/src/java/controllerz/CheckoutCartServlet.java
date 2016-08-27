@@ -71,10 +71,10 @@ public class CheckoutCartServlet extends HttpServlet {
                 handler.clearCart(account);
                 account.getShoppingCart().clearCart();
                 session.setAttribute("Account", account);
-                response.sendRedirect("ShoppingCart.jsp");
+                request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
             }else{
                 System.out.println("Error acquiring balance");
-                response.sendRedirect("Checkout.jsp");
+                request.getRequestDispatcher("Checkout.jsp").forward(request, response);
             }
         }
         else{

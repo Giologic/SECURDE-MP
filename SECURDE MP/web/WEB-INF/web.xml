@@ -86,6 +86,116 @@
 
     <servlet-mapping>
     <servlet-name>QuerySpecificProductServlet</servlet-name>
-    <url-pattern>/QuerySpecificProductServlet</url-pattern>
+    <url-pattern>/QuerySpecificProduct</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>AddAcountServlet</description>
+    <display-name>AddAccountServlet</display-name>
+    <servlet-name>AddAccountServlet</servlet-name> <servlet-class>controllerz.AddAccountServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>AddAccountServlet</servlet-name>
+    <url-pattern>/AddAccount</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>AddProductServlet</description>
+    <display-name>AddProductServlet</display-name>
+    <servlet-name>AddProductServlet</servlet-name> <servlet-class>controllerz.AddProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>AddProductServlet</servlet-name>
+    <url-pattern>/AddProduct</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>AddToCartServlet</description>
+    <display-name>AddToCartServlet</display-name>
+    <servlet-name>AddToCartServlet</servlet-name> <servlet-class>controllerz.AddToCartServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <url-pattern>/AddToCart</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>CheckoutCartServlet</description>
+    <display-name>CheckoutCartServlet</display-name>
+    <servlet-name>CheckoutCartServlet</servlet-name> <servlet-class>controllerz.CheckoutCartServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>CheckoutCartServlet</servlet-name>
+    <url-pattern>/CheckoutCart</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>EditProductServlet</description>
+    <display-name>EditProductServlet</display-name>
+    <servlet-name>EditProductServlet</servlet-name> <servlet-class>controllerz.EditProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>EditProductServlet</servlet-name>
+    <url-pattern>/EditProduct</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>FilterBootsServlet</description>
+    <display-name>FilterBootsServlet</display-name>
+    <servlet-name>FilterBootsServlet</servlet-name> <servlet-class>controllerz.FilterBootsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>FilterBootsServlet</servlet-name>
+    <url-pattern>/FilterBoots</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>FilterShoesServlet</description>
+    <display-name>FilterShoesServlet</display-name>
+    <servlet-name>FilterShoesServlet</servlet-name> <servlet-class>controllerz.FilterShoesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>FilterShoesServlet</servlet-name>
+    <url-pattern>/FilterShoes</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>FilterSandalsServlet</description>
+    <display-name>FilterSandalsServlet</display-name>
+    <servlet-name>FilterSandalsServlet</servlet-name> <servlet-class>controllerz.FilterSandalsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>FilterSandalsServlet</servlet-name>
+    <url-pattern>/FilterSandals</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>FilterSlippersServlet</description>
+    <display-name>FilterSlippersServlet</display-name>
+    <servlet-name>FilterSlippersServlet</servlet-name> <servlet-class>controllerz.FilterSlippersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>FilterSlippersServlet</servlet-name>
+    <url-pattern>/FilterSlippers</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>PreCheckoutServlet</description>
+    <display-name>PreCheckoutServlet</display-name>
+    <servlet-name>PreCheckoutServlet</servlet-name> <servlet-class>controllerz.PreCheckoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>PreCheckoutServlet</servlet-name>
+    <url-pattern>/PreCheckout</url-pattern>
     </servlet-mapping>
 </web-app>

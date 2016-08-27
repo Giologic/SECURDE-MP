@@ -54,7 +54,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
             <div class="jumbotron" style="opacity:0.9; border-radius:0.8">
               <h1 style="color:184a4a">Add Account</h1>
               <hr>
-              <form class="form-horizontal" role="form" action="AddAccountServlet" method="POST">
+              <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/AddAccount" method="POST">
                 <div class="form-group">
                   <div class="col-sm-2">
                     <label for="inputEmail3" class="control-label">Username</label>

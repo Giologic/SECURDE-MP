@@ -29,7 +29,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                         %>
                       <img src="<%=image%>" class="center-block img-responsive sub-size-control">
                     </div>
-                    <form class="form-horizontal" role="form" action="AddToCartServlet" method="POST">
+                    <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/AddToCart" method="POST">
                         
                         
                         

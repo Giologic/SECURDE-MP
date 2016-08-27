@@ -41,7 +41,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
     </div>
     <div class="section" style="margin-top: 7em;">
       <div class="container">
-        <form action="PreCheckoutServlet" method="POST">
+        <form action="${pageContext.request.contextPath}/PreCheckout" method="POST">
           <div class="jumbotron">
             <h1 class="text-success">Shopping Cart</h1>
             <a href="#"></a>

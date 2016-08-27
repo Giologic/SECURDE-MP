@@ -51,7 +51,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                         <div class="jumbotron">
                           <h1 style="color:184a4a">Checkout</h1>
                           <hr>
-                          <form class="form-horizontal" role="form" action="CheckoutCartServlet" method="POST">
+                          <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/CheckoutCart" method="POST">
                             <hr>
                             <div class="section">
                               <div class="container">

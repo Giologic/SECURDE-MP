@@ -41,7 +41,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
             <div class="jumbotron" style="opacity:0.9; border-radius:0.8">
               <h1 style="color:184a4a">Edit Product</h1>
               <hr>
-              <form action="EditProductServlet" method="POST" class="form-horizontal" role="form">
+              <form action="${pageContext.request.contextPath}/EditProduct" method="POST" class="form-horizontal" role="form">
                   <%
                       Product product = (Product) session.getAttribute("editProduct");
                       String description = product.getDescription();
