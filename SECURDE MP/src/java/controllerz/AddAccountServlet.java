@@ -17,6 +17,9 @@ import javax.servlet.http.HttpSession;
 import modelz.AccountHandler;
 import modelz.AccountingManagerAccount;
 import modelz.ProductManagerAccount;
+import security.BCrypt;
+import security.CSVFileGenerator;
+import security.RandomPasswordGenerator;
 
 /**
  *
@@ -38,18 +41,30 @@ public class AddAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+//        String password = request.getParameter("password");
+        //RandomPasswordGenerator creates a randomly generated password
+        //BCrypt is a password hasher
+        //BCrypt.hashpw(password,BCrypt.gensalt(<n>); -> Encrypts the password and hashes n times
+        //For our project we hash 12 times
+        //BCrypt.checkpw(inputPassword,hashedPassword); -> Checks if passwords match
+        String generatedPassword = RandomPasswordGenerator.getRandomPassword();
+        String hashedPassword = BCrypt.hashpw(generatedPassword, BCrypt.gensalt(12));
+        
         String email = request.getParameter("email");
         String privilege = request.getParameter("privilege");
         AccountHandler handler = new AccountHandler();
         HttpSession session = request.getSession();
         if("product manager".equals(privilege)){
-            ProductManagerAccount pAccount = new ProductManagerAccount(username, password, email, "product manager");
+            //Creates CSV File for Account
+            CSVFileGenerator.writeCsvFile("PM_" + username + "_accountinfo.csv", username, generatedPassword);
+            ProductManagerAccount pAccount = new ProductManagerAccount(username, hashedPassword, email, "product manager");
             handler.addProductManagerAccount(pAccount);
             handler.assignPrivilege(privilege, username);
         }
         else if("accounting manager".equals(privilege)){
-            AccountingManagerAccount aAccount = new AccountingManagerAccount(username, password, email, "accounting manager");
+            //Creates CSV File for Account
+            CSVFileGenerator.writeCsvFile("AM_" + username + "_accountinfo.csv", username, generatedPassword);
+            AccountingManagerAccount aAccount = new AccountingManagerAccount(username, hashedPassword, email, "accounting manager");
             handler.addAccountingManagerAccount(aAccount);
             handler.assignPrivilege(privilege, username);
         }
