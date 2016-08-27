@@ -37,7 +37,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="#">Home</a>
               </li>
               <li>
-                <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
+                <a href="<%=request.getContextPath()%>/Logout">Logout</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -56,7 +56,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                     <div class="row">
                       <div class="col-md-4">
                         <div class="jumbotron">
-                          <form class="form-horizontal" role="form" action="FilterSalesServlet" method="POST">
+                          <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/FilterSales" method="POST">
                             <div class="form-group">
                               <div class="col-sm-12 text-left">
                                 <div class="btn-group btn-group-lg">

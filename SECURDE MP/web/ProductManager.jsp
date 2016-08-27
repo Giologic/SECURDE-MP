@@ -29,7 +29,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                 <a href="#">Home</a>
               </li>
               <li>
-                <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
+                <a href="<%=request.getContextPath()%>/Logout">Logout</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-2x fa-fw fa-drupal"></i></a>
@@ -140,11 +140,11 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                                 <td><%=category%></td>
                                 <td><%=price%></td>
                                 <td>
-                                  <a href="<%=request.getContextPath()%>/PreEditProductServlet?editProduct=<%=productName%>"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
+                                  <a href="<%=request.getContextPath()%>/PreEditProduct?editProduct=<%=productName%>"><i class="fa fa-2x fa-edit fa-fw text-muted"></i></a>
                           
                                 </td>
                                 <td>
-                                    <a class="fa fa-2x fa-fw text-muted fa-trash" href="<%=request.getContextPath()%>/DeleteProductServlet?deleteProduct=<%=productName%>"></a>  
+                                    <a class="fa fa-2x fa-fw text-muted fa-trash" href="<%=request.getContextPath()%>/DeleteProduct?deleteProduct=<%=productName%>"></a>  
                                 </td>
                               </tr>
                                <% }

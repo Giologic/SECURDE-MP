@@ -18,7 +18,7 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <form role="form" action="LoginServlet" method="POST">
+                <form role="form" action="${pageContext.request.contextPath}/anona" method="POST">
                   <div class="form-group">
                     <label class="control-label" for="exampleInputEmail1" style="color:white">Username</label>
                     <input class="form-control" id="exampleInputEmail1" placeholder="Username" type="text" name="username">

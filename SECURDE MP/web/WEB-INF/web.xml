@@ -22,7 +22,7 @@
 
     <servlet-mapping>
     <servlet-name>PreEditProductServlet</servlet-name>
-    <url-pattern>/PreEditProductServlet</url-pattern>
+    <url-pattern>/PreEditProduct</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -33,7 +33,7 @@
 
     <servlet-mapping>
     <servlet-name>DeleteProductServlet</servlet-name>
-    <url-pattern>/DeleteProductServlet</url-pattern>
+    <url-pattern>/DeleteProduct</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -55,7 +55,7 @@
 
     <servlet-mapping>
     <servlet-name>FilterSalesServlet</servlet-name>
-    <url-pattern>/FilterSalesServlet</url-pattern>
+    <url-pattern>/FilterSales</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -65,7 +65,17 @@
     </servlet>
     <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
-    <url-pattern>/anoto</url-pattern>
+    <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+    <description>LoginServlet</description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name> <servlet-class>controllerz.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/anona</url-pattern>
     </servlet-mapping>
     
     <servlet>
