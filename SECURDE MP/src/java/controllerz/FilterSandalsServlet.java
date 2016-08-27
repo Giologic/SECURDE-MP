@@ -40,7 +40,7 @@ public class FilterSandalsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ArrayList<Product> products = pHandler.filterSandals();
         session.setAttribute("Products", products);
-        response.sendRedirect("Main.jsp");
+         request.getRequestDispatcher("Main.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -40,7 +40,7 @@ public class FilterShoesServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ArrayList<Product> products = pHandler.filterShoes();
         session.setAttribute("Products", products);
-        response.sendRedirect("Main.jsp");
+         request.getRequestDispatcher("Main.jsp").forward(request, response);
         
     }
 

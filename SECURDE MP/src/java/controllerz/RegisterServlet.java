@@ -88,14 +88,14 @@ public class RegisterServlet extends HttpServlet {
         CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, password, email, billingAddress, shippingAddress, cart);
         handler.register(account, account.getBillingAddress() , account.getShippingAddress());
         handler.assignPrivilege(account.getPrivilege(), account.getUsername());
-        response.sendRedirect("Login.jsp");
+        request.getRequestDispatcher("Login.jsp").forward(request,response);
         
        }
        
        else{
            //error
            System.out.println("Invalid Inputs");
-           response.sendRedirect("Registration.jsp");
+           request.getRequestDispatcher("Registration.jsp").forward(request,response);
        }
     }
 

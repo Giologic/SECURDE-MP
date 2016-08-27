@@ -53,7 +53,7 @@ public class AddToCartServlet extends HttpServlet {
         ShoppingCart cart = handler.getShoppingCart(account);
         account.setShoppingCart(cart);
         session.setAttribute("Account", account);
-        response.sendRedirect("ShoppingCart.jsp");
+         request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

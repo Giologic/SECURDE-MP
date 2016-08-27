@@ -58,7 +58,7 @@ public class AddAccountServlet extends HttpServlet {
         session.setAttribute("productManagers", pAccounts);
         session.setAttribute("accountingManagers", aAccounts);
         
-        response.sendRedirect("Administrator.jsp");
+         request.getRequestDispatcher("Administrator.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

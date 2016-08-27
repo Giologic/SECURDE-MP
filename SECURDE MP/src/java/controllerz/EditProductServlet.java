@@ -44,7 +44,7 @@ public class EditProductServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Product editProduct = (Product) session.getAttribute("editProduct");
         pHandler.editProduct(prod,editProduct.getId());
-        response.sendRedirect("ProductManager.jsp");
+        request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

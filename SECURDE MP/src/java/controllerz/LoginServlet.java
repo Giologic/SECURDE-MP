@@ -60,12 +60,12 @@ public class LoginServlet extends HttpServlet {
                     ArrayList<AccountingManagerAccount> accountingManagers = handler.getAllAccountingManagerAccounts();
                     session.setAttribute("productManagers", productManagers);
                     session.setAttribute("accountingManagers", accountingManagers);
-                    response.sendRedirect("Administrator.jsp");
+                     request.getRequestDispatcher("Administrator.jsp").forward(request, response);
                 }
                 else{
                     String errorMessage = "Invalid Username/Password";
                     request.setAttribute("loginError", errorMessage);
-                    response.sendRedirect("Login.jsp");
+                     request.getRequestDispatcher("Login.jsp").forward(request, response);
                 }
                 
             }
@@ -76,7 +76,7 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("productManager", productMan);
                     ArrayList<Product> products = pHandler.displayProducts();
                     session.setAttribute("Products", products);
-                    response.sendRedirect("ProductManager.jsp");
+                     request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
                 }
             }
             else if("accounting manager".equals(privilege)){
@@ -101,19 +101,19 @@ public class LoginServlet extends HttpServlet {
                     ArrayList<Product> products = pHandler.displayProducts();
                     session.setAttribute("Products", products);
                     session.setAttribute("Account", account);
-                    response.sendRedirect("Main.jsp");
+                     request.getRequestDispatcher("Main.jsp").forward(request, response);
                 }
                 else{
                     String errorMessage = "Invalid Username/Password";
                     request.setAttribute("loginError", errorMessage);
-                    response.sendRedirect("Login.jsp");
+                     request.getRequestDispatcher("Login.jsp").forward(request, response);
                 }
             }
         }
         else{
             String errorMessage = "Invalid Username/Password";
             request.setAttribute("loginError", errorMessage);
-            response.sendRedirect("Login.jsp");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
     }
 

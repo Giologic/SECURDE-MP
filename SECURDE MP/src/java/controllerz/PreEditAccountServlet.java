@@ -51,7 +51,8 @@ public class PreEditAccountServlet extends HttpServlet {
            AccountingManagerAccount aAccount = handler.getAccountingManagerAccount(username);
            session.setAttribute("editAccount", aAccount);
            session.setAttribute("editPrivilege", privilege);
-           response.sendRedirect("AdministratorEditAccount.jsp");
+           request.getRequestDispatcher("AdministratorEditAccount.jsp").forward(request,response);
+           
         }
         
     }
