@@ -15,7 +15,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelz.DBConnector;;
+import modelz.DBConnector;import security.BCrypt;
+;
 
 /**
  *
@@ -238,19 +239,21 @@ public class AccountHandler {
     	DBConnector connector = new DBConnector();
         AdministratorAccount loggedIn = null;
     	Connection conn = connector.getConnection();
-		String sql = "SELECT * FROM administrator_account WHERE username = ? AND password = ?";
+		String sql = "SELECT * FROM administrator_account WHERE username = ?"/* AND password = ?"*/;
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
-			pstmt.setString(2, password);
+//			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
+                            if(BCrypt.checkpw(password, rs.getString("password"))){
                                     loggedIn = new AdministratorAccount(rs.getString("username"), rs.getString("password")
                                     ,rs.getString("email"), "admin");
 				pstmt.close();
 				conn.close();
 				return loggedIn;
+                            }
 			}
 			else{
 				return null;
@@ -273,19 +276,21 @@ public class AccountHandler {
     	DBConnector connector = new DBConnector();
         ProductManagerAccount loggedIn = null;
     	Connection conn = connector.getConnection();
-		String sql = "SELECT * FROM productmanager_account WHERE username = ? AND password = ?";
+		String sql = "SELECT * FROM productmanager_account WHERE username = ?"/* AND password = ?*/;
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
-			pstmt.setString(2, password);
+//			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
+                            if(BCrypt.checkpw(password, rs.getString("password"))){
                                     loggedIn = new ProductManagerAccount(rs.getString("username"), rs.getString("password")
                                     ,rs.getString("email"), "product manager");
 				pstmt.close();
 				conn.close();
 				return loggedIn;
+                            }
 			}
 			else{
 				return null;
@@ -302,19 +307,21 @@ public class AccountHandler {
     	DBConnector connector = new DBConnector();
         AccountingManagerAccount loggedIn = null;
     	Connection conn = connector.getConnection();
-		String sql = "SELECT * FROM accountingmanager_account WHERE username = ? AND password = ?";
+		String sql = "SELECT * FROM accountingmanager_account WHERE username = ?"/* AND password = ?*/;
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
-			pstmt.setString(2, password);
+//			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
+                            if(BCrypt.checkpw(password,rs.getString("password"))){
                                     loggedIn = new AccountingManagerAccount(rs.getString("username"), rs.getString("password")
-                                    ,rs.getString("email"), "product manager");
+                                    ,rs.getString("email"), "accounting manager");
 				pstmt.close();
 				conn.close();
 				return loggedIn;
+                            }
 			}
 			else{
 				return null;
@@ -332,14 +339,15 @@ public class AccountHandler {
     	DBConnector connector = new DBConnector();
         CustomerAccount loggedIn = null;
     	Connection conn = connector.getConnection();
-		String sql = "SELECT * FROM customer_account WHERE username = ? AND password = ?";
+		String sql = "SELECT * FROM customer_account WHERE username = ?"/* AND password = ?*/;
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
-			pstmt.setString(2, password);
+//			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
+                            if(BCrypt.checkpw(password, rs.getString("password"))){
                             Address billing = new Address(rs.getString("billing_house_no"),
                                     rs.getString("billing_street"),
                                     rs.getString("billing_subdivision"),
@@ -381,6 +389,7 @@ public class AccountHandler {
 //				loggedIn.setBillingAddress(billAdd);
 //				loggedIn.setShippingAddress(shipAdd);
 				return loggedIn;
+                            }
 			}
 			else{
 				return null;
