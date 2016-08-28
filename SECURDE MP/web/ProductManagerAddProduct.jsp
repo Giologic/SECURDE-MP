@@ -1,4 +1,13 @@
 <html><head>
+        <%
+            String privilege = (String) session.getAttribute("privilege");
+            if(!"product manager".equals(privilege)){
+                System.out.println("Forbidden Access");
+                response.sendRedirect("Login.jsp");
+                
+            }
+            else{
+        %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -96,5 +105,5 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
       </div>
     </div>
   
-
+<%}%>
 </body></html>
