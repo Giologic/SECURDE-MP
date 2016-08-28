@@ -241,7 +241,7 @@ public class TransactionHandler {
     }
     
     public ProductSales getProductSale(String prodName){
-        System.out.println("Product Name: " +prodName);
+        
         DBConnector connector = new DBConnector();
         Connection conn = connector.getConnection();
         PreparedStatement pstmt;

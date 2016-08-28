@@ -20,6 +20,7 @@ import modelz.Product;
 import modelz.ProductSales;
 import modelz.ShoppingCart;
 import modelz.TransactionHandler;
+import security.AuditLogger;
 
 /**
  *
@@ -45,6 +46,9 @@ public class CheckoutCartServlet extends HttpServlet {
         String creditCardNumber = request.getParameter("cardNum");
         String ownerName = request.getParameter("ownerName");
         CustomerAccount account = (CustomerAccount) session.getAttribute("Account");
+        AuditLogger logger = new AuditLogger();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
         String securityCode = request.getParameter("securityCode");
         double total = (double) session.getAttribute("total");
         ProductSales salesProduct;
@@ -58,6 +62,7 @@ public class CheckoutCartServlet extends HttpServlet {
                 System.out.println("New Balance: " +newBalance);
                 tHandler.setNewBalance(newBalance, creditCardNumber, securityCode, ownerName);
                 ArrayList<Product> prodList = account.getShoppingCart().getProdList();
+                System.out.println("Prodlist size: " +prodList.size());
                 for(int i = 0; i < prodList.size(); i++){
                     int quantity = prodList.get(i).getQuantity();
                     double price = prodList.get(i).getPrice();
@@ -66,19 +71,24 @@ public class CheckoutCartServlet extends HttpServlet {
                     double salesTotal = salesProduct.getTotal();
                     double newTotal = cartTotal + salesTotal;
                     tHandler.setNewTotal(newTotal, prodList.get(i).getName());
-                    
+                    String prodName = prodList.get(i).getName();
+                    System.out.println("prod name: "+prodName);
+                    logger.logEvent("Checkout Cart", username , privilege, "Successfully purchased item: " +prodName +" of quantity: " +quantity);
                 }
+                logger.logEvent("Checkout Cart", username , privilege, "Checkout total of " +total +" successful");
                 handler.clearCart(account);
                 account.getShoppingCart().clearCart();
                 session.setAttribute("Account", account);
                 request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
             }else{
                 System.out.println("Error acquiring balance");
+                logger.logEvent("Checkout Cart", username , privilege, "Unable to checkout due to insufficient funds");
                 request.getRequestDispatcher("Checkout.jsp").forward(request, response);
             }
         }
         else{
-            response.sendRedirect("Checkout.jsp");
+            logger.logEvent("Checkout Cart", username , privilege, "Unable to checkout due to wrong credit info");
+            request.getRequestDispatcher("Checkout.jsp").forward(request, response);
         }
     }
 

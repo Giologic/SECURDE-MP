@@ -18,6 +18,7 @@ import modelz.CustomerAccount;
 import modelz.Product;
 import modelz.ProductHandler;
 import modelz.ShoppingCart;
+import security.AuditLogger;
 
 
 /**
@@ -53,7 +54,11 @@ public class AddToCartServlet extends HttpServlet {
         ShoppingCart cart = handler.getShoppingCart(account);
         account.setShoppingCart(cart);
         session.setAttribute("Account", account);
-         request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+        AuditLogger logger = new AuditLogger();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
+        logger.logEvent("Shopping Cart", username , privilege, "Added item " +prod.getName()+" to shopping cart");
+        request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelz.Product;
 import modelz.ProductHandler;
+import security.AuditLogger;
 
 /**
  *
@@ -38,7 +39,11 @@ public class QuerySpecificProductServlet extends HttpServlet {
         String productName = request.getParameter("productName");
         ProductHandler handler = new ProductHandler();
         Product product = handler.getSpecificProduct(productName);
+        AuditLogger logger = new AuditLogger();
         HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
+        logger.logEvent("Main", username , privilege, "View product: " +product.getName());
         System.out.println(product.getName());
         session.setAttribute("Product", product);
         request.getRequestDispatcher("Item.jsp").forward(request,response);

@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import security.AuditLogger;
 
 /**
  *
@@ -33,6 +35,11 @@ public class LogoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        AuditLogger logger = new AuditLogger();
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
+        logger.logEvent("Logout", username , privilege, "Logout successful");
         System.out.println("Logging out");
         request.getSession().invalidate();
         request.getRequestDispatcher("Login.jsp").forward(request, response);

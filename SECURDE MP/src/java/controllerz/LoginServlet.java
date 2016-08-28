@@ -24,6 +24,7 @@ import modelz.ProductManagerAccount;
 import modelz.ProductSales;
 import modelz.ShoppingCart;
 import modelz.TransactionHandler;
+import security.AuditLogger;
 
 /**
  *
@@ -49,8 +50,11 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String privilege = handler.getPrivilege(username);
+        AuditLogger auditLogger = new AuditLogger();
         HttpSession session = request.getSession();
         if(!"".equals(privilege)){
+            session.setAttribute("privilege", privilege);
+            session.setAttribute("username", username);
             if("admin".equals(privilege)){
                 System.out.println("Admin Login");
                 AdministratorAccount admin = handler.adminLogin(username, password);
@@ -60,11 +64,13 @@ public class LoginServlet extends HttpServlet {
                     ArrayList<AccountingManagerAccount> accountingManagers = handler.getAllAccountingManagerAccounts();
                     session.setAttribute("productManagers", productManagers);
                     session.setAttribute("accountingManagers", accountingManagers);
+                    auditLogger.logEvent("Login", username, privilege, "logging in admin account success");
                      request.getRequestDispatcher("Administrator.jsp").forward(request, response);
                 }
                 else{
                     String errorMessage = "Invalid Username/Password";
                     request.setAttribute("loginError", errorMessage);
+                    auditLogger.logEvent("Login", username, privilege, "logging in admin account fail");
                      request.getRequestDispatcher("Login.jsp").forward(request, response);
                 }
                 
@@ -76,6 +82,7 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("productManager", productMan);
                     ArrayList<Product> products = pHandler.displayProducts();
                     session.setAttribute("Products", products);
+                    auditLogger.logEvent("Login", username, privilege, "logging in product manager account success");
                      request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
                 }
             }
@@ -88,6 +95,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("Total Sales Products", sales);
                 if(accountingMan != null){
                     session.setAttribute("accountingManager", accountingMan);
+                     auditLogger.logEvent("Login", username, privilege, "logging in accounting manager success");
                     request.getRequestDispatcher("Transactions.jsp").forward(request, response);
                 }
             }
@@ -101,18 +109,21 @@ public class LoginServlet extends HttpServlet {
                     ArrayList<Product> products = pHandler.displayProducts();
                     session.setAttribute("Products", products);
                     session.setAttribute("Account", account);
+                     auditLogger.logEvent("Login", username, privilege, "logging in customer account success");
                      request.getRequestDispatcher("Main.jsp").forward(request, response);
                 }
                 else{
                     String errorMessage = "Invalid Username/Password";
                     request.setAttribute("loginError", errorMessage);
+                     auditLogger.logEvent("Login", username, privilege, "login fail");
                      request.getRequestDispatcher("Login.jsp").forward(request, response);
-                }
+                } 
             }
         }
         else{
             String errorMessage = "Invalid Username/Password";
             request.setAttribute("loginError", errorMessage);
+            auditLogger.logEvent("Login", username, "Anonymous user", "log in attempt fail");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
     }

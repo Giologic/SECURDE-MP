@@ -11,8 +11,8 @@ package security;
  */
 public class SampleDriver {
     public static void main(String[] args){
-        String username = "zapdos";
-        String newPw = "instinct";
+        String username = "Nica";
+        String newPw = "ilovepaolo69";
         System.out.println(newPw);
         String hashPW = BCrypt.hashpw(newPw, BCrypt.gensalt(12));
         CSVFileGenerator.writeCsvFile(username + "_accountinfo.csv", username, hashPW);
