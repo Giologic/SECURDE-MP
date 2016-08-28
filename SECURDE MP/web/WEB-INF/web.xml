@@ -8,6 +8,17 @@
         <session-timeout>
             30
         </session-timeout>
+        <tracking-mode>
+            COOKIE
+        </tracking-mode>
+        <cookie-config> 
+            <http-only>
+                true
+            </http-only> 
+            <secure>
+                true
+            </secure> 
+        </cookie-config>
     </session-config>
     
     <welcome-file-list>

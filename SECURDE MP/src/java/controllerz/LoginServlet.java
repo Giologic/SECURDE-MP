@@ -123,7 +123,12 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+                Cookie cookie = new Cookie(COOKIE_NAME, cookieValue); 
+                cookie.setSecure(true); 
+                cookie.setHttpOnly(true);
+                cookie.setMaxAge(30*60*1000);
+                response.addCookie(cookie);
+                processRequest(request, response);
     }
 
     /**
