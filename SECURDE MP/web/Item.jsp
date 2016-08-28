@@ -10,7 +10,7 @@
 background: -webkit-linear-gradient(to left, #83eec5 , #399494); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">&gt;
     <div class="section">
-      <div class="section size-control" id="display-specific-item" style="background-color:white; opacity:0.8">
+      <div class="section size-control" id="display-specific-item">
         <div class="container size-control-2">
           <div class="row">
             <div class="col-md-12">
@@ -34,17 +34,23 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                         
                         
                       <div class="col-md-6 sub-size-control text-left">
-                          <h1 class="custom-font-color"><input type="text" name="productName" value="<%=name%>" readonly></h1>
+                          <h1 class="custom-font-color"><%=name%></h1>
+                          <%
+                              request.setAttribute("productName", name);
+                          %>
                         <p class="custom-font-color"><%=desc%></p>
                         <div class="row">
                           <div class="col-md-2 text-left">
                             <input class="btn btn-success" type="submit" value="Purchase" style="background-color:317373;  color:white;  border-color:transparent;">
                           </div>
                           <div class="col-md-3 text-left">
-                            <input type="integer" value="1" width="1em" class="form-control" name="quantity">
+                            <input value="1" width="1em" class="form-control" name="quantity">
                           </div>
                           <div class="col-md-7">
-                            <input type="text" style="font-size:36px; color:white;" contenteditable="true" class="text-right" name="price" value="<%=price%>"></p>
+                              <p style="font-size:36px; color:white;" contenteditable="true" class="text-right" ><%=price%></p>
+                              <%
+                                  request.setAttribute("price", price);
+                              %>
                           </div>
                         </div>
                       </div>

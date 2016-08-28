@@ -14,6 +14,10 @@ public abstract class ExpirableAccount extends Account{
         this.isExpired = isExpired;
         this.timestamp = timestamp;
     }
+    
+    public ExpirableAccount(String username, String password, String email, String privilege){
+        super(username, password, email, privilege);
+    }
 
     public boolean isExpired(){
         return isExpired;
