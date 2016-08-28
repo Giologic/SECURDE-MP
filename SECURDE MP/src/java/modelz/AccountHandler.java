@@ -24,6 +24,12 @@ import modelz.DBConnector;import security.BCrypt;
  */
 public class AccountHandler {
     
+    
+    
+    public void changePassword(){
+        
+    }
+    
     public void register(Account acc, Address billAdd, Address shipAdd){
     	 try{   
                  System.out.println(billAdd.getCity());
