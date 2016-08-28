@@ -4,22 +4,8 @@
 	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	 version="3.1">
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-        <tracking-mode>
-            COOKIE
-        </tracking-mode>
-        <cookie-config> 
-            <http-only>
-                true
-            </http-only> 
-            <secure>
-                true
-            </secure> 
-        </cookie-config>
-    </session-config>
+   
+    
     <error-page>
         <error-code>404</error-code>
         <location>/ErrorPage.jsp</location>
@@ -222,5 +208,16 @@
     <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <description>AddReviewServlet</description>
+    <display-name>AddReviewServlet</display-name>
+    <servlet-name>AddReviewServlet</servlet-name> <servlet-class>controllerz.AddReviewServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>AddReviewServlet</servlet-name>
+    <url-pattern>/AddReview</url-pattern>
     </servlet-mapping>
 </web-app>

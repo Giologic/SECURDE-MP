@@ -68,6 +68,7 @@ public class CheckoutCartServlet extends HttpServlet {
                     double price = prodList.get(i).getPrice();
                     double cartTotal = quantity * price;
                     salesProduct = tHandler.getProductSale(prodList.get(i).getName());
+                    tHandler.addPurchase(account, prodList.get(i));
                     double salesTotal = salesProduct.getTotal();
                     double newTotal = cartTotal + salesTotal;
                     tHandler.setNewTotal(newTotal, prodList.get(i).getName());

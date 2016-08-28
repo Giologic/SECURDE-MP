@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,6 +53,11 @@ public class LoginServlet extends HttpServlet {
         String privilege = handler.getPrivilege(username);
         AuditLogger auditLogger = new AuditLogger();
         HttpSession session = request.getSession();
+//        Cookie cookie = new Cookie("username", request.getParameter("username"));
+//        cookie.setSecure(true);
+//        cookie.setHttpOnly(true);
+//        cookie.setMaxAge(30*60*1000);
+//        response.addCookie(cookie);
         if(!"".equals(privilege)){
             session.setAttribute("privilege", privilege);
             session.setAttribute("username", username);
@@ -140,11 +146,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                Cookie cookie = new Cookie(COOKIE_NAME, cookieValue); 
-                cookie.setSecure(true); 
-                cookie.setHttpOnly(true);
-                cookie.setMaxAge(30*60*1000);
-                response.addCookie(cookie);
                 processRequest(request, response);
     }
 

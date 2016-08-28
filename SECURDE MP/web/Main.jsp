@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelz.Product"%>
 <html><head>
-        <%
+      <%
             String privilege = (String) session.getAttribute("privilege");
             if(!"customer".equals(privilege)){
                 System.out.println("Forbidden Access");
@@ -60,10 +60,10 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                   <div class="row">
                     <div class="col-md-2">
                       <ul class="list-group" style="margin-top:3.5em">
-                        <form action="${pageContext.request.contextPath}/FilterBoots" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Boots</button></form>
-                        <form action="${pageContext.request.contextPath}/FilterShoes" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Shoes</button></form>
-                        <form action="${pageContext.request.contextPath}/FilterSandals" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Sandals</button></form>
-                        <form action="${pageContext.request.contextPath}/FilterSlippers" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Slippers</button></form>
+                        <form action="FilterBoots" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Boots</button></form>
+                        <form action="FilterShoes" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Shoes</button></form>
+                        <form action="FilterSandals" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Sandals</button></form>
+                        <form action="FilterSlippers" method="GET"><button class="list-group-item filter_result" type="submit" style="width:100%">Slippers</button></form>
                       </ul>
                     </div>
                     <div class="col-md-10">
@@ -89,9 +89,9 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                             <div id="card" style="height:145px; width:195px;">
                               <img src="<%=image%>" class="img-responsive img-rounded" style="width:inherit; height:inherit">
                             </div>
-                            <h2><%=productName%></h2>
-                            <p><%=description%></p>
-                            <p><%=price%></p>
+                            <h2 style="max-width:195px; word-wrap:break-text;"><%=productName%></h2>
+                            <p style="max-width:195px; word-wrap:break-text;"><%=description%></p>
+                            <p style="max-width:195px; word-wrap:break-text;"><%=price%></p>
                             <a href="<%=request.getContextPath()%>/QuerySpecificProduct?productName=<%=productName%>" class="btn btn-success" style="background-color:317373;  color:white;  border-color:transparent;">View</a>    
                             </form>     
 

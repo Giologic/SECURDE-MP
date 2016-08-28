@@ -7,6 +7,7 @@ package controllerz;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelz.Product;
 import modelz.ProductHandler;
+import modelz.Review;
 import security.AuditLogger;
 
 /**
@@ -41,11 +43,13 @@ public class QuerySpecificProductServlet extends HttpServlet {
         Product product = handler.getSpecificProduct(productName);
         AuditLogger logger = new AuditLogger();
         HttpSession session = request.getSession();
+        ArrayList<Review> reviews = handler.getReviews(product);
         String username = (String) session.getAttribute("username");
         String privilege = (String) session.getAttribute("privilege");
         logger.logEvent("Main", username , privilege, "View product: " +product.getName());
         System.out.println(product.getName());
         session.setAttribute("Product", product);
+        session.setAttribute("Reviews", reviews);
         request.getRequestDispatcher("Item.jsp").forward(request,response);
         
     }

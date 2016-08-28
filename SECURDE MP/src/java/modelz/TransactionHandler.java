@@ -88,6 +88,42 @@ public class TransactionHandler {
         return status;
     }
     
+    public void addPurchase(CustomerAccount account, Product prod){
+        DBConnector connect = new DBConnector();
+        Connection conn = connect.getConnection();
+        PreparedStatement ps;
+        String sql = "INSERT INTO purchases (user_id, product_id) VALUES (?,?)";
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, account.getId());
+            ps.setInt(2, prod.getId());
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public boolean checkIfPurchased(CustomerAccount account){
+        DBConnector connect = new DBConnector();
+        Connection conn = connect.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "SELECT * FROM purchases WHERE user_id = ?";
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, account.getId());
+            rs = ps.executeQuery();
+            if(rs.next()){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
     public double getBalance(String creditNum, String securityCode, String ownerName){
         System.out.println("Getting balance");
         boolean status = false;

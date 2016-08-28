@@ -1,3 +1,5 @@
+<%@page import="modelz.Review"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="modelz.Product"%>
 <html><head>
         <%
@@ -30,7 +32,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                         <%
                             
                             Product product = (Product) session.getAttribute("Product");
-                            
+                            ArrayList<Review> reviews = (ArrayList) session.getAttribute("Reviews");
                             String name = product.getName();
                             String desc = product.getDescription();
                             String price = Double.toString(product.getPrice());
@@ -71,29 +73,35 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
           </div>
         </div>
       </div>
+      <%
+          for(Review review : reviews){
+      %>
       <div class="container" style="margin-top:3em">
         <div class="row">
           <div class="col-md-12">
             <div class="jumbotron" style="opacity:0.9">
               <form>
-                <h3>Kaye Solomon</h3>
+                <h3><%=review.getReviewer()%></h3>
                 <hr>
-                <h4>LOVE EM!</h4>
+                <h4><%=review.getReview()%></h4>
                 <br>
               </form>
             </div>
           </div>
         </div>
       </div>
+      <%
+          }
+      %>
     </div>
     <div class="section section-primary inputAreaBack" style="opacity:0.85">
-      <form>
+      <form action="${pageContext.request.contextPath}/AddReview" method="POST">
         <div class="container">
           <div class="form-group">
             <label for="exampleTextarea">Comments
               <br>
             </label>
-            <textarea id="exampleTextarea" rows="3" class="form-control"></textarea>
+            <textarea id="exampleTextarea" rows="3" class="form-control" name="review"></textarea>
           </div>
           <div class="row">
             <div class="col-md-12">
@@ -154,7 +162,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
               <a href="Main.jsp" type="submit">Home</a>
             </li>
             <li>
-                <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
+                <a href="<%=request.getContextPath()%>/Logout">Logout</a>
             </li>
             <li>
               <a href="ShoppingCart.jsp"><i class="fa fa-2x fa-fw fa-drupal"></i></a>

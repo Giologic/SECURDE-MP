@@ -100,6 +100,48 @@ public class ProductHandler {
 			e.printStackTrace();
 		}
 	}
+        
+    public void addReview(Product product, CustomerAccount account, String review){
+            DBConnector connector = new DBConnector();
+            Connection conn = connector.getConnection();
+            PreparedStatement ps;
+            String sql = "INSERT INTO product_review (product_id, review,user_id, product_name, user_name ) VALUES (?,?,?,?,?)";
+            ResultSet rs;
+            try{
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1, product.getId());
+                ps.setString(2, review);
+                ps.setInt(3, account.getId());
+                ps.setString(4, product.getName());
+                ps.setString(5, account.getUsername());
+                ps.executeUpdate();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    
+    public ArrayList<Review> getReviews(Product prod){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement ps;
+        ArrayList<Review> reviews = new ArrayList();
+        String sql = "SELECT * FROM product_review WHERE product_id = ?";
+        ResultSet rs;
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, prod.getId());
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Review review = new Review(rs.getString("review"), rs.getString("user_name"));
+                reviews.add(review);
+                System.out.println("adding review");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return reviews;
+    }
     
     public ArrayList<Product> displayProducts(){
     	ArrayList<Product> allProducts = new ArrayList<Product>();
