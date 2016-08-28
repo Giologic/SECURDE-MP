@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelz.Product;
 import modelz.ProductHandler;
+import security.AuditLogger;
 
 /**
  *
@@ -42,7 +43,12 @@ public class EditProductServlet extends HttpServlet {
         double price = Double.parseDouble(request.getParameter("price"));
         Product prod = new Product(productName,description,price,category,"converse2.jpg");
         HttpSession session = request.getSession();
+        AuditLogger logger = new AuditLogger();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
         Product editProduct = (Product) session.getAttribute("editProduct");
+        logger.logEvent("Edit Product", username , privilege, "Edited Product: " +editProduct.getName() +" with values: name: " 
+                +productName +", description: " +description +", category: " +category +", price: " +price );
         pHandler.editProduct(prod,editProduct.getId());
         request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
     }

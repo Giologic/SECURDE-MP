@@ -109,8 +109,8 @@ public class LoginServlet extends HttpServlet {
                     ArrayList<Product> products = pHandler.displayProducts();
                     session.setAttribute("Products", products);
                     session.setAttribute("Account", account);
-                     auditLogger.logEvent("Login", username, privilege, "logging in customer account success");
-                     request.getRequestDispatcher("Main.jsp").forward(request, response);
+                    auditLogger.logEvent("Login", username, privilege, "logging in customer account success");
+                    request.getRequestDispatcher("Main.jsp").forward(request, response);
                 }
                 else{
                     String errorMessage = "Invalid Username/Password";

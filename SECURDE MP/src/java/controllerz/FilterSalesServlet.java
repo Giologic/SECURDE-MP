@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelz.ProductSales;
 import modelz.TransactionHandler;
+import security.AuditLogger;
 
 /**
  *
@@ -38,37 +39,47 @@ public class FilterSalesServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String filter = request.getParameter("salesFilter");
+        AuditLogger logger = new AuditLogger();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
+        logger.logEvent("Logout", username , privilege, "Logout successful");
         TransactionHandler tHandler = new TransactionHandler();
         if("filterTotal".equals(filter)){
             double total = tHandler.filterAllSales();
             request.setAttribute("filter action", filter);
             request.setAttribute("Total Sales", total);
+            logger.logEvent("Accounting Manager", username , privilege, "Viewing Total Sales");
             request.getRequestDispatcher("Transactions.jsp").forward(request, response);
         }else if("filterBoots".equals(filter)){
              ArrayList<ProductSales> sales = tHandler.filterCategorySales("Boots");
             request.setAttribute("filter action", filter);
             request.setAttribute("Total Sales Products", sales);
+            logger.logEvent("Accounting Manager", username , privilege, "Viewing Total Sales for Boots");
             request.getRequestDispatcher("Transactions.jsp").forward(request, response);
         }else if("filterShoes".equals(filter)){
              ArrayList<ProductSales> sales = tHandler.filterCategorySales("Shoes");
             request.setAttribute("filter action", filter);
             request.setAttribute("Total Sales Products", sales);
+            logger.logEvent("Accounting Manager", username , privilege, "Viewing Total Sales for Shoes");
             request.getRequestDispatcher("Transactions.jsp").forward(request, response);
          
         }else if("filterSandals".equals(filter)){
             ArrayList<ProductSales> sales = tHandler.filterCategorySales("Sandals");
             request.setAttribute("filter action", filter);
             request.setAttribute("Total Sales Products", sales);
+            logger.logEvent("Accounting Manager", username , privilege, "Viewing Total Sales for Sandals");
             request.getRequestDispatcher("Transactions.jsp").forward(request, response);
         }else if("filterSlippers".equals(filter)){
              ArrayList<ProductSales> sales = tHandler.filterCategorySales("Slippers");
             request.setAttribute("filter action", filter);
             request.setAttribute("Total Sales Products", sales);
+            logger.logEvent("Accounting Manager", username , privilege, "Viewing Total Sales for Slippers");
             request.getRequestDispatcher("Transactions.jsp").forward(request, response);
         }else if("filterProduct".equals(filter)){
             ArrayList<ProductSales> sales = tHandler.filterProductSales();
             request.setAttribute("filter action", filter);
             request.setAttribute("Total Sales Products", sales);
+            logger.logEvent("Accounting Manager", username , privilege, "Viewing Total Sales for all Products");
             request.getRequestDispatcher("Transactions.jsp").forward(request, response);
         }
     }

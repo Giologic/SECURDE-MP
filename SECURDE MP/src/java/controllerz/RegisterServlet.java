@@ -13,11 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelz.Account;
 import modelz.AccountHandler;
 import modelz.Address;
 import modelz.CustomerAccount;
 import modelz.ShoppingCart;
+import security.AuditLogger;
 import security.BCrypt;
 
 /**
@@ -77,7 +79,9 @@ public class RegisterServlet extends HttpServlet {
         System.out.println(shippingPostalCode);
         System.out.println(shippingCountry);
         
-       
+        HttpSession session = request.getSession();
+        AuditLogger logger = new AuditLogger();
+        
        
        
        RegistrationChecker checker = new RegistrationChecker();
@@ -90,12 +94,14 @@ public class RegisterServlet extends HttpServlet {
         CustomerAccount account = new CustomerAccount(firstName, lastName, middleInitial, "customer", username, hashedPassword, email, billingAddress, shippingAddress, cart);
         handler.register(account, account.getBillingAddress() , account.getShippingAddress());
         handler.assignPrivilege(account.getPrivilege(), account.getUsername());
+        logger.logEvent("Registration", username , "Anonymous User", "Registration Attempt Success");
         request.getRequestDispatcher("Login.jsp").forward(request,response);
         
        }
        
        else{
            //error
+           logger.logEvent("Registration", username , "Anonymous User", "Registration Attempt Failed");
            System.out.println("Invalid Inputs");
            request.getRequestDispatcher("Registration.jsp").forward(request,response);
        }

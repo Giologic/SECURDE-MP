@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import modelz.AccountHandler;
 import modelz.AccountingManagerAccount;
 import modelz.ProductManagerAccount;
+import security.AuditLogger;
 import security.BCrypt;
 import security.CSVFileGenerator;
 import security.RandomPasswordGenerator;
@@ -54,6 +55,9 @@ public class AddAccountServlet extends HttpServlet {
         String privilege = request.getParameter("privilege");
         AccountHandler handler = new AccountHandler();
         HttpSession session = request.getSession();
+        AuditLogger logger = new AuditLogger();
+        String adminUsername = (String) session.getAttribute("username");
+        String adminPrivilege = (String) session.getAttribute("privilege");
         if("product manager".equals(privilege)){
             //Creates CSV File for Account
             
@@ -62,6 +66,7 @@ public class AddAccountServlet extends HttpServlet {
             ProductManagerAccount pAccount = new ProductManagerAccount(username, hashedPassword, email, "product manager");
             handler.addProductManagerAccount(pAccount);
             handler.assignPrivilege(privilege, username);
+            logger.logEvent("Add Account", adminUsername , adminPrivilege, "Added new Product Manager Account " +username);
         }
         else if("accounting manager".equals(privilege)){
             //Creates CSV File for Account
@@ -69,6 +74,7 @@ public class AddAccountServlet extends HttpServlet {
             AccountingManagerAccount aAccount = new AccountingManagerAccount(username, hashedPassword, email, "accounting manager");
             handler.addAccountingManagerAccount(aAccount);
             handler.assignPrivilege(privilege, username);
+            logger.logEvent("Add Account", adminUsername , adminPrivilege, "Added new Accounting Manager Account " +username);
         }
         ArrayList<ProductManagerAccount> pAccounts = handler.getAllProductManagerAccounts();
         ArrayList<AccountingManagerAccount> aAccounts = handler.getAllAccountingManagerAccounts();

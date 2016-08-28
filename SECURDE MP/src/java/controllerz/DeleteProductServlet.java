@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelz.Product;
 import modelz.ProductHandler;
+import security.AuditLogger;
 
 /**
  *
@@ -43,6 +44,10 @@ public class DeleteProductServlet extends HttpServlet {
         pHandler.deleteProduct(product.getId());
         ArrayList<Product> products = pHandler.displayProducts();
         session.setAttribute("Products", products);
+        AuditLogger logger = new AuditLogger();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
+        logger.logEvent("Product Manager", username , privilege, "Deleted Product: " +product.getName());
          request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
     }
 

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import modelz.Product;
 import modelz.ProductHandler;
 import modelz.TransactionHandler;
+import security.AuditLogger;
 
 /**
  *
@@ -42,15 +43,20 @@ public class AddProductServlet extends HttpServlet {
         String description = request.getParameter("description");
         String category = request.getParameter("category");
         ArrayList<Product> products = new ArrayList();
+        AuditLogger logger = new AuditLogger();
+        String username = (String) session.getAttribute("username");
+        String privilege = (String) session.getAttribute("privilege");
         double price = Double.parseDouble(request.getParameter("price"));
         Product prod = new Product(name,description,price,category,"converse2.jpg");
         ProductHandler pHandler = new ProductHandler();
         TransactionHandler tHandler = new TransactionHandler();
         pHandler.addProduct(prod);
         tHandler.addNewSale(prod);
+        logger.logEvent("Add Product", username , privilege, "Added new Product: " +name +", description: " +description +", category: " 
+                +category +", price: " +price);
         products = pHandler.displayProducts();
         session.setAttribute("Products", products);
-         request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
+        request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
