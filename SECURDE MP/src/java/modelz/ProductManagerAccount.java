@@ -9,12 +9,12 @@ import java.util.Calendar;
 public class ProductManagerAccount extends ExpirableAccount {
     Timestamp date;
 
-    public ProductManagerAccount(String first_name, String last_name, String middle_initial, String privilege, String username, String password, String email, boolean isExpired, Date timestamp) {
+    public ProductManagerAccount(String first_name, String last_name, String middle_initial, String privilege, String username, String password, String email, boolean isExpired, Timestamp timestamp) {
         super(first_name, last_name, middle_initial, privilege, username, password, email, isExpired, timestamp);
     }
 
-    public ProductManagerAccount(String username, String password, String email, String privilege) {
-        super(username, password, email, privilege);
+    public ProductManagerAccount(String username, String password, String email, String privilege, boolean isExpired, Timestamp timestamp) {
+        super(username, password, email, privilege, isExpired, timestamp);
         
     }
     

@@ -113,7 +113,7 @@ public class LoginServlet extends HttpServlet {
                 if(accountingMan != null){
                     if(!accountingMan.isExpired()){
                     session.setAttribute("accountingManager", accountingMan);
-                     auditLogger.logEvent("Login", username, privilege, "logging in accounting manager success");
+                    auditLogger.logEvent("Login", username, privilege, "logging in accounting manager success");
                     request.getRequestDispatcher("Transactions.jsp").forward(request, response);
                     }
                     else{

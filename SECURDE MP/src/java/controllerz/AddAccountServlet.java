@@ -7,6 +7,7 @@ package controllerz;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,15 +64,18 @@ public class AddAccountServlet extends HttpServlet {
             
             CSVFileGenerator.writeCsvFile("PM_" + username + "_accountinfo.csv", username, generatedPassword);
             System.out.println("In product manager");
-            ProductManagerAccount pAccount = new ProductManagerAccount(username, hashedPassword, email, "product manager");
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            ProductManagerAccount pAccount = new ProductManagerAccount(username, hashedPassword, email, "product manager", false, timestamp);
             handler.addProductManagerAccount(pAccount);
             handler.assignPrivilege(privilege, username);
             logger.logEvent("Add Account", adminUsername , adminPrivilege, "Added new Product Manager Account " +username);
         }
         else if("accounting manager".equals(privilege)){
             //Creates CSV File for Account
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             CSVFileGenerator.writeCsvFile("AM_" + username + "_accountinfo.csv", username, generatedPassword);
-            AccountingManagerAccount aAccount = new AccountingManagerAccount(username, hashedPassword, email, "accounting manager");
+            
+            AccountingManagerAccount aAccount = new AccountingManagerAccount(username, hashedPassword, email, "accounting manager", false, timestamp);
             handler.addAccountingManagerAccount(aAccount);
             handler.assignPrivilege(privilege, username);
             logger.logEvent("Add Account", adminUsername , adminPrivilege, "Added new Accounting Manager Account " +username);

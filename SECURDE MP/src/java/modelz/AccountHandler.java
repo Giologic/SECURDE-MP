@@ -76,13 +76,19 @@ public class AccountHandler {
         Connection conn = connector.getConnection();
         String sql = "SELECT * FROM productmanager_account";
         PreparedStatement pstmt;
-        
+        boolean isExpired = false;
         try{
             pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-                ProductManagerAccount manager = new ProductManagerAccount(rs.getString("username"),rs.getString("password"),rs.getString("email"),"product manager");
-                manager.setTimestamp(rs.getTimestamp("date"));
+                if("active".equals(rs.getString("status"))){
+                    isExpired = false;
+                }
+                else{
+                    isExpired = true;
+                }
+                ProductManagerAccount manager = new ProductManagerAccount(rs.getString("username"),rs.getString("password"),rs.getString("email"),"product manager", isExpired, rs.getTimestamp("date"));
+                
                 accounts.add(manager);
                
             }
@@ -97,7 +103,7 @@ public class AccountHandler {
         System.out.println("Adding new product manager");
         DBConnector connector = new DBConnector();
         Connection conn = connector.getConnection();
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        
         String sql = "INSERT INTO productmanager_account (username,password,email,status,password_changed,date) VALUES (?,?,?,?,?,?)";
         PreparedStatement pstmt;
         try{
@@ -107,7 +113,7 @@ public class AccountHandler {
             pstmt.setString(3, account.getEmail());
             pstmt.setString(4, "active");
             pstmt.setString(5, "no");
-            pstmt.setTimestamp(6, timestamp);
+            pstmt.setTimestamp(6, account.getTimestamp());
             pstmt.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -140,11 +146,18 @@ public class AccountHandler {
         Connection conn = connector.getConnection();
         String sql = "SELECT * FROM accountingmanager_account";
         PreparedStatement pstmt;
+        boolean isExpired = false;
         try{
             pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-                AccountingManagerAccount manager = new AccountingManagerAccount(rs.getString("username"),rs.getString("password"),rs.getString("email"),"accounting manager");
+                if("active".equals(rs.getString("status"))){
+                    isExpired = false;
+                }
+                else{
+                    isExpired = true;
+                }
+                AccountingManagerAccount manager = new AccountingManagerAccount(rs.getString("username"),rs.getString("password"),rs.getString("email"),"accounting manager", isExpired, rs.getTimestamp("date"));
                 manager.setTimestamp(rs.getTimestamp("date"));
                 accounts.add(manager);
                
@@ -161,6 +174,7 @@ public class AccountHandler {
         PreparedStatement pstmt;
         String sql = "INSERT INTO privilege (username, account_privilege) VALUES (?,?)";
         try{
+            
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, privilege);
@@ -177,13 +191,21 @@ public class AccountHandler {
         Connection conn = connector.getConnection();
         PreparedStatement pstmt;
         String sql = "SELECT * FROM productmanager_account WHERE username = ?";
+        boolean isExpired = false;
         try{
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
                 System.out.println("hi po");
-                ProductManagerAccount account = new ProductManagerAccount(rs.getString("username"),rs.getString("password"), rs.getString("email"), "product manager");
+                if("active".equals(rs.getString("status"))){
+                    isExpired = false;
+                }
+                else{
+                    isExpired = true;
+                }
+                ProductManagerAccount account = new ProductManagerAccount(rs.getString("username"),rs.getString("password"),rs.getString("email"),"product manager", isExpired, rs.getTimestamp("date"));
+                //ProductManagerAccount account = new ProductManagerAccount(rs.getString("username"),rs.getString("password"), rs.getString("email"), "product manager");
                 return account;
             }
             else{
@@ -203,12 +225,19 @@ public class AccountHandler {
         Connection conn = connector.getConnection();
         PreparedStatement pstmt;
         String sql = "SELECT * FROM accountingmanager_account WHERE username = ?";
+        boolean isExpired = false;
         try{
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
-                AccountingManagerAccount account = new AccountingManagerAccount(rs.getString("username"),rs.getString("password"), rs.getString("email"), "accounting manager");
+                if("active".equals(rs.getString("status"))){
+                    isExpired = false;
+                }
+                else{
+                    isExpired = true;
+                }
+                AccountingManagerAccount account = new AccountingManagerAccount(rs.getString("username"),rs.getString("password"), rs.getString("email"), "accounting manager", isExpired, rs.getTimestamp("date"));
                 return account;
             }
             else{
@@ -284,15 +313,22 @@ public class AccountHandler {
     	Connection conn = connector.getConnection();
 		String sql = "SELECT * FROM productmanager_account WHERE username = ?"/* AND password = ?*/;
 		PreparedStatement pstmt;
+                boolean isExpired = false;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
 //			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
+                            if("active".equals(rs.getString("status"))){
+                    isExpired = false;
+                }
+                else{
+                    isExpired = true;
+                } 
                             if(BCrypt.checkpw(password, rs.getString("password"))){
                                     loggedIn = new ProductManagerAccount(rs.getString("username"), rs.getString("password")
-                                    ,rs.getString("email"), "product manager");
+                                    ,rs.getString("email"), "product manager", isExpired, rs.getTimestamp("date"));
 				pstmt.close();
 				conn.close();
 				return loggedIn;
@@ -315,15 +351,22 @@ public class AccountHandler {
     	Connection conn = connector.getConnection();
 		String sql = "SELECT * FROM accountingmanager_account WHERE username = ?"/* AND password = ?*/;
 		PreparedStatement pstmt;
+                boolean isExpired = false;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
 //			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
+                            if("active".equals(rs.getString("status"))){
+                    isExpired = false;
+                }
+                else{
+                    isExpired = true;
+                }
                             if(BCrypt.checkpw(password,rs.getString("password"))){
                                     loggedIn = new AccountingManagerAccount(rs.getString("username"), rs.getString("password")
-                                    ,rs.getString("email"), "accounting manager");
+                                    ,rs.getString("email"), "accounting manager", isExpired, rs.getTimestamp("date"));
 				pstmt.close();
 				conn.close();
 				return loggedIn;
