@@ -28,7 +28,7 @@ public class DBConnector {
         this.url = "jdbc:mysql://localhost:3306/" + dbName;
         this.driver = "com.mysql.jdbc.Driver";
         this.username = "root"; //DON'T USE ROOT ACCOUNT
-        this.password = "water";
+        this.password = "root";
         try{
             Class.forName(driver).newInstance();
             connect = DriverManager.getConnection(url, username, password);

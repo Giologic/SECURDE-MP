@@ -5,20 +5,34 @@
  */
 package security;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author MSI LEOPARD
  */
 public class SampleDriver {
+    private final static int EXPIRY_DURATION = 120;
     public static void main(String[] args){
-        String username = "Nica";
-        String newPw = "ilovepaolo69";
-        System.out.println(newPw);
-        String hashPW = BCrypt.hashpw(newPw, BCrypt.gensalt(12));
-        CSVFileGenerator.writeCsvFile(username + "_accountinfo.csv", username, hashPW);
+//        String username = "Nica";
+//        String newPw = "ilovepaolo69";
+//        System.out.println(newPw);
+//        String hashPW = BCrypt.hashpw(newPw, BCrypt.gensalt(12));
+//        CSVFileGenerator.writeCsvFile(username + "_accountinfo.csv", username, hashPW);
+//        
+//        System.out.println(hashPW);
+//        
+//        System.out.println(BCrypt.checkpw(newPw, hashPW));
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = new GregorianCalendar();
+        System.out.println(dateFormat.format(cal.getTime()));
+        cal.add(Calendar.DATE, EXPIRY_DURATION);
+        System.out.println(dateFormat.format(cal.getTime()));
         
-        System.out.println(hashPW);
-        
-        System.out.println(BCrypt.checkpw(newPw, hashPW));
+
     }
 }

@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
         String privilege = handler.getPrivilege(username);
         AuditLogger auditLogger = new AuditLogger();
         HttpSession session = request.getSession();
+        boolean flag = false;
 //        Cookie cookie = new Cookie("username", request.getParameter("username"));
 //        cookie.setSecure(true);
 //        cookie.setHttpOnly(true);
@@ -85,12 +86,22 @@ public class LoginServlet extends HttpServlet {
                 System.out.println("Product Manager Login");
                 ProductManagerAccount productMan = handler.productManagerLogin(username, password);
                 if(productMan != null){
-                    session.setAttribute("productManager", productMan);
-                    ArrayList<Product> products = pHandler.displayProducts();
-                    session.setAttribute("Products", products);
-                    auditLogger.logEvent("Login", username, privilege, "logging in product manager account success");
-                     request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
+                    if(!productMan.isExpired()){
+                        session.setAttribute("productManager", productMan);
+                        ArrayList<Product> products = pHandler.displayProducts();
+                        session.setAttribute("Products", products);
+                        auditLogger.logEvent("Login", username, privilege, "logging in product manager account success");
+                         request.getRequestDispatcher("ProductManager.jsp").forward(request, response);
+                    }
+                    else{
+                        flag = true;
+                        String errorMessage = "Your account is already expired. Please contact administrator to renew your account";
+                        request.setAttribute("loginError", errorMessage);
+                        auditLogger.logEvent("Login", username, "Expired Account", "log in attempt fail");
+                        request.getRequestDispatcher("Login.jsp").forward(request, response);
+                    }
                 }
+                
             }
             else if("accounting manager".equals(privilege)){
                 System.out.println("Accounting Manager Login");
@@ -100,9 +111,18 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("filter action", "filterProduct");
                 request.setAttribute("Total Sales Products", sales);
                 if(accountingMan != null){
+                    if(!accountingMan.isExpired()){
                     session.setAttribute("accountingManager", accountingMan);
                      auditLogger.logEvent("Login", username, privilege, "logging in accounting manager success");
                     request.getRequestDispatcher("Transactions.jsp").forward(request, response);
+                    }
+                    else{
+                        flag = true;
+                        String errorMessage = "Your account is already expired. Please contact administrator to renew your account";
+                        request.setAttribute("loginError", errorMessage);
+                        auditLogger.logEvent("Login", username, "Expired Account", "log in attempt fail");
+                        request.getRequestDispatcher("Login.jsp").forward(request, response);
+                    }
                 }
             }
             else if("customer".equals(privilege)){
@@ -127,10 +147,12 @@ public class LoginServlet extends HttpServlet {
             }
         }
         else{
-            String errorMessage = "Invalid Username/Password";
-            request.setAttribute("loginError", errorMessage);
-            auditLogger.logEvent("Login", username, "Anonymous user", "log in attempt fail");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
+            if(flag){
+                String errorMessage = "Invalid Username/Password";
+                request.setAttribute("loginError", errorMessage);
+                auditLogger.logEvent("Login", username, "Anonymous user", "log in attempt fail");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            }
         }
     }
 
