@@ -49,7 +49,7 @@ public class AddReviewServlet extends HttpServlet {
         AuditLogger logger = new AuditLogger();
         String username = account.getUsername();
         String privilege = account.getPrivilege();
-        if(tHandler.checkIfPurchased(account)){
+        if(tHandler.checkIfPurchased(account, product)){
             pHandler.addReview(product, account, review);
             ArrayList<Review> reviews = pHandler.getReviews(product);
             session.setAttribute("Reviews", reviews);

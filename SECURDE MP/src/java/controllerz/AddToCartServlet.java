@@ -43,8 +43,10 @@ public class AddToCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Product product = (Product) session.getAttribute("Product");
         String productName = product.getName();
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        double price = product.getPrice();
+        int quantity = 1;
+        try{
+            quantity = Integer.parseInt(request.getParameter("quantity"));
+            double price = product.getPrice();
         AccountHandler handler = new AccountHandler();
         ProductHandler pHandler = new ProductHandler();
         CustomerAccount account = (CustomerAccount) session.getAttribute("Account");  
@@ -59,6 +61,10 @@ public class AddToCartServlet extends HttpServlet {
         String privilege = (String) session.getAttribute("privilege");
         logger.logEvent("Shopping Cart", username , privilege, "Added item " +prod.getName()+" to shopping cart");
         request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+        }catch(NumberFormatException e){
+            response.sendRedirect("Item.jsp");
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
