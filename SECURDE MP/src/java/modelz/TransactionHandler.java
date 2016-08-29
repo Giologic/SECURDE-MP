@@ -103,15 +103,16 @@ public class TransactionHandler {
         }
     }
     
-    public boolean checkIfPurchased(CustomerAccount account){
+    public boolean checkIfPurchased(CustomerAccount account, Product prod){
         DBConnector connect = new DBConnector();
         Connection conn = connect.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String sql = "SELECT * FROM purchases WHERE user_id = ?";
+        String sql = "SELECT * FROM purchases WHERE user_id = ? AND product_id = ?";
         try{
             ps = conn.prepareStatement(sql);
             ps.setInt(1, account.getId());
+            ps.setInt(2, prod.getId());
             rs = ps.executeQuery();
             if(rs.next()){
                 return true;

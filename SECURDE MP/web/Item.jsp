@@ -1,3 +1,4 @@
+<%@page import="org.owasp.encoder.Encode"%>
 <%@page import="modelz.Review"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelz.Product"%>
@@ -75,15 +76,16 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
       </div>
       <%
           for(Review review : reviews){
+             
       %>
       <div class="container" style="margin-top:3em">
         <div class="row">
           <div class="col-md-12">
             <div class="jumbotron" style="opacity:0.9">
               <form>
-                <h3><%=review.getReviewer()%></h3>
+                <h3><%=Encode.forHtml(review.getReviewer())%></h3>
                 <hr>
-                <h4><%=review.getReview()%></h4>
+                <h4><%=Encode.forHtml(review.getReview())%></h4>
                 <br>
               </form>
             </div>

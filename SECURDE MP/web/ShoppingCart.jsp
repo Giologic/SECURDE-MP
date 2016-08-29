@@ -1,3 +1,4 @@
+<%@page import="org.owasp.encoder.Encode"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="modelz.Product"%>
 <%@page import="java.util.ArrayList"%>
@@ -86,7 +87,7 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
                   <td><%=i+1%></td>
                   <td><%=product.getName()%></td>
                   <td>
-                    <input type="text" class="form-control" value="<%=quantity%>" style="width:50px" readonly>
+                      <input type="text" class="form-control" value="<%=Encode.forHtmlAttribute(Integer.toString(quantity))%>" style="width:50px" readonly>
                   </td>
                   <td><%=price%></td>
                   <td>
