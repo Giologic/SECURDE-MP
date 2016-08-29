@@ -18,8 +18,6 @@ public abstract class ExpirableAccount extends Account{
         super(first_name, last_name, middle_initial, privilege, username, password, email);
         this.boolExp = isExpired;
         this.timestamp = timestamp;
-        Calendar cal = new GregorianCalendar();
-        cal.add(Calendar.SECOND, 60);
     }
     
     public ExpirableAccount(String username, String password, String email, String privilege){
@@ -28,8 +26,13 @@ public abstract class ExpirableAccount extends Account{
     
     public boolean isExpired() {
         if(!this.boolExp){
-            Calendar cal = new GregorianCalendar();
-            if(cal.getTime().after(timestamp)) boolExp = true;
+            //Set calendar to timestamp 
+            Calendar convertedCal = new GregorianCalendar();
+            convertedCal.setTime(timestamp);
+            convertedCal.add(Calendar.DATE, EXPIRY_DURATION);
+            Calendar calNow = new GregorianCalendar();
+            
+            if(calNow.after(convertedCal)) boolExp = true;
         }
         return this.boolExp;
     }
