@@ -25,14 +25,14 @@ public class SampleDriver {
 //        
 //        System.out.println(hashPW);
 //        
-//        System.out.println(BCrypt.checkpw(newPw, hashPW));
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Calendar cal = new GregorianCalendar();
-        System.out.println(dateFormat.format(cal.getTime()));
-        cal.add(Calendar.DATE, EXPIRY_DURATION);
-        System.out.println(dateFormat.format(cal.getTime()));
-        
+        System.out.println(BCrypt.checkpw("12345678", "$12$7cHe2yxICqBqaNoq7Lywp.h2ya9b1qRoTZV9JXEtSTkoHAZ859r8q"));
+//    
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//        Calendar cal = new GregorianCalendar();
+//        System.out.println(dateFormat.format(cal.getTime()));
+//        cal.add(Calendar.DATE, EXPIRY_DURATION);
+//        System.out.println(dateFormat.format(cal.getTime()));
+//        
 
     }
 }

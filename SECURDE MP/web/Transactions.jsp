@@ -42,8 +42,8 @@ background: linear-gradient(to left, #83eec5 , #399494); /* W3C, IE 10+/ Edge, F
           </div>
           <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active">
-                <a href="#">Home</a>
+              <li class="active"> 
+                  <a href="ChangePassword.jsp">Change Password</a>
               </li>
               <li>
                 <a href="<%=request.getContextPath()%>/Logout">Logout</a>

@@ -26,8 +26,48 @@ public class AccountHandler {
     
     
     
-    public void changePassword(){
-        
+    public void changeProductManagerPassword(String username, String password){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "SELECT * FROM productmanager_account WHERE username = ? ";
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                sql = "UPDATE productmanager_account SET password = ? WHERE username = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, password);
+                ps.setString(2, username);
+                ps.executeUpdate();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void changeAccountManagerPassword(String username, String password){
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "SELECT * FROM accountmanager_account WHERE username = ? ";
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                sql = "UPDATE accountmanager_account SET password = ? WHERE username = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, password);
+                ps.setString(2, username);
+                ps.executeUpdate();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     public void register(Account acc, Address billAdd, Address shipAdd){
